@@ -1,0 +1,651 @@
+{
+    "name": "Teleportation",
+    "image": "",
+    "source": "https://marvel.fandom.com/wiki/Category:Teleportation",
+    "members": [
+        {
+            "name": "Aarkus (Earth-616)",
+            "href": "/wiki/Aarkus_(Earth-616)"
+        },
+        {
+            "name": "Abigail Burns (Earth-616)",
+            "href": "/wiki/Abigail_Burns_(Earth-616)"
+        },
+        {
+            "name": "Abigail Wright (Earth-616)",
+            "href": "/wiki/Abigail_Wright_(Earth-616)"
+        },
+        {
+            "name": "Adam Blackveil (Earth-616)",
+            "href": "/wiki/Adam_Blackveil_(Earth-616)"
+        },
+        {
+            "name": "Adam K'ad-Mon (Earth-616)",
+            "href": "/wiki/Adam_K%27ad-Mon_(Earth-616)"
+        },
+        {
+            "name": "Adam Warlock (Earth-616)",
+            "href": "/wiki/Adam_Warlock_(Earth-616)"
+        },
+        {
+            "name": "Adva (Earth-616)",
+            "href": "/wiki/Adva_(Earth-616)"
+        },
+        {
+            "name": "Advisor (Earth-616)",
+            "href": "/wiki/Advisor_(Earth-616)"
+        },
+        {
+            "name": "Agamotto (Earth-616)",
+            "href": "/wiki/Agamotto_(Earth-616)"
+        },
+        {
+            "name": "Agatha Harkness (Earth-616)",
+            "href": "/wiki/Agatha_Harkness_(Earth-616)"
+        },
+        {
+            "name": "Agent of Fortune (Earth-616)",
+            "href": "/wiki/Agent_of_Fortune_(Earth-616)"
+        },
+        {
+            "name": "Aggamon (Earth-616)",
+            "href": "/wiki/Aggamon_(Earth-616)"
+        },
+        {
+            "name": "Akasha Martinez (Earth-616)",
+            "href": "/wiki/Akasha_Martinez_(Earth-616)"
+        },
+        {
+            "name": "Al-Hasan (Earth-616)",
+            "href": "/wiki/Al-Hasan_(Earth-616)"
+        },
+        {
+            "name": "Albert Destine (Earth-616)",
+            "href": "/wiki/Albert_Destine_(Earth-616)"
+        },
+        {
+            "name": "Alec Eiffel (Earth-616)",
+            "href": "/wiki/Alec_Eiffel_(Earth-616)"
+        },
+        {
+            "name": "Alex Wilder (Earth-616)",
+            "href": "/wiki/Alex_Wilder_(Earth-616)"
+        },
+        {
+            "name": "Algernon Crowe (Earth-616)",
+            "href": "/wiki/Algernon_Crowe_(Earth-616)"
+        },
+        {
+            "name": "Allan Rennie (Earth-616)",
+            "href": "/wiki/Allan_Rennie_(Earth-616)"
+        },
+        {
+            "name": "Amatsu-Mikaboshi (Earth-616)",
+            "href": "/wiki/Amatsu-Mikaboshi_(Earth-616)"
+        },
+        {
+            "name": "Amelia Voght (Earth-616)",
+            "href": "/wiki/Amelia_Voght_(Earth-616)"
+        },
+        {
+            "name": "Amelia Weatherly (Earth-616)",
+            "href": "/wiki/Amelia_Weatherly_(Earth-616)"
+        },
+        {
+            "name": "American Samurai (Earth-616)",
+            "href": "/wiki/American_Samurai_(Earth-616)"
+        },
+        {
+            "name": "Amora (Earth-616)",
+            "href": "/wiki/Amora_(Earth-616)"
+        },
+        {
+            "name": "Ananym (Earth-616)",
+            "href": "/wiki/Ananym_(Earth-616)"
+        },
+        {
+            "name": "Andro (Earth-616)",
+            "href": "/wiki/Andro_(Earth-616)"
+        },
+        {
+            "name": "Antimatter (Earth-616)",
+            "href": "/wiki/Antimatter_(Earth-616)"
+        },
+        {
+            "name": "Antonio Aggasiz (Earth-616)",
+            "href": "/wiki/Antonio_Aggasiz_(Earth-616)"
+        },
+        {
+            "name": "Anubis (Earth-616)",
+            "href": "/wiki/Anubis_(Earth-616)"
+        },
+        {
+            "name": "Aphrodite Ourania (Earth-616)",
+            "href": "/wiki/Aphrodite_Ourania_(Earth-616)"
+        },
+        {
+            "name": "Arcadia DeVille (Earth-616)",
+            "href": "/wiki/Arcadia_DeVille_(Earth-616)"
+        },
+        {
+            "name": "Ard-Con (Earth-616)",
+            "href": "/wiki/Ard-Con_(Earth-616)"
+        },
+        {
+            "name": "Ares (Earth-616)",
+            "href": "/wiki/Ares_(Earth-616)"
+        },
+        {
+            "name": "Argon (Alien) (Earth-616)",
+            "href": "/wiki/Argon_(Alien)_(Earth-616)"
+        },
+        {
+            "name": "Arianrhod MacLlanllwyr (Earth-616)",
+            "href": "/wiki/Arianrhod_MacLlanllwyr_(Earth-616)"
+        },
+        {
+            "name": "Ariel (Coconut Grove) (Earth-616)",
+            "href": "/wiki/Ariel_(Coconut_Grove)_(Earth-616)"
+        },
+        {
+            "name": "Ariel (Coconut Grove, Male) (Earth-616)",
+            "href": "/wiki/Ariel_(Coconut_Grove,_Male)_(Earth-616)"
+        },
+        {
+            "name": "Arnold Lundberg (Earth-616)",
+            "href": "/wiki/Arnold_Lundberg_(Earth-616)"
+        },
+        {
+            "name": "Aron (Earth-616)",
+            "href": "/wiki/Aron_(Earth-616)"
+        },
+        {
+            "name": "Artemis (Olympian) (Earth-616)",
+            "href": "/wiki/Artemis_(Olympian)_(Earth-616)"
+        },
+        {
+            "name": "Artemis Boleyn (Earth-616)",
+            "href": "/wiki/Artemis_Boleyn_(Earth-616)"
+        },
+        {
+            "name": "Arthur Dearborn (Earth-616)",
+            "href": "/wiki/Arthur_Dearborn_(Earth-616)"
+        },
+        {
+            "name": "Arthur Pendragon (Earth-616)",
+            "href": "/wiki/Arthur_Pendragon_(Earth-616)"
+        },
+        {
+            "name": "Astra (Mutant) (Earth-616)",
+            "href": "/wiki/Astra_(Mutant)_(Earth-616)"
+        },
+        {
+            "name": "Aurelle (Earth-616)",
+            "href": "/wiki/Aurelle_(Earth-616)"
+        },
+        {
+            "name": "Axel Asher (Earth-616)",
+            "href": "/wiki/Axel_Asher_(Earth-616)"
+        },
+        {
+            "name": "Bast (Earth-616)",
+            "href": "/wiki/Bast_(Earth-616)"
+        },
+        {
+            "name": "Betilakk (Earth-616)",
+            "href": "/wiki/Betilakk_(Earth-616)"
+        },
+        {
+            "name": "Billy McMullen (Earth-616)",
+            "href": "/wiki/Billy_McMullen_(Earth-616)"
+        },
+        {
+            "name": "Cameron Belasco (Warp World) (Earth-616)",
+            "href": "/wiki/Cameron_Belasco_(Warp_World)_(Earth-616)"
+        },
+        {
+            "name": "Caretaker (Sara) (Earth-616)",
+            "href": "/wiki/Caretaker_(Sara)_(Earth-616)"
+        },
+        {
+            "name": "Carol Peterson (Earth-616)",
+            "href": "/wiki/Carol_Peterson_(Earth-616)"
+        },
+        {
+            "name": "Cassie St. Commons (Earth-616)",
+            "href": "/wiki/Cassie_St._Commons_(Earth-616)"
+        },
+        {
+            "name": "Claire Voyant (Earth-616)",
+            "href": "/wiki/Claire_Voyant_(Earth-616)"
+        },
+        {
+            "name": "Clea (Earth-616)",
+            "href": "/wiki/Clea_(Earth-616)"
+        },
+        {
+            "name": "Darnell Wade (Earth-616)",
+            "href": "/wiki/Darnell_Wade_(Earth-616)"
+        },
+        {
+            "name": "David Haller (Earth-616)",
+            "href": "/wiki/David_Haller_(Earth-616)"
+        },
+        {
+            "name": "DeMarr Davis (Earth-616)",
+            "href": "/wiki/DeMarr_Davis_(Earth-616)"
+        },
+        {
+            "name": "Despair (Earth-616)",
+            "href": "/wiki/Despair_(Earth-616)"
+        },
+        {
+            "name": "Dibbuk (Earth-616)",
+            "href": "/wiki/Dibbuk_(Earth-616)"
+        },
+        {
+            "name": "Divad (Earth-616)",
+            "href": "/wiki/Divad_(Earth-616)"
+        },
+        {
+            "name": "Druig (Earth-616)",
+            "href": "/wiki/Druig_(Earth-616)"
+        },
+        {
+            "name": "E.V.A. (Earth-616)",
+            "href": "/wiki/E.V.A._(Earth-616)"
+        },
+        {
+            "name": "Ebony Maw (Earth-616)",
+            "href": "/wiki/Ebony_Maw_(Earth-616)"
+        },
+        {
+            "name": "Eden Fesi (Earth-616)",
+            "href": "/wiki/Eden_Fesi_(Earth-616)"
+        },
+        {
+            "name": "Edith Sawyer (Earth-616)",
+            "href": "/wiki/Edith_Sawyer_(Earth-616)"
+        },
+        {
+            "name": "Elizabeth Braddock (Earth-616)",
+            "href": "/wiki/Elizabeth_Braddock_(Earth-616)"
+        },
+        {
+            "name": "En Dwi Gast (Earth-616)",
+            "href": "/wiki/En_Dwi_Gast_(Earth-616)"
+        },
+        {
+            "name": "Eric Payne (Earth-616)",
+            "href": "/wiki/Eric_Payne_(Earth-616)"
+        },
+        {
+            "name": "Eric Williams (Earth-616)",
+            "href": "/wiki/Eric_Williams_(Earth-616)"
+        },
+        {
+            "name": "Fatale (Earth-616)",
+            "href": "/wiki/Fatale_(Earth-616)"
+        },
+        {
+            "name": "Francis Castle (Earth-616)",
+            "href": "/wiki/Francis_Castle_(Earth-616)"
+        },
+        {
+            "name": "Francis Klum (Earth-616)",
+            "href": "/wiki/Francis_Klum_(Earth-616)"
+        },
+        {
+            "name": "Franklin Richards (Earth-616)",
+            "href": "/wiki/Franklin_Richards_(Earth-616)"
+        },
+        {
+            "name": "Galan (Earth-616)",
+            "href": "/wiki/Galan_(Earth-616)"
+        },
+        {
+            "name": "Gateway (Earth-616)",
+            "href": "/wiki/Gateway_(Earth-616)"
+        },
+        {
+            "name": "Hades (Earth-616)",
+            "href": "/wiki/Hades_(Earth-616)"
+        },
+        {
+            "name": "Han, Chang, Lin, Sun, and Ho Tao-Yu (Earth-616)",
+            "href": "/wiki/Han,_Chang,_Lin,_Sun,_and_Ho_Tao-Yu_(Earth-616)"
+        },
+        {
+            "name": "Hela (Earth-616)",
+            "href": "/wiki/Hela_(Earth-616)"
+        },
+        {
+            "name": "Henry McCoy (Earth-616)",
+            "href": "/wiki/Henry_McCoy_(Earth-616)"
+        },
+        {
+            "name": "Holly-Ann Ember (Earth-616)",
+            "href": "/wiki/Holly-Ann_Ember_(Earth-616)"
+        },
+        {
+            "name": "Horador (Earth-616)",
+            "href": "/wiki/Horador_(Earth-616)"
+        },
+        {
+            "name": "Horde (Alien Mutant) (Earth-616)",
+            "href": "/wiki/Horde_(Alien_Mutant)_(Earth-616)"
+        },
+        {
+            "name": "Hub (Earth-616)",
+            "href": "/wiki/Hub_(Earth-616)"
+        },
+        {
+            "name": "Ikaris (Earth-616)",
+            "href": "/wiki/Ikaris_(Earth-616)"
+        },
+        {
+            "name": "Jaime Vanderwall (Earth-616)",
+            "href": "/wiki/Jaime_Vanderwall_(Earth-616)"
+        },
+        {
+            "name": "Jawaharel Patel (Earth-616)",
+            "href": "/wiki/Jawaharel_Patel_(Earth-616)"
+        },
+        {
+            "name": "Jean-Pierre Beaubier (Earth-616)",
+            "href": "/wiki/Jean-Pierre_Beaubier_(Earth-616)"
+        },
+        {
+            "name": "Jericho Drumm (Earth-616)",
+            "href": "/wiki/Jericho_Drumm_(Earth-616)"
+        },
+        {
+            "name": "Jimaine Szardos (Earth-616)",
+            "href": "/wiki/Jimaine_Szardos_(Earth-616)"
+        },
+        {
+            "name": "John Kaluu (Warp World) (Earth-616)",
+            "href": "/wiki/John_Kaluu_(Warp_World)_(Earth-616)"
+        },
+        {
+            "name": "John Wraith (Earth-616)",
+            "href": "/wiki/John_Wraith_(Earth-616)"
+        },
+        {
+            "name": "Jo\u00e3o (Forgotten) (Earth-616)",
+            "href": "/wiki/Jo%C3%A3o_(Forgotten)_(Earth-616)"
+        },
+        {
+            "name": "Julia Carpenter (Earth-616)",
+            "href": "/wiki/Julia_Carpenter_(Earth-616)"
+        },
+        {
+            "name": "Julie Power (Warp World) (Earth-616)",
+            "href": "/wiki/Julie_Power_(Warp_World)_(Earth-616)"
+        },
+        {
+            "name": "Junction (Earth-616)",
+            "href": "/wiki/Junction_(Earth-616)"
+        },
+        {
+            "name": "Kaluu (Earth-616)",
+            "href": "/wiki/Kaluu_(Earth-616)"
+        },
+        {
+            "name": "Katie Sawyer (Earth-616)",
+            "href": "/wiki/Katie_Sawyer_(Earth-616)"
+        },
+        {
+            "name": "Khoryphos (Earth-616)",
+            "href": "/wiki/Khoryphos_(Earth-616)"
+        },
+        {
+            "name": "Korvos (Warp World) (Earth-616)",
+            "href": "/wiki/Korvos_(Warp_World)_(Earth-616)"
+        },
+        {
+            "name": "Lactuca (Earth-616)",
+            "href": "/wiki/Lactuca_(Earth-616)"
+        },
+        {
+            "name": "Larry Ekler (Earth-616)",
+            "href": "/wiki/Larry_Ekler_(Earth-616)"
+        },
+        {
+            "name": "Lila Cheney (Earth-616)",
+            "href": "/wiki/Lila_Cheney_(Earth-616)"
+        },
+        {
+            "name": "Lourdes Chantel (Earth-616)",
+            "href": "/wiki/Lourdes_Chantel_(Earth-616)"
+        },
+        {
+            "name": "Maddie (Mutant) (Earth-616)",
+            "href": "/wiki/Maddie_(Mutant)_(Earth-616)"
+        },
+        {
+            "name": "Maha Yogi (Earth-616)",
+            "href": "/wiki/Maha_Yogi_(Earth-616)"
+        },
+        {
+            "name": "Mar-Vell (Earth-616)",
+            "href": "/wiki/Mar-Vell_(Earth-616)"
+        },
+        {
+            "name": "Marianne Rodgers (Earth-616)",
+            "href": "/wiki/Marianne_Rodgers_(Earth-616)"
+        },
+        {
+            "name": "Megan Gwynn (Earth-616)",
+            "href": "/wiki/Megan_Gwynn_(Earth-616)"
+        },
+        {
+            "name": "Mephicthzarrko-Neg (Warp World) (Earth-616)",
+            "href": "/wiki/Mephicthzarrko-Neg_(Warp_World)_(Earth-616)"
+        },
+        {
+            "name": "Mephisto (Earth-616)",
+            "href": "/wiki/Mephisto_(Earth-616)"
+        },
+        {
+            "name": "Mephzoomko-Neg (Warp World) (Earth-616)",
+            "href": "/wiki/Mephzoomko-Neg_(Warp_World)_(Earth-616)"
+        },
+        {
+            "name": "Meryet Karim (Earth-616)",
+            "href": "/wiki/Meryet_Karim_(Earth-616)"
+        },
+        {
+            "name": "Michael Twoyoungmen (Earth-616)",
+            "href": "/wiki/Michael_Twoyoungmen_(Earth-616)"
+        },
+        {
+            "name": "Michelangelo Simoni (Earth-616)",
+            "href": "/wiki/Michelangelo_Simoni_(Earth-616)"
+        },
+        {
+            "name": "Misty Beck (Earth-616)",
+            "href": "/wiki/Misty_Beck_(Earth-616)"
+        },
+        {
+            "name": "Modred (Earth-616)",
+            "href": "/wiki/Modred_(Earth-616)"
+        },
+        {
+            "name": "Monako (Earth-616)",
+            "href": "/wiki/Monako_(Earth-616)"
+        },
+        {
+            "name": "Morgan Le Fay (Earth-616)",
+            "href": "/wiki/Morgan_Le_Fay_(Earth-616)"
+        },
+        {
+            "name": "Mother Rapture (Earth-616)",
+            "href": "/wiki/Mother_Rapture_(Earth-616)"
+        },
+        {
+            "name": "Mother Righteous (Earth-616)",
+            "href": "/wiki/Mother_Righteous_(Earth-616)"
+        },
+        {
+            "name": "Naga (Lemurian) (Earth-616)",
+            "href": "/wiki/Naga_(Lemurian)_(Earth-616)"
+        },
+        {
+            "name": "Nathan Summers (Earth-616)",
+            "href": "/wiki/Nathan_Summers_(Earth-616)"
+        },
+        {
+            "name": "Nightmare (Earth-616)",
+            "href": "/wiki/Nightmare_(Earth-616)"
+        },
+        {
+            "name": "Nils Styger (Earth-616)",
+            "href": "/wiki/Nils_Styger_(Earth-616)"
+        },
+        {
+            "name": "Norrin Radd (Earth-616)",
+            "href": "/wiki/Norrin_Radd_(Earth-616)"
+        },
+        {
+            "name": "Nyx (Earth-616)",
+            "href": "/wiki/Nyx_(Earth-616)"
+        },
+        {
+            "name": "Onslaught (Psychic Entity) (Earth-616)",
+            "href": "/wiki/Onslaught_(Psychic_Entity)_(Earth-616)"
+        },
+        {
+            "name": "Phastos (Earth-616)",
+            "href": "/wiki/Phastos_(Earth-616)"
+        },
+        {
+            "name": "Prosh (Earth-616)",
+            "href": "/wiki/Prosh_(Earth-616)"
+        },
+        {
+            "name": "Reader (Inhuman) (Earth-616)",
+            "href": "/wiki/Reader_(Inhuman)_(Earth-616)"
+        },
+        {
+            "name": "Rebecca Littlehale (Earth-616)",
+            "href": "/wiki/Rebecca_Littlehale_(Earth-616)"
+        },
+        {
+            "name": "Richard Yurocko (Earth-616)",
+            "href": "/wiki/Richard_Yurocko_(Earth-616)"
+        },
+        {
+            "name": "Robert Brasman (Earth-616)",
+            "href": "/wiki/Robert_Brasman_(Earth-616)"
+        },
+        {
+            "name": "Sebastion Gilberti (Earth-616)",
+            "href": "/wiki/Sebastion_Gilberti_(Earth-616)"
+        },
+        {
+            "name": "Seer (Blood) (Earth-616)",
+            "href": "/wiki/Seer_(Blood)_(Earth-616)"
+        },
+        {
+            "name": "Serafina (Earth-616)",
+            "href": "/wiki/Serafina_(Earth-616)"
+        },
+        {
+            "name": "Sersi (Earth-616)",
+            "href": "/wiki/Sersi_(Earth-616)"
+        },
+        {
+            "name": "Shaylee Moonpeddle (Earth-616)",
+            "href": "/wiki/Shaylee_Moonpeddle_(Earth-616)"
+        },
+        {
+            "name": "Shevaun Haldane (Earth-616)",
+            "href": "/wiki/Shevaun_Haldane_(Earth-616)"
+        },
+        {
+            "name": "Sif (Earth-616)",
+            "href": "/wiki/Sif_(Earth-616)"
+        },
+        {
+            "name": "Silas Warden (Earth-616)",
+            "href": "/wiki/Silas_Warden_(Earth-616)"
+        },
+        {
+            "name": "Sprite (Earth-616)",
+            "href": "/wiki/Sprite_(Earth-616)"
+        },
+        {
+            "name": "Stephen Beckley (Earth-616)",
+            "href": "/wiki/Stephen_Beckley_(Earth-616)"
+        },
+        {
+            "name": "Stephen Strange (Earth-616)",
+            "href": "/wiki/Stephen_Strange_(Earth-616)"
+        },
+        {
+            "name": "Supreme Intelligence (Earth-616)",
+            "href": "/wiki/Supreme_Intelligence_(Earth-616)"
+        },
+        {
+            "name": "Syzya (Earth-616)",
+            "href": "/wiki/Syzya_(Earth-616)"
+        },
+        {
+            "name": "Thena (Earth-616)",
+            "href": "/wiki/Thena_(Earth-616)"
+        },
+        {
+            "name": "Thor-El (Earth-616)",
+            "href": "/wiki/Thor-El_(Earth-616)"
+        },
+        {
+            "name": "Thulandra Thuu (Earth-616)",
+            "href": "/wiki/Thulandra_Thuu_(Earth-616)"
+        },
+        {
+            "name": "Uatu (Earth-616)",
+            "href": "/wiki/Uatu_(Earth-616)"
+        },
+        {
+            "name": "Umar (Earth-616)",
+            "href": "/wiki/Umar_(Earth-616)"
+        },
+        {
+            "name": "Umar (Warp World) (Earth-616)",
+            "href": "/wiki/Umar_(Warp_World)_(Earth-616)"
+        },
+        {
+            "name": "Uni-Mind (Ghaur) (Earth-616)",
+            "href": "/wiki/Uni-Mind_(Ghaur)_(Earth-616)"
+        },
+        {
+            "name": "Vanisher (Earth-616)",
+            "href": "/wiki/Vanisher_(Earth-616)"
+        },
+        {
+            "name": "Victor Kohl (Earth-616)",
+            "href": "/wiki/Victor_Kohl_(Earth-616)"
+        },
+        {
+            "name": "Wanda Maximoff (Earth-616)",
+            "href": "/wiki/Wanda_Maximoff_(Earth-616)"
+        },
+        {
+            "name": "Weapon Wonderful (Warp World) (Earth-616)",
+            "href": "/wiki/Weapon_Wonderful_(Warp_World)_(Earth-616)"
+        },
+        {
+            "name": "William Kaplan (Earth-616)",
+            "href": "/wiki/William_Kaplan_(Earth-616)"
+        },
+        {
+            "name": "Yao (Earth-616)",
+            "href": "/wiki/Yao_(Earth-616)"
+        },
+        {
+            "name": "Zarrko-Neg (Warp World) (Earth-616)",
+            "href": "/wiki/Zarrko-Neg_(Warp_World)_(Earth-616)"
+        }
+    ]
+}

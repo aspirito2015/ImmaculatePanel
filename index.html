@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="mystyle.css">
+        <link rel="shortcut icon" href="#">
+    </head>
+    <body>
+        <div class="header">
+            <div class="left">
+                <img src="icon.png" width="32px" height="32px">
+                <h1>IMMACULATE PANEL</h1>
+                <h2>powered by</h2>
+                <h3>THE JANKIEST OF CODE</h3>
+            </div>
+            <div class="right">
+                <img src="icon_blank.png" width="32px" height="32px">
+                <img src="icon_blank.png" width="32px" height="32px">
+                <img src="icon_blank.png" width="32px" height="32px">
+            </div>
+        </div>
+        <div style="text-align: center;">
+            <div class="navbar">
+                <a href="#" class="active">Marvel</a>
+                <a href="#">placeholders</a>
+                <a href="#">look</a>
+                <a href="#">cool</a>
+            </div>
+        </div>
+        <div class="a">
+            <div class="b">
+                <div>
+                    <div class="c">
+                        <div style="display: inline-block;">MARVEL GRID #616</div>
+                        <span>&#8901;</span>
+                        <button onclick="">Previous Grids</button>
+                    </div>
+                    <div class="grid-container">
+                        <div class="grid-item"></div>
+                        <div class="grid-item" name="cat"></div>
+                        <div class="grid-item" name="cat"></div>
+                        <div class="grid-item" name="cat"></div>
+                        <div class="grid-item"></div>
+                        <div class="grid-item" name="cat"></div>
+                        <button class="grid-item" name="btn" onclick="grid_btn(0,0)" style="border-radius: 0.75rem 0 0 0;">X</button>
+                        <button class="grid-item" name="btn" onclick="grid_btn(1,0)" style="border-radius: 0;">5</button>
+                        <button class="grid-item" name="btn" onclick="grid_btn(2,0)" style="border-radius: 0 0.75rem 0 0;">1</button>
+                        <div class="grid-item"></div>
+                        <div class="grid-item" name="cat"></div>
+                        <button class="grid-item" name="btn" onclick="grid_btn(0,1)" style="border-radius: 0;">7</button>
+                        <button class="grid-item" name="btn" onclick="grid_btn(1,1)" style="border-radius: 0;">3</button>
+                        <button class="grid-item" name="btn" onclick="grid_btn(2,1)" style="border-radius: 0;">1</button>
+                        <div class="grid-item">
+                            <div class="grid-content" style="width: 100%; font-size: small; color: lightgrey;">
+                                GUESSES LEFT
+                                <div id="guesses" style="font-size: xx-large; font-weight: bold; color: white;">7</div>
+                                <button class="giveup" onclick="summary_on()">Give Up</button>
+                            </div>
+                        </div>
+                        <div class="grid-item" name="cat"></div>
+                        <button class="grid-item" name="btn" onclick="grid_btn(0,2)" style="border-radius: 0 0 0 0.75rem;">2</button>
+                        <button class="grid-item" name="btn" onclick="grid_btn(1,2)" style="border-radius: 0;">9</button>
+                        <button class="grid-item" name="btn" onclick="grid_btn(2,2)" style="border-radius: 0 0 0.75rem 0;">9</button>
+                        <div class="grid-item"></div>
+                    </div>
+                    <div style="text-align: center;">Tap on a logo or category for help.</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <h2>Footer</h2>
+            <p>Lorem ipsum and all that jazz.</p>
+        </div>
+        <div id="overlay">
+            <div style="padding:1.5rem;">
+                <div id="srch_bar" class="pup" style="display: none;">
+                    <div style="position: relative;">
+                        <img src="icon_blank.png" width="20px" height="20px" style="position: absolute; top: 0.875rem; left: 1rem;">
+                        <input list="wow" id="search" name="search" placeholder="Search..." autocomplete="off" onkeyup="filterFunction()">
+                    </div>
+                    <ul id="charlist" style="display: none;"></ul>
+                </div>
+                <div id="sum" class="pup" style="display: none;">
+                    <div style="position: relative;">
+                        <div class="sum-contents">
+                            <button style="padding: 0.375rem; border-radius: 9999px; margin-right: 0.5rem; position: absolute; right: 0.375rem;">X</button>
+                            <div>
+                                <div>SUMMARY</div>
+                                <div>IMMACULATE PANEL 616</div>
+                            </div>
+                            <div>
+                                <div class="sum-grid">
+                                    <div class="sum-grid-cell">0</div>
+                                    <div class="sum-grid-cell">1</div>
+                                    <div class="sum-grid-cell">2</div>
+                                    <div class="sum-grid-cell">3</div>
+                                    <div class="sum-grid-cell">4</div>
+                                    <div class="sum-grid-cell">5</div>
+                                    <div class="sum-grid-cell">6</div>
+                                    <div class="sum-grid-cell">7</div>
+                                    <div class="sum-grid-cell">8</div>
+                                </div>
+                                <div>
+                                    RARITY SCORE
+                                    616
+                                </div>
+                                <div>
+                                    <button>Copy</button>
+                                    <button>Tweet</button>
+                                </div>
+                                <div>
+                                    <button>Remind Me To Play Tomorrow</button>
+                                </div>
+                            </div>
+                            <div>TODAY'S MARVEL GRID STATS</div>
+                            <div>
+                                <div>
+                                    <div>
+                                        <div>GAMES</div>
+                                        <div>99999</div>
+                                    </div>
+                                    <div>
+                                        <div>
+                                            AVERAGE SCORE
+                                        </div>
+                                        <div>
+                                            6.1
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div>POSSIBLE ANSWERS</div>
+                                    <div>
+                                        <div>Tap "Show" to see a list of answers on Baseball Reference or Stathead.</div>
+                                        <div class="ans-grid">
+                                            <div class="ans-grid-header"></div>
+                                            <div class="ans-grid-header">c0</div>
+                                            <div class="ans-grid-header">c1</div>
+                                            <div class="ans-grid-header">c2</div>
+                                            <div class="ans-grid-header">r0</div>
+                                            <div class="ans-grid-cell">0</div>
+                                            <div class="ans-grid-cell">1</div>
+                                            <div class="ans-grid-cell">2</div>
+                                            <div class="ans-grid-header">r1</div>
+                                            <div class="ans-grid-cell">3</div>
+                                            <div class="ans-grid-cell">4</div>
+                                            <div class="ans-grid-cell">5</div>
+                                            <div class="ans-grid-header">r2</div>
+                                            <div class="ans-grid-cell">6</div>
+                                            <div class="ans-grid-cell">7</div>
+                                            <div class="ans-grid-cell">8</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div>MOST POPULAR</div>
+                                    <div>
+                                        <div>Percentage of correct answers. Tap a player to see their Baseball Reference page.</div>
+                                        <div class="ans-grid">
+                                            <div class="ans-grid-header"></div>
+                                            <div class="ans-grid-header">c0</div>
+                                            <div class="ans-grid-header">c1</div>
+                                            <div class="ans-grid-header">c2</div>
+                                            <div class="ans-grid-header">r0</div>
+                                            <div class="ans-grid-cell">0</div>
+                                            <div class="ans-grid-cell">1</div>
+                                            <div class="ans-grid-cell">2</div>
+                                            <div class="ans-grid-header">r1</div>
+                                            <div class="ans-grid-cell">3</div>
+                                            <div class="ans-grid-cell">4</div>
+                                            <div class="ans-grid-cell">5</div>
+                                            <div class="ans-grid-header">r2</div>
+                                            <div class="ans-grid-cell">6</div>
+                                            <div class="ans-grid-cell">7</div>
+                                            <div class="ans-grid-cell">8</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div>ACCURACY</div>
+                                    <div>
+                                        <div class="ans-grid">
+                                            <div class="ans-grid-header"></div>
+                                            <div class="ans-grid-header">c0</div>
+                                            <div class="ans-grid-header">c1</div>
+                                            <div class="ans-grid-header">c2</div>
+                                            <div class="ans-grid-header">r0</div>
+                                            <div class="ans-grid-cell">0</div>
+                                            <div class="ans-grid-cell">1</div>
+                                            <div class="ans-grid-cell">2</div>
+                                            <div class="ans-grid-header">r1</div>
+                                            <div class="ans-grid-cell">3</div>
+                                            <div class="ans-grid-cell">4</div>
+                                            <div class="ans-grid-cell">5</div>
+                                            <div class="ans-grid-header">r2</div>
+                                            <div class="ans-grid-cell">6</div>
+                                            <div class="ans-grid-cell">7</div>
+                                            <div class="ans-grid-cell">8</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div>PLAYER SCORES</div>
+                                    <div class="flex-container">
+                                        <button>Remind Me To Play Tomorrow</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="myScript.js"></script>
+    </body>
+</html>

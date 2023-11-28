@@ -17,6 +17,7 @@ var all_chars = {};
 var guesses = 9;
 var bad_guesses = [[],[],[],[],[],[],[],[],[]];
 var used_chars = [];
+var sum_bools = Array(9).fill(false);
 
 // Get json list of characters
 fetch("./char_ALL.json").then( function(u){ return u.json(); } ).
@@ -41,7 +42,7 @@ function addToList(m) {
 
 // Get category image elements
 const cat_divs = document.getElementsByName('cat');
-// Get json categories & set images
+// Get json categories & make cat btns
 for (let i=0; i<catdirs.length; i++) {
     fetch("./groups"+catdirs[i]).then( function(u){ return u.json(); } ).
         then( function(json){ data_function(json, i); } )
@@ -49,7 +50,11 @@ for (let i=0; i<catdirs.length; i++) {
 
 function data_function(json, i) {
     cats[i] = json;
-    cat_divs[i].innerHTML = '<img src="'+cats[i].image+'" class="grid-content cat-img" title="'+cats[i].name+'">';
+    cat_divs[i].innerHTML = '<div class="tooltip"><img src="'+cats[i].image+'" class="grid-content cat-img"><span class="tooltiptext">'+cats[i].name+'</span></div>';
+}
+
+function cat_btn(cat_name) {
+    alert("CAT_BTN: "+cat_name);
 }
 
 
@@ -94,6 +99,12 @@ function search_off() {
     filterClear();
 }
 
+
+function give_up() {
+    updateGuesses(0);
+    summary_on();
+}
+
 function summary_on() {
     document.getElementById("overlay").style.display = "block";
     document.getElementById("sum").style.display = "";
@@ -108,6 +119,7 @@ function summary_off() {
 
 
 function grid_btn(x, y) {
+    if (guesses <= 0) return;
     btn_active_x = x;
     btn_active_y = y;
     btn_active_html = btns_html[x+(3*y)];
@@ -121,18 +133,22 @@ function srch_btn(charname) {
     // is char in column list and row list?
     is_in_x = cats[btn_active_x].members.some(item => item.name == charname);
     is_in_y = cats[3+btn_active_y].members.some(item => item.name == charname);
+    grid_index = btn_active_x+3*btn_active_y;
     // alert("Is "+charname+" in "+cats[btn_active_x].name+"?\n"+is_in_x+"\n"+"Is "+charname+" in "+cats[3+btn_active_y].name+"?\n"+is_in_y);
     if (is_in_x && is_in_y) {
         btn_active_html.innerHTML = '<img src="'+char.img+'" class="grid-content" style="width: 90%; height: 100%; object-fit: cover;"><div class="grid-percent">100%</div><div class="grid-label">'+char.name.substring(0, char.name.length-12)+'</div>';
         btn_active_html.setAttribute("style", "background-color: #59d185;")
-        btn_active_html.setAttribute("onclick", 'onclick="grid_btn(1,0)"');
+        btn_active_html.setAttribute("onclick", "window.open('https://marvel.fandom.com"+char.href+"', '_blank')");
         search_off();
+        sum_grid = document.getElementsByClassName("sum-grid-cell");
+        sum_grid[grid_index].setAttribute("style", "background-color: #59d185;");
+        sum_bools[grid_index] = true;
         // add to global 'already used' list
         used_chars.push(charname);
         setBtnUsed(charname);
     } else {
         // add to button-specific 'already guessed' list
-        btn_bad_guess_list = bad_guesses[btn_active_x+3*btn_active_y];
+        btn_bad_guess_list = bad_guesses[grid_index];
         btn_bad_guess_list.push(charname);
         setBtnBad(charname);
     }
@@ -188,6 +204,29 @@ function filterClear() {
 }
 
 
+function copy_sum() {
+    let txt = "";
+    let count = 0;
+    for (let y=0; y < 3; y++) {
+        for (let x=0; x < 3; x++) {
+            if (sum_bools[x+3*y]) {
+                // Green Square: 🟩 Dec: &#129001	Hex: &#x1F7E9
+                txt += "&#129001";
+                count++;
+            } else {
+                // White Square: ⬜ Dec: &#11036 Hex:	&#x2B1C
+                txt += "&#11036";
+            }
+        }
+        txt += "\n";
+    }
+    txt = "Immaculate Inning 999 "+count+"/9:\nRarity: 999\n"+txt+"Play at https://aspirito2015.github.io/MarvelGrid_HTML/";
+    let copy_tmp = document.getElementById("copy-tmp");
+    copy_tmp.innerHTML = txt;
+    navigator.clipboard.writeText(copy_tmp.innerHTML);
+    alert("Copied to clipboard");
+}
+
 
 updateGuesses(guesses);
 
@@ -198,17 +237,29 @@ function decrementGuesses() {
 function updateGuesses(i) {
     guessdiv = document.getElementById("guesses");
     guesses = i;
-    if (guesses<0) guesses=0;
-    // TODO: add real behavior if guesses run out
-    // ^ close search
-    // ^ open "summary" (results pop-up)
-    guessdiv.innerHTML = guesses;
+    animate_guesses(guessdiv, 0, guesses, 300);
+    if (guesses <= 0) lose();
 }
 
-// TODO: match tool-tips
-// ^ css
-// ^ repurpose overlay
+function lose() {
+    search_off();
+    summary_on();
+    document.getElementById("giveup").innerHTML = "Show Summary";
+    for (let i=0; i < btns_html.length; i++) {
+        btns_html[i].classList.remove("grid-item");
+        btns_html[i].classList.add("grid-item-no-hover");
+    }
+}
 
-// TODO: give up btn
-// ^ set guesses to zero
-// ^ open summary
+function animate_guesses(obj, start, end, duration) {
+    let startTimestamp = null;
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        obj.innerHTML = Math.floor(progress * (end - start) + start);
+        if (progress < 1) {
+            window.requestAnimationFrame(step);
+        }
+    };
+    window.requestAnimationFrame(step);
+}

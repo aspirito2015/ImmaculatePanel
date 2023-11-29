@@ -74,7 +74,7 @@
             <div style="padding:1.5rem;">
                 <div id="srch_bar" class="pup" style="display: none;">
                     <div style="position: relative;">
-                        <img src="icon_blank.png" width="20px" height="20px" style="position: absolute; top: 0.875rem; left: 1rem;">
+                        <div width="20px" height="20px" style="position: absolute; top: 50%; left: 1rem; transform: translate(0, -50%);">&#128269;</div>
                         <input list="wow" id="search" name="search" placeholder="Search..." autocomplete="off" onkeyup="filterFunction()">
                     </div>
                     <ul id="charlist" style="display: none;"></ul>
@@ -82,7 +82,7 @@
                 <div id="sum" class="pup" style="display: none;">
                     <div style="position: relative;">
                         <div class="sum-contents">
-                            <button onclick="summary_off()" style="padding: 0.375rem; border-radius: 9999px; margin-right: 0.5rem; position: absolute; right: 0.375rem;">X</button>
+                            <button onclick="summary_off()" class="x-btn">X</button>
                             <div>
                                 <div>SUMMARY</div>
                                 <div>IMMACULATE PANEL 616</div>
@@ -105,10 +105,10 @@
                                 </div>
                                 <div>
                                     <button onclick="copy_sum()">Copy</button>
-                                    <button>Tweet</button>
+                                    <!--<button>Tweet</button>
                                 </div>
-                                <div>
-                                    <button>Remind Me To Play Tomorrow</button>
+                                <div>-->
+                                    <button onclick="window.location.href='./subscribe.html'">Remind Me To Play Tomorrow</button>
                                 </div>
                             </div>
                             <div>TODAY'S MARVEL GRID STATS</div>
@@ -133,21 +133,66 @@
                                         <div>Tap "Show" to see a list of answers on Baseball Reference or Stathead.</div>
                                         <div class="ans-grid">
                                             <div class="ans-grid-header"></div>
-                                            <div class="ans-grid-header">c0</div>
-                                            <div class="ans-grid-header">c1</div>
-                                            <div class="ans-grid-header">c2</div>
-                                            <div class="ans-grid-header">r0</div>
-                                            <div class="ans-grid-cell">0</div>
-                                            <div class="ans-grid-cell">1</div>
-                                            <div class="ans-grid-cell">2</div>
-                                            <div class="ans-grid-header">r1</div>
-                                            <div class="ans-grid-cell">3</div>
-                                            <div class="ans-grid-cell">4</div>
-                                            <div class="ans-grid-cell">5</div>
-                                            <div class="ans-grid-header">r2</div>
-                                            <div class="ans-grid-cell">6</div>
-                                            <div class="ans-grid-cell">7</div>
-                                            <div class="ans-grid-cell">8</div>
+                                            <div class="ans-grid-header"></div>
+                                            <div class="ans-grid-header"></div>
+                                            <div class="ans-grid-header"></div>
+                                            <div class="ans-grid-header"></div>
+                                            <div class="ans-grid-cell" style="border-radius: 1rem 0 0 0;">
+                                                <div class="ans-grid-content">
+                                                    <div class="ans-num">41</div>
+                                                    <a href="" class="ans-link">(Show)</a>
+                                                </div>
+                                            </div>
+                                            <div class="ans-grid-cell">
+                                                <div class="ans-grid-content">
+                                                    <div class="ans-num">157</div>
+                                                    <a href="" class="ans-link">(Show)</a>
+                                                </div>
+                                            </div>
+                                            <div class="ans-grid-cell" style="border-radius: 0 1rem 0 0;">
+                                                <div class="ans-grid-content">
+                                                    <div class="ans-num">32</div>
+                                                    <a href="" class="ans-link">(Show)</a>
+                                                </div>
+                                            </div>
+                                            <div class="ans-grid-header"></div>
+                                            <div class="ans-grid-cell">
+                                                <div class="ans-grid-content">
+                                                    <div class="ans-num">90</div>
+                                                    <a href="" class="ans-link">(Show)</a>
+                                                </div>
+                                            </div>
+                                            <div class="ans-grid-cell">
+                                                <div class="ans-grid-content">
+                                                    <div class="ans-num">152</div>
+                                                    <a href="" class="ans-link">(Show)</a>
+                                                </div>
+                                            </div>
+                                            <div class="ans-grid-cell">
+                                                <div class="ans-grid-content">
+                                                    <div class="ans-num">37</div>
+                                                    <a href="" class="ans-link">(Show)</a>
+                                                </div>
+                                            </div>
+                                            <div class="ans-grid-header"></div>
+                                            <div class="ans-grid-cell" style="border-radius: 0 0 0 1rem;">
+                                                <div class="ans-grid-content">
+                                                    <div class="ans-num">6</div>
+                                                    <a href="" class="ans-link">(Show)</a>
+                                                </div>
+                                            </div>
+                                            <div class="ans-grid-cell">
+                                                <div class="ans-grid-content">
+                                                    <div class="ans-num">105</div>
+                                                    <a href="" class="ans-link">(Show)</a>
+                                                </div>
+                                            </div>
+                                            <div class="ans-grid-cell" style="border-radius: 0 0 1rem 0;">
+                                                <div class="ans-grid-content">
+                                                    <div class="ans-num">94</div>
+                                                    <a href="" class="ans-link">(Show)</a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -157,21 +202,21 @@
                                         <div>Percentage of correct answers. Tap a player to see their Baseball Reference page.</div>
                                         <div class="ans-grid">
                                             <div class="ans-grid-header"></div>
-                                            <div class="ans-grid-header">c0</div>
-                                            <div class="ans-grid-header">c1</div>
-                                            <div class="ans-grid-header">c2</div>
-                                            <div class="ans-grid-header">r0</div>
-                                            <div class="ans-grid-cell">0</div>
-                                            <div class="ans-grid-cell">1</div>
-                                            <div class="ans-grid-cell">2</div>
-                                            <div class="ans-grid-header">r1</div>
-                                            <div class="ans-grid-cell">3</div>
-                                            <div class="ans-grid-cell">4</div>
-                                            <div class="ans-grid-cell">5</div>
-                                            <div class="ans-grid-header">r2</div>
-                                            <div class="ans-grid-cell">6</div>
-                                            <div class="ans-grid-cell">7</div>
-                                            <div class="ans-grid-cell">8</div>
+                                            <div class="ans-grid-header"></div>
+                                            <div class="ans-grid-header"></div>
+                                            <div class="ans-grid-header"></div>
+                                            <div class="ans-grid-header"></div>
+                                            <div class="ans-grid-cell" style="border-radius: 1rem 0 0 0;"></div>
+                                            <div class="ans-grid-cell"></div>
+                                            <div class="ans-grid-cell" style="border-radius: 0 1rem 0 0;"></div>
+                                            <div class="ans-grid-header"></div>
+                                            <div class="ans-grid-cell"></div>
+                                            <div class="ans-grid-cell"></div>
+                                            <div class="ans-grid-cell"></div>
+                                            <div class="ans-grid-header"></div>
+                                            <div class="ans-grid-cell" style="border-radius: 0 0 0 1rem;"></div>
+                                            <div class="ans-grid-cell"></div>
+                                            <div class="ans-grid-cell" style="border-radius: 0 0 1rem 0;"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -180,28 +225,28 @@
                                     <div>
                                         <div class="ans-grid">
                                             <div class="ans-grid-header"></div>
-                                            <div class="ans-grid-header">c0</div>
-                                            <div class="ans-grid-header">c1</div>
-                                            <div class="ans-grid-header">c2</div>
-                                            <div class="ans-grid-header">r0</div>
-                                            <div class="ans-grid-cell">0</div>
-                                            <div class="ans-grid-cell">1</div>
-                                            <div class="ans-grid-cell">2</div>
-                                            <div class="ans-grid-header">r1</div>
-                                            <div class="ans-grid-cell">3</div>
-                                            <div class="ans-grid-cell">4</div>
-                                            <div class="ans-grid-cell">5</div>
-                                            <div class="ans-grid-header">r2</div>
-                                            <div class="ans-grid-cell">6</div>
-                                            <div class="ans-grid-cell">7</div>
-                                            <div class="ans-grid-cell">8</div>
+                                            <div class="ans-grid-header"></div>
+                                            <div class="ans-grid-header"></div>
+                                            <div class="ans-grid-header"></div>
+                                            <div class="ans-grid-header"></div>
+                                            <div class="ans-grid-cell" style="border-radius: 1rem 0 0 0;"></div>
+                                            <div class="ans-grid-cell"></div>
+                                            <div class="ans-grid-cell" style="border-radius: 0 1rem 0 0;"></div>
+                                            <div class="ans-grid-header"></div>
+                                            <div class="ans-grid-cell"></div>
+                                            <div class="ans-grid-cell"></div>
+                                            <div class="ans-grid-cell"></div>
+                                            <div class="ans-grid-header"></div>
+                                            <div class="ans-grid-cell" style="border-radius: 0 0 0 1rem;"></div>
+                                            <div class="ans-grid-cell"></div>
+                                            <div class="ans-grid-cell" style="border-radius: 0 0 1rem 0;"></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div>
                                     <div>PLAYER SCORES</div>
                                     <div class="flex-container">
-                                        <button>Remind Me To Play Tomorrow</button>
+                                        <button onclick="window.location.href='./subscribe.html'">Remind Me To Play Tomorrow</button>
                                     </div>
                                 </div>
                             </div>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="shortcut icon" href="#">
+    </head>
+    <body>
+        <section id="guestbook-container">
+            <h2>Discussion</h2>
+            <form id="leave-message">
+            <label>Submit a grid: </label>
+            <br>
+            <input type="checkbox" id="chckbx1">
+            <input type="checkbox" id="chckbx2">
+            <input type="checkbox" id="chckbx3">
+            <br>
+            <input type="checkbox" id="chckbx4">
+            <input type="checkbox" id="chckbx5">
+            <input type="checkbox" id="chckbx6">
+            <br>
+            <input type="checkbox" id="chckbx7">
+            <input type="checkbox" id="chckbx8">
+            <input type="checkbox" id="chckbx9">
+            <br>
+            <button type="submit">
+                <span>SEND</span>
+            </button>
+            </form>
+            <section id="guestbook"></section>
+        </section>
+        <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+            
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+            
+            // Your web app's Firebase configuration
+            const firebaseConfig = {
+                apiKey: "AIzaSyBNGvghLLvatMD7tuANyX6tyAtsEKPik5w",
+                authDomain: "immaculate-panel.firebaseapp.com",
+                projectId: "immaculate-panel",
+                storageBucket: "immaculate-panel.appspot.com",
+                messagingSenderId: "806020093352",
+                appId: "1:806020093352:web:cbf4f970ab2b6ed4c1b99d"
+            };
+            
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+        </script>
+        <script type="module" src="firebase-test.js"></script>
+    </body>
+</html>

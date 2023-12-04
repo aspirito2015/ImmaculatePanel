@@ -24,11 +24,6 @@ jobs:
           echo "MAIL_USERNAME=${{ secrets.MAIL_USERNAME }}" >> $GITHUB_ENV
           echo "MAIL_PASSWORD=${{ secrets.MAIL_PASSWORD }}" >> $GITHUB_ENV
 
-      - name: Write Firebase credentials
-        run: echo "$FIREBASE_SERVICE_ACCOUNT_IMMACULATE_PANEL" > .cert/firebase-cert.json
-        env:
-          FIREBASE_SERVICE_ACCOUNT_IMMACULATE_PANEL: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_IMMACULATE_PANEL }}
-
       - name: Checkout repo
         uses: actions/checkout@v4
 

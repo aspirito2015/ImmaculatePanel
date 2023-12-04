@@ -1,14 +1,19 @@
-import firebase_admin, requests, re
+import firebase_admin, requests, re, json, base64, os
 from firebase_admin import credentials, firestore
 from bs4 import BeautifulSoup
 from tqdm import tqdm
+from dotenv import load_dotenv, find_dotenv
 
 # site used for firebase help: 
 # https://towardsdatascience.com/essentials-for-working-with-firestore-in-python-372f859851f7
 
 # use the private key file of the service account directly
-cert_path = r".\.cert\firebase-cert.json"
-cred = credentials.Certificate(cert_path)
+# cert_path = r".\.cert\firebase-cert.json" # for local use
+
+encoded_key = os.environ["SERVICE_ACCOUNT_KEY"]
+SERVICE_ACCOUNT_JSON = json.loads(base64.b64decode(encoded_key).decode('utf-8'))
+
+cred = credentials.Certificate(SERVICE_ACCOUNT_JSON)
 app = firebase_admin.initialize_app(cred)
 firestore_client = firestore.client()
 

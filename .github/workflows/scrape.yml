@@ -43,6 +43,8 @@ jobs:
           pip install -r requirements.txt
       
       - name: Execute py script
+        env:
+          SERVICE_ACCOUNT_KEY: ${{ secrets.SERVICE_ACCOUNT_KEY}}
         working-directory: firebase/cms
         run: python scrape.py
       

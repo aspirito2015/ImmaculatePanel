@@ -2,7 +2,6 @@ import firebase_admin, requests, re, json, base64, os
 from firebase_admin import credentials, firestore
 from bs4 import BeautifulSoup
 from tqdm import tqdm
-from dotenv import load_dotenv, find_dotenv
 
 # site used for firebase help: 
 # https://towardsdatascience.com/essentials-for-working-with-firestore-in-python-372f859851f7

@@ -9,8 +9,8 @@ on:
 # Unsure if this is fixed yet. Test and remove if able to.
 env:
   ACTIONS_ALLOW_UNSECURE_COMMANDS: true
-#  MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
-#  MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
+  MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
+  MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
 #  DATE: ${{ env.DATE }}
 
 jobs:
@@ -21,8 +21,13 @@ jobs:
       - name: Set up environment
         run: |
           echo "DATE=$(date -u +'%Y-%m-%d')" >> $GITHUB_ENV
-#          echo "MAIL_USERNAME=${{ secrets.MAIL_USERNAME }}" >> $GITHUB_ENV
-#          echo "MAIL_PASSWORD=${{ secrets.MAIL_PASSWORD }}" >> $GITHUB_ENV
+          echo "MAIL_USERNAME=${{ secrets.MAIL_USERNAME }}" >> $GITHUB_ENV
+          echo "MAIL_PASSWORD=${{ secrets.MAIL_PASSWORD }}" >> $GITHUB_ENV
+
+      - name: Write Firebase credentials
+        run: echo "$FIREBASE_SERVICE_ACCOUNT_IMMACULATE_PANEL" > .cert/firebase-cert.json
+        env:
+          FIREBASE_SERVICE_ACCOUNT_IMMACULATE_PANEL: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_IMMACULATE_PANEL }}
 
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -48,7 +53,7 @@ jobs:
           server_port: 465
           username: ${{secrets.MAIL_USERNAME}}
           password: ${{secrets.MAIL_PASSWORD}}
-          subject: Scraping report for ${{env.DATE}}
+          subject: Scraping report for # ${{env.DATE}}
           to: ${{secrets.MAIL_USERNAME}}
           from: Automated Email
           ignore_cert: true

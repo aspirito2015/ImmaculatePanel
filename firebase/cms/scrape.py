@@ -1,4 +1,4 @@
-import firebase_admin, json, requests, re
+import firebase_admin, requests, re
 from firebase_admin import credentials, firestore
 from bs4 import BeautifulSoup
 from tqdm import tqdm
@@ -7,7 +7,7 @@ from tqdm import tqdm
 # https://towardsdatascience.com/essentials-for-working-with-firestore-in-python-372f859851f7
 
 # use the private key file of the service account directly
-cert_path = r"C:\Users\aspir\OneDrive\Documents\immaculate-panel-firebase-adminsdk-wxggf-e1894a1002.json"
+cert_path = r".\.cert\firebase-cert.json"
 cred = credentials.Certificate(cert_path)
 app = firebase_admin.initialize_app(cred)
 firestore_client = firestore.client()

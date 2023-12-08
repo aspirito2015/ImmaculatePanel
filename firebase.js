@@ -24,4 +24,4 @@ async function getCharacters(db) {
     return charList;
 }
 
-alert(getCharacters(db));
+//alert(getCharacters(db));

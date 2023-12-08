@@ -1,8 +1,8 @@
 name: Scrape
 
 on:
-  schedule:
-    - cron: '0 15 * * *'
+  #schedule:
+  #  - cron: '0 15 * * *'
   workflow_dispatch:  # for testing
 
 # "ACTIONS_...": true is only required for Python on GitHub due to a bug.

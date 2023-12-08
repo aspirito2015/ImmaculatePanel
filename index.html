@@ -51,8 +51,8 @@
                         <button class="grid-item" name="btn" onclick="grid_btn(2,1)" style="border-radius: 0;">1</button>
                         <div class="grid-item">
                             <div class="grid-content" style="width: 100%; font-size: small; color: lightgrey;">
-                                GUESSES LEFT
-                                <div id="guesses" style="font-size: xx-large; font-weight: bold; color: white;">7</div>
+                                <div id="guesses-left">GUESSES LEFT</div>
+                                <div id="guesses" style="font-size: xx-large; font-weight: bold;">7</div>
                                 <button id="giveup" onclick="give_up()">Give Up</button>
                             </div>
                         </div>
@@ -72,7 +72,7 @@
         </div>
         <div id="overlay">
             <div style="padding:1.5rem;">
-                <div id="srch_bar" class="pup" style="display: none;">
+                <div id="srch_bar" class="pup" style="display: none; overflow: hidden;">
                     <div style="position: relative;">
                         <div width="20px" height="20px" style="position: absolute; top: 50%; left: 1rem; transform: translate(0, -50%);">&#128269;</div>
                         <input list="wow" id="search" name="search" placeholder="Search..." autocomplete="off" onkeyup="filterFunction()">

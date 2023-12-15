@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="mystyle.css">
+        <link rel="shortcut icon" href="#">
+        <script src="components/header.js" type="text/javascript" defer></script>
+        <script src="components/footer.js" type="text/javascript" defer></script>
+    </head>
+    <body>
+        <div id="page-container">
+            <div id="content-wrap">
+                <header-component></header-component>
+                Hello, world!
+                <div id="spit-js-here"></div>
+            </div>
+            <footer-component></footer-component>
+        </div>
+        <script>
+            const spitDiv = document.getElementById('spit-js-here');
+            const queryString = window.location.search;
+            urlParams = new URLSearchParams(queryString);
+            const team = [2];
+            team[0] = urlParams.get('team1');
+            team[1] = urlParams.get('team2');
+            spitDiv.innerHTML = 'Team 1: '+team[0]+'<br>Team 2: '+team[1];
+        </script>
+    </body>
+</html>

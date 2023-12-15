@@ -2,14 +2,7 @@ var body = document.body;
 var srch_bar = document.getElementById('srch_bar');
 
 const btns_html = document.getElementsByName('btn');
-var catdirs = [
-    '/nations/group_Canadians.json',
-    '/powers/group_Electrokinesis.json',
-    '/teams/group_Guardians.json',
-    '/feats/group_WorthyOfMjolnir.json',
-    '/teams/group_X-men.json',
-    '/teams/group_Avengers.json'
-];
+
 var cats = [6];
 var btn_active_html;
 var btn_active_x, btn_active_y;
@@ -39,23 +32,6 @@ function addToList(m) {
     li.style.display = "none";
 }
 
-
-// Get category image elements
-const cat_divs = document.getElementsByName('cat');
-// Get json categories & make cat btns
-for (let i=0; i<catdirs.length; i++) {
-    fetch("./groups"+catdirs[i]).then( function(u){ return u.json(); } ).
-        then( function(json){ data_function(json, i); } )
-}
-
-function data_function(json, i) {
-    cats[i] = json;
-    cat_divs[i].innerHTML = '<div class="tooltip"><img src="'+cats[i].image+'" class="grid-content cat-img"><span class="tooltiptext">'+cats[i].name+'</span></div>';
-}
-
-function cat_btn(cat_name) {
-    alert("CAT_BTN: "+cat_name);
-}
 
 
 // Handle search bar enable/disable
@@ -136,7 +112,7 @@ function srch_btn(charname) {
     grid_index = btn_active_x+3*btn_active_y;
     // alert("Is "+charname+" in "+cats[btn_active_x].name+"?\n"+is_in_x+"\n"+"Is "+charname+" in "+cats[3+btn_active_y].name+"?\n"+is_in_y);
     if (is_in_x && is_in_y) {
-        btn_active_html.innerHTML = '<img src="'+char.img+'" class="grid-content" style="width: 90%; height: 100%; object-fit: cover;"><div class="grid-percent">100%</div><div class="grid-label">'+char.name.substring(0, char.name.length-12)+'</div>';
+        btn_active_html.innerHTML = '<img src="'+char.img+'" class="grid-content char-cell"><div class="grid-percent">100%</div><div class="grid-label">'+char.name.substring(0, char.name.length-12)+'</div>';
         btn_active_html.setAttribute("style", "background-color: #59d185;")
         btn_active_html.setAttribute("onclick", "window.open('https://marvel.fandom.com"+char.href+"', '_blank')");
         search_off();

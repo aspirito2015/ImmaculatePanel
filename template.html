@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="mystyle.css">
+    <link rel="shortcut icon" href="#">
+    <script src="components/header.js" type="text/javascript" defer></script>
+    <script src="components/footer.js" type="text/javascript" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+  </head>
+  <body>
+    <div id="page-container">
+      <div id="content-wrap">
+        <header-component></header-component>
+        This is a template page!
+        <canvas id="playerScores" style="width: 100%; max-width: 700px; height: 20rem;"></canvas>      </div>
+      <footer-component></footer-component>
+    </div>
+    <script>
+      alreadyExists = false;
+
+      function initializeChartJS() {
+        if (alreadyExists) {
+          return;
+        }
+
+        const xValues = Array.from({ length: 10 }, (_, i) => i);
+        const yValues = [5849, 1119, 1307, 1660, 3162, 7158, 14818, 23816, 29905, 41101];
+
+        chart = new Chart("playerScores", {
+          type: "bar",
+          data: {
+            labels: xValues,
+            datasets: [
+              {
+                backgroundColor: "rgb(89 209 133)",
+                data: yValues,
+                borderRadius: Number.MAX_VALUE,
+                borderSkipped: false,
+                barPercentage: 0.15,
+                datalabels: {
+                  anchor: "end",
+                  align: "end",
+                  offset: 4,
+                },
+              },
+            ],
+          },
+          options: {
+            animation: { duration: 0 },
+            plugins: {
+              legend: false,
+              tooltip: { enabled: false },
+            },
+            scales: {
+              y: { display: false },
+            },
+            hover: { mode: null },
+          },
+          plugins: [ChartDataLabels],
+        });
+
+        alreadyExists = true;
+      }
+
+      initializeChartJS();
+    </script>
+  </body>
+</html>

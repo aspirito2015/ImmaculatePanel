@@ -211,7 +211,7 @@ function decrementGuesses() {
 }
 
 function updateGuesses(i) {
-    guessdiv = document.getElementById("guesses");
+    var guessdiv = document.getElementById("guesses");
     guesses = i;
     animate_guesses(guessdiv, 0, guesses, 300);
     if (guesses <= 0) lose();

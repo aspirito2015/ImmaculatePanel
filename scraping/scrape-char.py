@@ -60,7 +60,6 @@ def do_char(href):
 
 
 def main():
-    cat_pool = json.load(open('./cats-scrape-20231210.json'))
     startTime = datetime.now()
     print(f'{startTime}\tStarting do_char()')
     filter = {'class': 'category-page__member-link'}

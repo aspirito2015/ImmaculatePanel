@@ -3,6 +3,9 @@ from firebase_admin import credentials, firestore
 
 writes_tally = 0
 writes_limit = 4000
+CATS_PATH = './scrape-results/cats-scrape-20231210.json'
+CHAR_PATH = './scrape-results/char-scrape-20231215-101836.json'
+DONE_PATH = './scraping/done-list.csv'
 
 def get_db():
     cert_path = r".\.cert\firebase-cert.json"
@@ -66,19 +69,8 @@ def append_csv(file_path, data):
         writer.writerow(data)
 
 
-
-def main():
-    db = get_db()
-    cats_coll_ref = db.collection('categories')
-    char_coll_ref = db.collection('characters')
-    
-    cats_path = './scrape-results/cats-scrape-20231210.json'
-    char_path = './scrape-results/char-scrape-20231215-101836.json'
-    done_path = './scraping/done-list.csv'
-    cats_json = read_json(cats_path)
-    char_json = read_json(char_path)
-    done_dict = read_csv_to_dict(done_path)
-    for itm_name, itm_data in cats_json.items():
+def process_categories(collection_ref, categories_json, done_dict):
+    for itm_name, itm_data in categories_json.items():
         # stop if at limit
         if writes_tally >= writes_limit:
             break
@@ -89,12 +81,14 @@ def main():
         # make document
         doc_id = ''
         itm_data.pop('collection')
-        doc_id = make_doc(cats_coll_ref, itm_data)
+        doc_id = make_doc(collection_ref, itm_data)
         # append to done csv
         done_data = [itm_name, doc_id]
-        append_csv(done_path, done_data)
-    
-    for itm_name, itm_data in char_json.items():
+        append_csv(DONE_PATH, done_data, 'cat')
+
+
+def process_characters(collection_ref, characters_json, done_dict, db):
+    for itm_name, itm_data in characters_json.items():
         # stop if at limit
         if writes_tally >= writes_limit:
             break
@@ -120,10 +114,41 @@ def main():
         # make document
         doc_id = ''
         itm_data.pop('collection')   
-        doc_id = make_doc(char_coll_ref, itm_data)
+        doc_id = make_doc(collection_ref, itm_data)
         # append to done csv
-        done_data = [itm_name, doc_id]
-        append_csv(done_path, done_data)
+        done_data = [itm_name, doc_id, 'char', itm_data['alias']]
+        append_csv(DONE_PATH, done_data)
+
+
+def update_done_dict(done_dict, cats_json, char_json):
+    rows = []
+    for name, id in done_dict.items():
+        data = [name, id]
+        print(data)
+        if name in cats_json:
+            data += ['cat']
+        elif name in char_json:
+            alias = char_json[name].get('alias')
+            data += ['char', alias]
+        print(data)
+        rows.append(data)
+    with open(DONE_PATH, 'w', newline='', encoding='utf-8') as file:
+        writer = csv.writer(file)
+        writer.writerows(rows)
+
+
+def main():
+    db = get_db()
+    cats_coll_ref = db.collection('categories')
+    char_coll_ref = db.collection('characters')
+    
+    cats_json = read_json(CATS_PATH)
+    char_json = read_json(CHAR_PATH)
+    done_dict = read_csv_to_dict(DONE_PATH)
+    process_categories(cats_coll_ref, cats_json, done_dict)
+    process_characters(char_coll_ref, char_json, done_dict, db)
+    #update_done_dict(done_dict, cats_json, char_json)
+    
     #save_done_list(done_csv, done_path)
     print('beep boop script is done')
 

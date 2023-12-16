@@ -66,7 +66,6 @@ def save_list(jsonlist, filename):
     directory = './scrape-results/'
     if not os.path.exists(directory):
         os.makedirs(directory)
-    
     with open(f'{directory}{filename}.json', 'w', encoding='utf-8') as f:
         json.dump(jsonlist, f, indent=4)
 

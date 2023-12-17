@@ -152,13 +152,15 @@ function make_cat_btn(data, i) {
 function fill_grids() {
     var grid = document.getElementById("answer-grid");
     var cells = grid.getElementsByClassName("ans-grid-content");
-    for (let i=0; i<cells.length; i++) {
+    for (let i = 0; i < cells.length; i++) {
         var element = cells[i].getElementsByTagName('a')[0];
-        element.setAttribute(
-            'href', 
-            "answers.html?team1="+cat_ids[i%3]+"&team2="+cat_ids[Math.floor(i/3)+3]
-            );
-        cells[i].getElementsByClassName("ans-num")[0].innerHTML = Math.floor(Math.random() * 100)+1;
+        
+        // Check if element is defined before performing operations
+        if (element) {
+            var s = `answers.html?team1=${cat_ids[i%3]}&team2=${cat_ids[Math.floor(i/3)+3]}`
+            element.setAttribute('href', s);
+            cells[i].getElementsByClassName("ans-num")[0].innerHTML = Math.floor(Math.random() * 100) + 1;
+        }
     }
 
     grid = document.getElementById("percentage-grid");

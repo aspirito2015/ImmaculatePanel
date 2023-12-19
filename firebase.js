@@ -1,9 +1,11 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js';
-import { getFirestore, collection, getDocs } from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js';
-// Follow this pattern to import other Firebase services
-// import { } from 'firebase/<service>';
+import {
+    getFirestore,
+    doc,
+    collection,
+    getDoc
+} from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js';
 
-// TODO: Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
     apiKey: "AIzaSyBNGvghLLvatMD7tuANyX6tyAtsEKPik5w",
     authDomain: "immaculate-panel.firebaseapp.com",
@@ -15,13 +17,13 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const answersRef = collection(db, 'answers');
+const charactersRef = collection(db, 'characters');
+const categoriesRef = collection(db, 'categories');
 
-// Get a list of cities from your database
-async function getCharacters(db) {
-    const charactersCol = collection(db, 'characters');
-    const charSnapshot = await getDocs(charactersCol);
-    const charList = charSnapshot.docs.map(doc => doc.data());
-    return charList;
+
+export async function get_data_by_id(doc_id, coll_name) {
+    const docRef = doc(db, coll_name, doc_id);
+    const docSnap = await getDoc(docRef);
+    return docSnap.data();
 }
-
-alert(getCharacters(db));

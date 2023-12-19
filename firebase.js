@@ -27,3 +27,7 @@ export async function get_data_by_id(doc_id, coll_name) {
     const docSnap = await getDoc(docRef);
     return docSnap.data();
 }
+
+export function get_ref(doc_id, coll_name) {
+    return doc(db, coll_name, doc_id);
+}

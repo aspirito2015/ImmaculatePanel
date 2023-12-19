@@ -24,10 +24,18 @@ var bank = [
     'nfw8Dj6gXwLJCYY7qcSH', // Canadians
     'sTat9kHvNBC0VZ7RSI8E', // Claws
     'Rh2X9fgULuC86Gm9FHLI', // GotG
-    'CGXOtVRFb8gdswbB0hPs'  // Mjolnir
+    'CGXOtVRFb8gdswbB0hPs', // Mjolnir
+    'RwxBlt4Uo6gtgBdJsqWe' // Flight
 ];
 
-export var cat_ids = [];
+export var cat_ids = [
+    'nfw8Dj6gXwLJCYY7qcSH',
+    'RwxBlt4Uo6gtgBdJsqWe',
+    'Rh2X9fgULuC86Gm9FHLI',
+    'CGXOtVRFb8gdswbB0hPs',
+    'M4Laqo7eT0kqhmkyKWXK',
+    'cGohF3PEZQ37Kzo2Rlug'
+];
 var cat_datas = [];
 
 // Get category image elements
@@ -57,7 +65,7 @@ main();
 
 async function main() {
     // get six random ids from bank
-    cat_ids = shuffle(bank).slice(0, 6);
+    //cat_ids = shuffle(bank).slice(0, 6);
     // loop through ids
     for (let i=0; i<cat_ids.length; i++) {
         cat_datas[i] = await get_data_by_id(cat_ids[i], 'categories');
@@ -140,13 +148,13 @@ function make_grid_btns() {
     let grid = document.getElementById("main-grid");
     let cells = grid.querySelectorAll('[name="btn"]');
     for (let i=0; i<cells.length; i++) {
+        let x = i % 3;
+        let y = Math.floor(i / 3);
         cells[i].addEventListener("click", function () {
-            let x = i % 3;
-            let y = Math.floor(i / 3);
             grid_btn(x, y);
-            console.log('made grid btn '+x+', '+y);
         });
     }
+    console.log('made grid btns');
 }
 
 function setup_searchFilter() {

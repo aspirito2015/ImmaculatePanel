@@ -1,3 +1,5 @@
+import {get_data_by_id} from './firebase.js';
+import {cat_ids} from './makeIndex.js';
 var body = document.body;
 var srch_bar = document.getElementById('srch_bar');
 
@@ -14,49 +16,43 @@ var cats = [6];
 var btn_active_html;
 var btn_active_x, btn_active_y;
 var all_chars = {};
+var char_search_entries = {};
 var guesses = 9;
 var bad_guesses = [[],[],[],[],[],[],[],[],[]];
 var used_chars = [];
 var sum_bools = Array(9).fill(false);
+var guessdiv = document.getElementById("guesses");
+var charObjects;
 
+//console.log(cat_ids);
 // Get json list of characters
-fetch("./char_ALL.json").then( function(u){ return u.json(); } ).
-    then( function(json){ import_all_chars(json); } )
+fetch("./scraping/done-list-v2.json").then( function(u){ return u.json(); } ).
+    then( function(json){
+        import_all_chars(json); 
+    })
 
-function import_all_chars(json) {
-    json.forEach(function(m) {
-        addToList(m);
-        all_chars[m.name] = m;
-    });
+function import_all_chars(jsonData) {
+    // Get objects with "type": "char"
+    charObjects = Object.keys(jsonData)
+    .filter(key => jsonData[key].type === "char")
+    .map(key => ({ id: key, ...jsonData[key] }));
+    for (const char of charObjects) {
+        addToList(char.id, char);
+    }
+    //console.log(char_search_entries);
 }
 
-function addToList(m) {
-    var charlist = document.getElementById('charlist');
-    var li = document.createElement("li");
-    li.setAttribute('name', m.name);
-    li.innerHTML += "<div>"+m.alias+"<div class='sub'>"+m.name+"</div></div><button onclick=\"srch_btn(\'"+m.name+"\')\">Select</button><div class='sub used' style='display: none;'>Already Used</div>";
-    charlist.appendChild(li);
-    li.style.display = "none";
+function addToList(id, jsonData) {
+    // If no alias, set to name
+    let name, alias;
+    name = jsonData.name;
+    alias = jsonData.alias;
+    if (alias === undefined) {
+        alias = name;
+    }
+    // fill char_search_entries w/ html
+    char_search_entries[id] = `<div>${alias}<div class='sub'>${name}</div></div><button>Select</button><div class='sub used' style='display: none;'>Already Used</div>`;
 }
-
-
-// Get category image elements
-const cat_divs = document.getElementsByName('cat');
-// Get json categories & make cat btns
-for (let i=0; i<catdirs.length; i++) {
-    fetch("./groups"+catdirs[i]).then( function(u){ return u.json(); } ).
-        then( function(json){ data_function(json, i); } )
-}
-
-function data_function(json, i) {
-    cats[i] = json;
-    cat_divs[i].innerHTML = '<div class="tooltip"><img src="'+cats[i].image+'" class="grid-content cat-img"><span class="tooltiptext">'+cats[i].name+'</span></div>';
-}
-
-function cat_btn(cat_name) {
-    alert("CAT_BTN: "+cat_name);
-}
-
 
 // Handle search bar enable/disable
 srch_bar.addEventListener("click", function(e) { e.stopPropagation(); } );
@@ -69,13 +65,19 @@ document.getElementById('overlay').addEventListener("click", function() {
 
 function btnPrevGrids() { search_on(); }
 
+function get_bad_btns() {
+    var bad_btns = bad_guesses[btn_active_x+3*btn_active_y];
+    if (bad_btns === undefined) return null;
+    return bad_btns;
+}
+
 function search_on() {
     document.getElementById("overlay").style.display = "block";
     document.getElementById("srch_bar").style.display = "";    
     document.getElementById("search").focus();
     body.classList.add('noscroll');
     // set all bad btns
-    bad_btns = bad_guesses[btn_active_x+3*btn_active_y];
+    var bad_btns = get_bad_btns();
     for (var i=0; i < bad_btns.length; i++) {
         setBtnBad(bad_btns[i]);
     }
@@ -86,8 +88,7 @@ function search_on() {
 
 function search_off() {
     // set all bad btns to good
-    bad_btns = bad_guesses[btn_active_x+3*btn_active_y];
-    if (bad_btns === undefined) return;
+    var bad_btns = get_bad_btns();
     for (var i=0; i < bad_btns.length; i++) {
         setBtnGood(bad_btns[i]);
     }
@@ -118,7 +119,7 @@ function summary_off() {
 }
 
 
-function grid_btn(x, y) {
+export function grid_btn(x, y) {
     if (guesses <= 0) return;
     btn_active_x = x;
     btn_active_y = y;
@@ -128,7 +129,25 @@ function grid_btn(x, y) {
     // alert('Column: '+x+' - '+cats[x].name+'\nRow: '+y+' - '+cats[y+3].name);
 }
 
-function srch_btn(charname) {
+async function is_choice_good(char_id, cat_id_x, cat_id_y) {
+    var char_data = await get_data_by_id(char_id, 'characters');
+    console.log(char_data);
+    var x_bool = char_data['cat_arr'].includes(cat_id_x);
+    var y_bool = char_data['cat_arr'].includes(cat_id_y);
+    return x_bool && y_bool;
+}
+
+// TODO: refactor srch_btn (and probably this whole script) to use id instead of name
+// TODO: have list add and remove tags as necessary instead of just hiding and showing them
+async function srch_btn(char_id) {
+    console.log(char_id);
+    var cat_id_x = cat_ids[btn_active_x];
+    var cat_id_y = cat_ids[btn_active_y+3];
+    var b = await is_choice_good(char_id, cat_id_x, cat_id_y);
+    console.log(b);
+
+
+/*
     char = all_chars[charname];
     // is char in column list and row list?
     is_in_x = cats[btn_active_x].members.some(item => item.name == charname);
@@ -153,6 +172,7 @@ function srch_btn(charname) {
         setBtnBad(charname);
     }
     decrementGuesses();
+    */
 }
 
 function setBtnBad (charname) {
@@ -176,30 +196,63 @@ function setBtnUsed (charname) {
     li.getElementsByClassName('used')[0].style.display = "";
 }
 
+function clearList() {
+    var ul = document.getElementById("charlist");
+    ul.innerHTML = "";
+}
 
 // Filter list while searching
-function filterFunction() {
+export function filterFunction() {
+    // TODO: clear old search list
+    clearList();
     var input, ul, li;
-    
+    //console.log("filterFunction() triggered");
     input = document.getElementById("search");
-    const pattern = new RegExp('\\b' + input.value, 'i');
+    // Get HTML <ul> tag and make visible
     ul = document.getElementById("charlist");
     ul.style.display = "";
-    li = ul.getElementsByTagName("li");
-    for (var i = 0; i < li.length; i++) {
-        txtValue = li[i].textContent || li[i].innerText;
-        if (pattern.test(txtValue)) {
-            li[i].style.display = "";
-        } else {
-            li[i].style.display = "none";
+    // Get list of matching chars
+    var filter_results = filterObjectsByNameAlias(charObjects, input.value);
+    //console.log(filter_results);
+    // Create HTML <li> tags for each of the matching chars
+    for (var i = 0; i < filter_results.length; i++) {
+        let li = document.createElement("li");
+        li.setAttribute('name', filter_results[i].name);
+        // Add the content to the li element
+        li.innerHTML += char_search_entries[filter_results[i].id];
+        // Append the li element to the ul
+        ul.appendChild(li);
+        // Add click event listener to the button inside the li
+        const button = li.querySelector('button');
+        if (button) {
+            (function (index) {
+                button.addEventListener('click', function() {
+                    // Handle the button click using filter_results[index].id
+                    srch_btn(filter_results[index].id);
+                });
+            })(i);
         }
     }
 }
 
+// Function to filter objects based on the regex pattern
+// returns array of objects that match name OR alias
+function filterObjectsByNameAlias(data, nameAlias) {
+    // '\\b' = word boundary, 'i' = case-insensitive
+    const pattern = new RegExp('\\b' + nameAlias, 'i');
+    return Object.keys(data)
+        .filter(key => {
+            const object = data[key];
+            // Test 'name' or 'alias' against the regex pattern
+            return pattern.test(object.name) || (object.alias && pattern.test(object.alias));
+        })
+        .map(key => ({ id: key, ...data[key] }));
+}
+
 function filterClear() {
-    input = document.getElementById("search");
+    let input = document.getElementById("search");
     input.value = "";
-    ul = document.getElementById("charlist");
+    let ul = document.getElementById("charlist");
     ul.style.display = "none";
 }
 
@@ -235,7 +288,6 @@ function decrementGuesses() {
 }
 
 function updateGuesses(i) {
-    guessdiv = document.getElementById("guesses");
     guesses = i;
     animate_guesses(guessdiv, 0, guesses, 300);
     if (guesses <= 0) lose();

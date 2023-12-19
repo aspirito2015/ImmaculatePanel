@@ -1,30 +1,5 @@
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js';
-import {
-    getFirestore,
-    addDoc,
-    doc,
-    collection,
-    query,
-    onSnapshot,
-    Timestamp,
-    where,
-    getDoc
-} from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js';
-
-const firebaseConfig = {
-    apiKey: "AIzaSyBNGvghLLvatMD7tuANyX6tyAtsEKPik5w",
-    authDomain: "immaculate-panel.firebaseapp.com",
-    projectId: "immaculate-panel",
-    storageBucket: "immaculate-panel.appspot.com",
-    messagingSenderId: "806020093352",
-    appId: "1:806020093352:web:cbf4f970ab2b6ed4c1b99d"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const answersRef = collection(db, 'answers');
-const charactersRef = collection(db, 'characters');
-const categoriesRef = collection(db, 'categories');
+import {get_data_by_id} from './firebase.js';
+import { filterFunction, grid_btn } from './myScript.js';
 
 var bank = [
     'HxEWtCgTUviXeJb4a8Lh', // Alpha Flight
@@ -52,7 +27,8 @@ var bank = [
     'CGXOtVRFb8gdswbB0hPs'  // Mjolnir
 ];
 
-var cat_ids = [];
+export var cat_ids = [];
+var cat_datas = [];
 
 // Get category image elements
 const cat_divs = document.getElementsByName('cat');
@@ -77,40 +53,19 @@ var test_char = {
     "collection": "characters"
 }
 
-async function getDocumentById(collectionName, documentId) {
-    try {
-        const documentRef = getFirestore().collection(collectionName).doc(documentId);
-        const documentSnapshot = await documentRef.get();
-    
-        if (documentSnapshot.exists) {
-            // Document found, return its data
-            return documentSnapshot.data();
-        } else {
-            // Document does not exist
-            console.log('Document does not exist.');
-            return null;
-        }
-    } catch (error) {
-        console.error('Error retrieving document:', error);
-        return null;
-    }
-}
-
 main();
 
 async function main() {
-    var cat_doc;
-    // randomize catdirs
+    // get six random ids from bank
     cat_ids = shuffle(bank).slice(0, 6);
-    // loop through cat_ids
+    // loop through ids
     for (let i=0; i<cat_ids.length; i++) {
-        const docRef = doc(db, 'categories', cat_ids[i]);
-        const docSnap = await getDoc(docRef);
-        const docData = docSnap.data();
-        //alert(docData['name']);
-        make_cat_btn(docData, i);
+        cat_datas[i] = await get_data_by_id(cat_ids[i], 'categories');
+        make_cat_btn(cat_datas[i], i);
     }
-    fill_grids();
+    fill_ans_grids();
+    make_grid_btns();
+    setup_searchFilter();
 }
 
 
@@ -139,9 +94,10 @@ function randomize_grid() {
 
 
 function make_cat_btn(data, i) {
-    var html_chunk = []
-    html_chunk[0] = '<div class="tooltip"><img src="'+data['image']+'" class="grid-content cat-img"><span class="tooltiptext">'+data['help-text']+'</span></div>';
-    html_chunk[1] = '<div class="tooltip ans-grid-content"><img src="'+data['image']+'" class="cat-img"><span class="tooltiptext">'+data['help-text']+'</span></div>';
+    var html_chunk = [
+        '<div class="tooltip"><img src="'+data['image']+'" class="grid-content cat-img"><span class="tooltiptext">'+data['help-text']+'</span></div>',
+        '<div class="tooltip ans-grid-content"><img src="'+data['image']+'" class="cat-img"><span class="tooltiptext">'+data['help-text']+'</span></div>'
+    ];
     cat_divs[i].innerHTML = html_chunk[0];
     cat_divs[i+6].innerHTML = html_chunk[1];
     cat_divs[i+6+6].innerHTML = html_chunk[1];
@@ -149,7 +105,7 @@ function make_cat_btn(data, i) {
 }
 
 
-function fill_grids() {
+function fill_ans_grids() {
     var grid = document.getElementById("answer-grid");
     var cells = grid.getElementsByClassName("ans-grid-content");
     for (let i = 0; i < cells.length; i++) {
@@ -178,4 +134,25 @@ function fill_grids() {
         var randomNum = Math.floor(Math.random() * 101);
         cells[i].innerHTML = randomNum + "%";
     }
+}
+
+function make_grid_btns() {
+    let grid = document.getElementById("main-grid");
+    let cells = grid.querySelectorAll('[name="btn"]');
+    for (let i=0; i<cells.length; i++) {
+        cells[i].addEventListener("click", function () {
+            let x = i % 3;
+            let y = Math.floor(i / 3);
+            grid_btn(x, y);
+            console.log('made grid btn '+x+', '+y);
+        });
+    }
+}
+
+function setup_searchFilter() {
+    console.log('setting up search filter');
+    let search = document.getElementById("search");
+    search.addEventListener("keyup", function () {
+        filterFunction();
+    });
 }

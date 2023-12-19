@@ -1,4 +1,5 @@
 import {get_data_by_id} from './firebase.js';
+import {get_ref} from './firebase.js';
 import {cat_ids} from './makeIndex.js';
 var body = document.body;
 var srch_bar = document.getElementById('srch_bar');
@@ -132,8 +133,10 @@ export function grid_btn(x, y) {
 async function is_choice_good(char_id, cat_id_x, cat_id_y) {
     var char_data = await get_data_by_id(char_id, 'characters');
     console.log(char_data);
-    var x_bool = char_data['cat_arr'].includes(cat_id_x);
-    var y_bool = char_data['cat_arr'].includes(cat_id_y);
+    var ref_x = get_ref(cat_id_x, 'characters');
+    var ref_y = get_ref(cat_id_y, 'characters');
+    var x_bool = char_data['cat_arr'].includes(ref_x);
+    var y_bool = char_data['cat_arr'].includes(ref_y);
     return x_bool && y_bool;
 }
 

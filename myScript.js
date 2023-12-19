@@ -1,5 +1,4 @@
 import {get_data_by_id} from './firebase.js';
-import {get_ref} from './firebase.js';
 import {cat_ids} from './makeIndex.js';
 var body = document.body;
 var srch_bar = document.getElementById('srch_bar');
@@ -130,14 +129,14 @@ export function grid_btn(x, y) {
     // alert('Column: '+x+' - '+cats[x].name+'\nRow: '+y+' - '+cats[y+3].name);
 }
 
-async function is_choice_good(char_id, cat_id_x, cat_id_y) {
-    var char_data = await get_data_by_id(char_id, 'characters');
-    console.log(char_data);
-    var ref_x = get_ref(cat_id_x, 'characters');
-    var ref_y = get_ref(cat_id_y, 'characters');
-    var x_bool = char_data['cat_arr'].includes(ref_x);
-    var y_bool = char_data['cat_arr'].includes(ref_y);
-    return x_bool && y_bool;
+async function is_choice_good(char_data, cat_id_x, cat_id_y) {
+    return true;
+    //var char_data = await get_data_by_id(char_id, 'characters');
+    var catArrIds = char_data.cat_arr.map(entry => entry.id);
+    console.log(catArrIds);
+    var x_bool = catArrIds.includes(cat_id_x);
+    var y_bool = catArrIds.includes(cat_id_y);
+    //return x_bool && y_bool;
 }
 
 // TODO: refactor srch_btn (and probably this whole script) to use id instead of name
@@ -146,10 +145,21 @@ async function srch_btn(char_id) {
     console.log(char_id);
     var cat_id_x = cat_ids[btn_active_x];
     var cat_id_y = cat_ids[btn_active_y+3];
-    var b = await is_choice_good(char_id, cat_id_x, cat_id_y);
+    var char_data = await get_data_by_id(char_id, 'characters');
+    var b = await is_choice_good(char_data, cat_id_x, cat_id_y);
     console.log(b);
-
-
+    var grid_index = btn_active_x+3*btn_active_y;
+    if (b) {
+        btn_active_html.setAttribute("style", "background-color: #59d185;")
+        search_off();
+        var sum_grid = document.getElementsByClassName("sum-grid-cell");
+        btn_active_html.innerHTML = '<img src="'+char_data.image+'" class="grid-content" style="width: 90%; height: 100%; object-fit: cover;"><div class="grid-percent">100%</div><div class="grid-label">'+char_data.name+'</div>';
+        sum_grid[grid_index].setAttribute("style", "background-color: #59d185;");
+        sum_bools[grid_index] = true;
+    } else {
+        
+    }
+    decrementGuesses();
 /*
     char = all_chars[charname];
     // is char in column list and row list?

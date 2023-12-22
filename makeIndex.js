@@ -1,40 +1,38 @@
-import {get_data_by_id} from './firebase.js';
+import { get_data_by_id, check_cat_combo } from './firebase.js';
 import { filterFunction, grid_btn } from './myScript.js';
 
 var bank = [
-    'HxEWtCgTUviXeJb4a8Lh', // Alpha Flight
-    'cGohF3PEZQ37Kzo2Rlug', // Avengers
-    'IrJ1aCXbsxMZRMZYFhcj', // Brotherhood of Evil Mutants
-    'odgwYihG60Md7ESzDVr2', // Excalibur
-    's0rR6gF8nYHubhs2Cqay', // Fantastic Four
-    'gonCJ4Rj8J9URIYZ4ywd', // Great Lakes Avengers
-    'q4ZnZ4cim1Hwx3prKFoS', // Heralds of Galactus
-    'UPRtOdf18rKMRDhT2vaK', // Defenders
-    'qbhbH9IxPZ3lmjZYjWFp', // Howling Commandos
-    '7b8OjBbBuqIFolLiVnCM', // Illuminati
-    'l8aYNQt912q8X4ZVSmrD', // Masters of Evil
-    'rzgsgVj7yJPlkY0F6urC', // New Avengers
-    'ztmo0XqvSEmCJEJVKJhS', // New Mutants
-    'w07hXOOoR1xLTdFQkGN1', // Pet Avengers
-    'c5Vuok18dzH84GpfY2Ou', // Runaways
-    'fda34cCgApXg9kqRAkEi', // X-Factor
-    'M4Laqo7eT0kqhmkyKWXK', // X-Men
-    'JxnhFuO5JaWFjpkk1Bkv', // Young Avengers
-    'kM6xTp12Maw9pGuAN5AU', // Young X-Men
-    'nfw8Dj6gXwLJCYY7qcSH', // Canadians
-    'sTat9kHvNBC0VZ7RSI8E', // Claws
-    'Rh2X9fgULuC86Gm9FHLI', // GotG
-    'CGXOtVRFb8gdswbB0hPs', // Mjolnir
-    'RwxBlt4Uo6gtgBdJsqWe' // Flight
+    'HxEWtCgTUviXeJb4a8Lh', //0 Alpha Flight
+    'cGohF3PEZQ37Kzo2Rlug', //1 Avengers
+    'IrJ1aCXbsxMZRMZYFhcj', //2 Brotherhood of Evil Mutants
+    'odgwYihG60Md7ESzDVr2', //3 Excalibur
+    's0rR6gF8nYHubhs2Cqay', //4 Fantastic Four
+    'gonCJ4Rj8J9URIYZ4ywd', //5 Great Lakes Avengers
+    'q4ZnZ4cim1Hwx3prKFoS', //6 Heralds of Galactus
+    'UPRtOdf18rKMRDhT2vaK', //7 Defenders
+    'qbhbH9IxPZ3lmjZYjWFp', //8 Howling Commandos
+    '7b8OjBbBuqIFolLiVnCM', //9 Illuminati
+    'l8aYNQt912q8X4ZVSmrD', //10 Masters of Evil
+    'rzgsgVj7yJPlkY0F6urC', //11 New Avengers
+    'ztmo0XqvSEmCJEJVKJhS', //12 New Mutants
+    'w07hXOOoR1xLTdFQkGN1', //13 Pet Avengers
+    'c5Vuok18dzH84GpfY2Ou', //14 Runaways
+    'fda34cCgApXg9kqRAkEi', //15 X-Factor
+    'M4Laqo7eT0kqhmkyKWXK', //16 X-Men
+    'JxnhFuO5JaWFjpkk1Bkv', //17 Young Avengers
+    'kM6xTp12Maw9pGuAN5AU', //18 Young X-Men
+    'nfw8Dj6gXwLJCYY7qcSH', //19 Canadians
+    'sTat9kHvNBC0VZ7RSI8E', //20 Claws
+    'Rh2X9fgULuC86Gm9FHLI', //21 GotG
+    'CGXOtVRFb8gdswbB0hPs', //22 Mjolnir
+    'RwxBlt4Uo6gtgBdJsqWe' //23 Flight
 ];
 
 export var cat_ids = [
-    'nfw8Dj6gXwLJCYY7qcSH',
-    'RwxBlt4Uo6gtgBdJsqWe',
-    'Rh2X9fgULuC86Gm9FHLI',
-    'CGXOtVRFb8gdswbB0hPs',
-    'M4Laqo7eT0kqhmkyKWXK',
-    'cGohF3PEZQ37Kzo2Rlug'
+            bank[19], bank[23], bank[21],
+    bank[22],
+    bank[16],
+    bank[1]
 ];
 var cat_datas = [];
 
@@ -66,7 +64,9 @@ main();
 async function main() {
     // get six random ids from bank
     //cat_ids = shuffle(bank).slice(0, 6);
-    // loop through ids
+    // check if categories have enough valid answers
+    console.log(`Are categories good? ${areCategoriesGood()}`);
+    // loop through ids and category headers
     for (let i=0; i<cat_ids.length; i++) {
         cat_datas[i] = await get_data_by_id(cat_ids[i], 'categories');
         make_cat_btn(cat_datas[i], i);
@@ -75,7 +75,6 @@ async function main() {
     make_grid_btns();
     setup_searchFilter();
 }
-
 
 function shuffle(array) {
     var m = array.length, t, i;
@@ -91,22 +90,19 @@ function shuffle(array) {
     return array;
 }
 
-function randomize_grid() {
-    shuffle(cat_ids);
-    // Get json categories & make cat btns
-    for (let i=0; i<cat_ids.length; i++) {
-        fetch("./groups"+cat_ids[i]).then( function(u){ return u.json(); } ).
-            then( function(json){ make_cat_btn(json, i); } )
-    }
+function areCategoriesGood() {
+    check_cat_combo(cat_ids[0], cat_ids[3]);
+    return false;
 }
-
 
 function make_cat_btn(data, i) {
     var html_chunk = [
         '<div class="tooltip"><img src="'+data['image']+'" class="grid-content cat-img"><span class="tooltiptext">'+data['help-text']+'</span></div>',
         '<div class="tooltip ans-grid-content"><img src="'+data['image']+'" class="cat-img"><span class="tooltiptext">'+data['help-text']+'</span></div>'
     ];
+    // make cat headers for main grid
     cat_divs[i].innerHTML = html_chunk[0];
+    // make cat headers for summary grids
     cat_divs[i+6].innerHTML = html_chunk[1];
     cat_divs[i+6+6].innerHTML = html_chunk[1];
     cat_divs[i+6+6+6].innerHTML = html_chunk[1];
@@ -126,7 +122,7 @@ function fill_ans_grids() {
             cells[i].getElementsByClassName("ans-num")[0].innerHTML = Math.floor(Math.random() * 100) + 1;
         }
     }
-
+    
     grid = document.getElementById("percentage-grid");
     cells = grid.getElementsByClassName("ans-grid-cell");
     for (let i=0; i<cells.length; i++) {
@@ -135,7 +131,7 @@ function fill_ans_grids() {
             '<div class="grid-percent">100%</div><div class="grid-label">'+
             test_char['alias']+'</div>';
     }
-
+    
     grid = document.getElementById("accuracy-grid");
     cells = grid.getElementsByClassName("ans-num");
     for (let i=0; i<cells.length; i++) {

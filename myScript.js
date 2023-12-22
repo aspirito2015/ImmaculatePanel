@@ -1,37 +1,29 @@
+import {get_data_by_id} from './firebase.js';
+import {cat_ids} from './makeIndex.js';
+//import {charObjects} from './makeIndex.js';
+//import {char_search_entries} from './makeIndex.js';
 var body = document.body;
 var srch_bar = document.getElementById('srch_bar');
 
 const btns_html = document.getElementsByName('btn');
-
-var cats = [6];
 var btn_active_html;
 var btn_active_x, btn_active_y;
-var all_chars = {};
 var guesses = 9;
 var bad_guesses = [[],[],[],[],[],[],[],[],[]];
 var used_chars = [];
 var sum_bools = Array(9).fill(false);
+var guessdiv = document.getElementById("guesses");
+var char_search_entries = {};
+var catObjects, charObjects;
+var catDict = {};
+
 
 // Get json list of characters
-fetch("./char_ALL.json").then( function(u){ return u.json(); } ).
-    then( function(json){ import_all_chars(json); } )
-
-function import_all_chars(json) {
-    json.forEach(function(m) {
-        addToList(m);
-        all_chars[m.name] = m;
-    });
-}
-
-function addToList(m) {
-    var charlist = document.getElementById('charlist');
-    var li = document.createElement("li");
-    li.setAttribute('name', m.name);
-    li.innerHTML += "<div>"+m.alias+"<div class='sub'>"+m.name+"</div></div><button onclick=\"srch_btn(\'"+m.name+"\')\">Select</button><div class='sub used' style='display: none;'>Already Used</div>";
-    charlist.appendChild(li);
-    li.style.display = "none";
-}
-
+fetch("./scraping/done-list-v2.json").then( function(u){ return u.json(); } ).
+    then( function(json){
+        import_all_cats(json);
+        import_all_chars(json); 
+    })
 
 
 // Handle search bar enable/disable
@@ -43,7 +35,82 @@ document.getElementById('overlay').addEventListener("click", function() {
     summary_off();
 });
 
+updateGuesses(guesses);
+
+
+function import_all_cats(jsonData) {
+    catObjects = Object.keys(jsonData)
+    .filter(key => jsonData[key].type === "cat")
+    .map(key => ({ id: key, ...jsonData[key] }));
+    //console.log(catObjects);
+    for (const cat of catObjects) {
+        catDict[cat.id] = cat.name;
+    }
+    console.log(catDict);
+}
+
+function import_all_chars(jsonData) {
+    // Get objects with "type": "char"
+    charObjects = Object.keys(jsonData)
+    .filter(key => jsonData[key].type === "char")
+    .map(key => ({ id: key, ...jsonData[key] }));
+    
+    for (const char of charObjects) {
+        addToCharList(char.id, char);
+    }
+    //console.log(char_search_entries);
+}
+
+function addToCharList(id, jsonData) {
+    // If no alias, set to name
+    let name, alias;
+    name = jsonData.name;
+    alias = jsonData.alias;
+    if (alias === undefined) {
+        alias = name;
+    }
+    // fill char_search_entries w/ html
+    var html_object = document.createElement('li');
+    html_object.setAttribute('name', jsonData.id);
+    html_object.innerHTML = `<div>${alias}<div class='sub'>${name}</div></div><button>Select</button><div class='sub used' style='display: none;'>Already Used</div>`;
+    char_search_entries[id] = html_object;
+
+    const button = html_object.querySelector('button');
+    button.addEventListener('click', function() {
+        // Handle the button click using filter_results[index].id
+        srch_btn(jsonData.id);
+    });
+}
+
+
+// Filter list while searching
+export function filterFunction() {
+    // clear old search list
+    clearList();
+    var input, ul, li;
+    //console.log("filterFunction() triggered");
+    input = document.getElementById("search");
+    // Get HTML <ul> tag and make visible
+    ul = document.getElementById("charlist");
+    ul.style.display = "";
+    // Get list of matching chars
+    var filter_results = filterObjectsByNameAlias(charObjects, input.value);
+    //console.log(filter_results);
+    // Create HTML <li> tags for each of the matching chars
+    for (var i = 0; i < filter_results.length; i++) {
+        var li = char_search_entries[filter_results[i].id];
+        // Append the li element to the ul
+        ul.appendChild(li);
+    }
+}
+
 function btnPrevGrids() { search_on(); }
+
+function get_bad_btns() {
+    var bad_btns = bad_guesses[btn_active_x+3*btn_active_y];
+    if (bad_btns === undefined) return null;
+    return bad_btns;
+}
 
 function search_on() {
     document.getElementById("overlay").style.display = "block";
@@ -51,7 +118,7 @@ function search_on() {
     document.getElementById("search").focus();
     body.classList.add('noscroll');
     // set all bad btns
-    bad_btns = bad_guesses[btn_active_x+3*btn_active_y];
+    var bad_btns = get_bad_btns();
     for (var i=0; i < bad_btns.length; i++) {
         setBtnBad(bad_btns[i]);
     }
@@ -62,8 +129,7 @@ function search_on() {
 
 function search_off() {
     // set all bad btns to good
-    bad_btns = bad_guesses[btn_active_x+3*btn_active_y];
-    if (bad_btns === undefined) return;
+    var bad_btns = get_bad_btns();
     for (var i=0; i < bad_btns.length; i++) {
         setBtnGood(bad_btns[i]);
     }
@@ -94,88 +160,121 @@ function summary_off() {
 }
 
 
-function grid_btn(x, y) {
+export function grid_btn(x, y) {
     if (guesses <= 0) return;
     btn_active_x = x;
     btn_active_y = y;
     btn_active_html = btns_html[x+(3*y)];
     btn_active_html.classList.add('highlighted');
     search_on();
-    // alert('Column: '+x+' - '+cats[x].name+'\nRow: '+y+' - '+cats[y+3].name);
 }
 
-function srch_btn(charname) {
-    char = all_chars[charname];
-    // is char in column list and row list?
-    is_in_x = cats[btn_active_x].members.some(item => item.name == charname);
-    is_in_y = cats[3+btn_active_y].members.some(item => item.name == charname);
-    grid_index = btn_active_x+3*btn_active_y;
-    // alert("Is "+charname+" in "+cats[btn_active_x].name+"?\n"+is_in_x+"\n"+"Is "+charname+" in "+cats[3+btn_active_y].name+"?\n"+is_in_y);
-    if (is_in_x && is_in_y) {
-        btn_active_html.innerHTML = '<img src="'+char.img+'" class="grid-content char-cell"><div class="grid-percent">100%</div><div class="grid-label">'+char.name.substring(0, char.name.length-12)+'</div>';
+async function is_choice_good(char_data, cat_id_x, cat_id_y) {
+    //return true;
+    //var char_data = await get_data_by_id(char_id, 'characters');
+    var catArrIds = char_data.cat_arr.map(entry => entry.id);
+    //console.log(catArrIds);
+    var x_bool = catArrIds.includes(cat_id_x);
+    var y_bool = catArrIds.includes(cat_id_y);
+    return x_bool && y_bool;
+}
+
+// Function to remove all event listeners from an element
+function removeAllEventListeners(element) {
+    var clone = element.cloneNode(true);
+    element.parentNode.replaceChild(clone, element);
+    return clone;
+}
+
+function addLink (btn, href) {
+    btn.addEventListener('click', function() {
+        window.open(`https://marvel.fandom.com${href}`, '_blank').focus();
+    });
+}
+
+async function srch_btn(char_id) {
+    //console.log(char_id);
+    var cat_id_x = cat_ids[btn_active_x];
+    var cat_id_y = cat_ids[btn_active_y+3];
+    var char_data = await get_data_by_id(char_id, 'characters');
+    var b = await is_choice_good(char_data, cat_id_x, cat_id_y);
+    //console.log(b);
+    var grid_index = btn_active_x+3*btn_active_y;
+    if (b) {
         btn_active_html.setAttribute("style", "background-color: #59d185;")
-        btn_active_html.setAttribute("onclick", "window.open('https://marvel.fandom.com"+char.href+"', '_blank')");
         search_off();
-        sum_grid = document.getElementsByClassName("sum-grid-cell");
+        // filled cell with answer
+        var sum_grid = document.getElementsByClassName("sum-grid-cell");
+        btn_active_html.innerHTML = '<img src="'+char_data.image+'" class="grid-content" style="width: 90%; height: 100%; object-fit: cover;"><div class="grid-percent">100%</div><div class="grid-label">'+char_data.name+'</div>';
         sum_grid[grid_index].setAttribute("style", "background-color: #59d185;");
         sum_bools[grid_index] = true;
-        // add to global 'already used' list
-        used_chars.push(charname);
-        setBtnUsed(charname);
+        // replace event listener on button to one that opens link to wiki
+        var new_btn_active = removeAllEventListeners(btn_active_html);
+        new_btn_active.addEventListener('click', function() {
+            console.log(`opening ${char_data.href}`);
+            window.open(`https://marvel.fandom.com${char_data.href}`, '_blank').focus();
+        });
+        // add to 'already used' list
+        used_chars.push(char_id);
+        setBtnUsed(char_id);
     } else {
-        // add to button-specific 'already guessed' list
-        btn_bad_guess_list = bad_guesses[grid_index];
-        btn_bad_guess_list.push(charname);
-        setBtnBad(charname);
+        var btn_bad_guess_list = bad_guesses[grid_index];
+        btn_bad_guess_list.push(char_id);
+        setBtnBad(char_id);
     }
+    console.log('search button has been pressed');
     decrementGuesses();
+
 }
 
-function setBtnBad (charname) {
-    li = document.getElementsByName(charname)[0];
+function setBtnBad (char_id) {
+    var li = document.getElementsByName(char_id)[0];
+    if (!li) { return; }
     li.setAttribute('style', 'color: rgb(248 113 113);');
     li.getElementsByTagName('button')[0].style.display = "none";
     li.getElementsByClassName('used')[0].style.display = "none";
 }
 
-function setBtnGood (charname) {
-    li = document.getElementsByName(charname)[0];
+function setBtnGood (char_id) {
+    var li = document.getElementsByName(char_id)[0];
+    if (!li) { return; }
     li.setAttribute('style', 'color: white;');
     li.getElementsByTagName('button')[0].style.display = "";
     li.getElementsByClassName('used')[0].style.display = "none";
 }
 
-function setBtnUsed (charname) {
-    li = document.getElementsByName(charname)[0];
+function setBtnUsed (char_id) {
+    var li = document.getElementsByName(char_id)[0];
+    if (!li) { return; }
     li.setAttribute('style', 'color: white;');
     li.getElementsByTagName('button')[0].style.display = "none";
     li.getElementsByClassName('used')[0].style.display = "";
 }
 
+function clearList() {
+    var ul = document.getElementById("charlist");
+    ul.innerHTML = "";
+}
 
-// Filter list while searching
-function filterFunction() {
-    var input, ul, li;
-    
-    input = document.getElementById("search");
-    const pattern = new RegExp('\\b' + input.value, 'i');
-    ul = document.getElementById("charlist");
-    ul.style.display = "";
-    li = ul.getElementsByTagName("li");
-    for (var i = 0; i < li.length; i++) {
-        txtValue = li[i].textContent || li[i].innerText;
-        if (pattern.test(txtValue)) {
-            li[i].style.display = "";
-        } else {
-            li[i].style.display = "none";
-        }
-    }
+
+// Function to filter objects based on the regex pattern
+// returns array of objects that match name OR alias
+function filterObjectsByNameAlias(data, nameAlias) {
+    // '\\b' = word boundary, 'i' = case-insensitive
+    const pattern = new RegExp('\\b' + nameAlias, 'i');
+    return Object.keys(data)
+        .filter(key => {
+            const object = data[key];
+            // Test 'name' or 'alias' against the regex pattern
+            return pattern.test(object.name) || (object.alias && pattern.test(object.alias));
+        })
+        .map(key => ({ id: key, ...data[key] }));
 }
 
 function filterClear() {
-    input = document.getElementById("search");
+    let input = document.getElementById("search");
     input.value = "";
-    ul = document.getElementById("charlist");
+    let ul = document.getElementById("charlist");
     ul.style.display = "none";
 }
 
@@ -203,15 +302,12 @@ function copy_sum() {
     alert("Copied to clipboard");
 }
 
-
-updateGuesses(guesses);
-
 function decrementGuesses() {
+    console.log('decrementing Guesses');
     updateGuesses(guesses-1);
 }
 
 function updateGuesses(i) {
-    var guessdiv = document.getElementById("guesses");
     guesses = i;
     animate_guesses(guessdiv, 0, guesses, 300);
     if (guesses <= 0) lose();

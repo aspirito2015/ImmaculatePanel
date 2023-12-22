@@ -5,9 +5,9 @@
     <link rel="shortcut icon" href="#">
     <script src="components/header.js" type="text/javascript" defer></script>
     <script src="components/footer.js" type="text/javascript" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
   </head>
   <body>
     <div id="page-container">
@@ -26,35 +26,35 @@
             <div>
               <div class="c">
                 <div style="display: inline-block;">MARVEL GRID #616</div>
-                  <span>&#8901;</span>
-                  <button onclick="">Previous Grids</button>
+                <span>&#8901;</span>
+                <button onclick="">Previous Grids</button>
               </div>
-              <div class="grid-container">
+              <div class="grid-container" id="main-grid">
                 <div class="grid-item"></div>
                 <div class="grid-item" name="cat"></div>
                 <div class="grid-item" name="cat"></div>
                 <div class="grid-item" name="cat"></div>
                 <div class="grid-item"></div>
                 <div class="grid-item" name="cat"></div>
-                <button class="grid-item top-left" name="btn" onclick="grid_btn(0,0)"></button>
-                <button class="grid-item no-radius" name="btn" onclick="grid_btn(1,0)"></button>
-                <button class="grid-item top-right" name="btn" onclick="grid_btn(2,0)"></button>
+                <button class="grid-item top-left" name="btn"></button>
+                <button class="grid-item no-radius" name="btn"></button>
+                <button class="grid-item top-right" name="btn"></button>
                 <div class="grid-item"></div>
                 <div class="grid-item" name="cat"></div>
-                <button class="grid-item no-radius" name="btn" onclick="grid_btn(0,1)"></button>
-                <button class="grid-item no-radius" name="btn" onclick="grid_btn(1,1)"></button>
-                <button class="grid-item no-radius" name="btn" onclick="grid_btn(2,1)"></button>
+                <button class="grid-item no-radius" name="btn"></button>
+                <button class="grid-item no-radius" name="btn"></button>
+                <button class="grid-item no-radius" name="btn"></button>
                 <div class="grid-item">
                   <div class="grid-content" style="width: 100%; font-size: small; color: lightgrey;">
                     <div id="guesses-left">GUESSES LEFT</div>
                     <div id="guesses" style="font-size: xx-large; font-weight: bold;">7</div>
-                    <button id="giveup" onclick="give_up();initializeChartJS();">Give Up</button>
+                    <button id="giveup" onclick="give_up();">Give Up</button>
                   </div>
                 </div>
                 <div class="grid-item" name="cat"></div>
-                <button class="grid-item bottom-left" name="btn" onclick="grid_btn(0,2)"></button>
-                <button class="grid-item no-radius" name="btn" onclick="grid_btn(1,2)"></button>
-                <button class="grid-item bottom-right" name="btn" onclick="grid_btn(2,2)"></button>
+                <button class="grid-item bottom-left" name="btn"></button>
+                <button class="grid-item no-radius" name="btn"></button>
+                <button class="grid-item bottom-right" name="btn"></button>
                 <div class="grid-item"></div>
               </div>
               <div style="text-align: center;">Tap on a logo or category for help.</div>
@@ -72,7 +72,7 @@
         <div id="srch_bar" class="pup" style="display: none; overflow: hidden;">
           <div style="position: relative;">
             <div width="20px" height="20px" style="position: absolute; top: 50%; left: 1rem; transform: translate(0, -50%);">&#128269;</div>
-            <input list="wow" id="search" name="search" placeholder="Search..." autocomplete="off" onkeyup="filterFunction()">
+            <input list="wow" id="search" name="search" placeholder="Search..." autocomplete="off">
           </div>
           <ul id="charlist" style="display: none;"></ul>
         </div>
@@ -110,20 +110,16 @@
                 </div>
                 <div>TODAY'S MARVEL GRID STATS</div>
                 <div>
-                    <div>
-                        <div>
-                            <div>GAMES</div>
-                            <div>99999</div>
-                        </div>
-                        <div>
-                            <div>
-                                AVERAGE SCORE
-                            </div>
-                            <div>
-                                6.1
-                            </div>
-                        </div>
-                    </div>
+                  <div>
+                      <div>
+                          <div>GAMES</div>
+                          <div>99999</div>
+                      </div>
+                      <div>
+                          <div>AVERAGE SCORE</div>
+                          <div>6.1</div>
+                      </div>
+                  </div>
                   <div style="margin-top: 3rem;">
                     <div>POSSIBLE ANSWERS</div>
                     <div>
@@ -289,9 +285,10 @@
         </div>
       </div>
     </div>
-    <script src="makeIndex.js"></script>
-    <script src="myScript.js"></script>
+    <script type="module" src="./firebase.js"></script>
+    <script type="module" src="./makeIndex.js"></script>
+    <script type="module" src="./myScript.js"></script>
     <div id="copy-tmp"></div>
-    <script src="barChart.js"></script>
+    <!--<script src="barChart.js"></script>-->
   </body>
 </html>

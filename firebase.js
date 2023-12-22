@@ -1,9 +1,14 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js';
-import { getFirestore, collection, getDocs } from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js';
-// Follow this pattern to import other Firebase services
-// import { } from 'firebase/<service>';
+import {
+    getFirestore,
+    doc,
+    collection,
+    getDoc,
+    query,
+    where,
+    getCountFromServer
+} from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js';
 
-// TODO: Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
     apiKey: "AIzaSyBNGvghLLvatMD7tuANyX6tyAtsEKPik5w",
     authDomain: "immaculate-panel.firebaseapp.com",
@@ -15,13 +20,33 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const answersRef = collection(db, 'answers');
+const charactersRef = collection(db, 'characters');
+const categoriesRef = collection(db, 'categories');
 
-// Get a list of cities from your database
-async function getCharacters(db) {
-    const charactersCol = collection(db, 'characters');
-    const charSnapshot = await getDocs(charactersCol);
-    const charList = charSnapshot.docs.map(doc => doc.data());
-    return charList;
+
+export async function get_data_by_id(doc_id, coll_name) {
+    const docRef = doc(db, coll_name, doc_id);
+    const docSnap = await getDoc(docRef);
+    return docSnap.data();
 }
 
-//alert(getCharacters(db));
+export function get_ref(doc_id, coll_name) {
+    return doc(db, coll_name, doc_id);
+}
+
+export async function check_cat_combo(cat_id_1, cat_id_2) {
+    const cat_ref_1 = doc(db, 'categories', cat_id_1);
+    const cat_ref_2 = doc(db, 'categories', cat_id_2);
+    const cat_q_1 = `cat_map.${cat_id_1}`;
+    const cat_q_2 = `cat_map.${cat_id_2}`;
+    const q = query(
+        charactersRef,
+        where(cat_q_1, '==', true),
+        where(cat_q_2, '==', true)
+    );
+    const snapshot = await getCountFromServer(q);
+    // using snapshot.data().count allows us to get the length of this...
+    // query's results without counting toward the read quota
+    console.log(`${cat_id_1} && ${cat_id_2} count: ${snapshot.data().count}`);
+}

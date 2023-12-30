@@ -360,7 +360,7 @@ button.highlighted {
     margin-right: auto;
     border-radius: 0.75rem;
     z-index: 2;
-    overflow: scroll;
+    overflow-y: scroll;
     max-height: 90vh;
 }
 

@@ -7,7 +7,7 @@ class Header extends HTMLElement {
         this.innerHTML = `
         <div class="header">
             <div class="left" href="index.html">
-                <a href="./index" style="text-decoration: none;">
+                <a href="#" style="text-decoration: none;">
                     <img src="icon.png" width="32px" height="32px">
                     <h1>IMMACULATE PANEL</h1>
                 </a>

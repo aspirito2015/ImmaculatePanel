@@ -130,6 +130,7 @@ function search_on() {
 function search_off() {
     // set all bad btns to good
     var bad_btns = get_bad_btns();
+    if (bad_btns == null) { return; }
     for (var i=0; i < bad_btns.length; i++) {
         setBtnGood(bad_btns[i]);
     }
@@ -142,7 +143,8 @@ function search_off() {
 }
 
 
-function give_up() {
+export function give_up() {
+    console.log("given up");
     updateGuesses(0);
     summary_on();
 }

@@ -1,5 +1,5 @@
 import { get_data_by_id, check_cat_combo } from './firebase.js';
-import { filterFunction, grid_btn } from './myScript.js';
+import { filterFunction, grid_btn, give_up } from './myScript.js';
 
 var bank = [
     'HxEWtCgTUviXeJb4a8Lh', //0 Alpha Flight
@@ -73,6 +73,10 @@ async function main() {
     }
     fill_ans_grids();
     make_grid_btns();
+    var giveup_button = document.getElementById("giveup");
+    giveup_button.addEventListener("click", function () {
+        give_up();
+    });
     setup_searchFilter();
 }
 

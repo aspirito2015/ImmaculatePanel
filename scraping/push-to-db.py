@@ -2,10 +2,34 @@ import firebase_admin, re, json, os, csv
 from firebase_admin import credentials, firestore
 
 writes_tally = 0
-writes_limit = 4000
-CATS_PATH = './scrape-results/cats-scrape-20231210.json'
+writes_limit = 19500
+CATS_PATH = './scrape-results/cats-scrape-20231231-103202.json'
 CHAR_PATH = './scrape-results/char-scrape-20231215-101836.json'
-DONE_PATH = './scraping/done-list.csv'
+DONE_PATH = './scraping/done-list-20240101.csv'
+CAT_COL_NAME = 'categories_0'
+CHAR_COL_NAME = 'characters_2'
+
+tags_to_ignore_arr = [
+    r'\(.*LMD.*\)',
+    r'\(.*Heroes Reborn.*\)',
+    r'\(.*Onslaught Reborn.*\)',
+    r'\(.*Doppelganger.*\)',
+    r'\(.*Android.*\)',
+    r'\(.*Age of X-Man.*\)',
+    r'\(.*Legion Personality.*\)',
+    r'\(.*Clone.*\)',
+    r'\(.*Tsum Tsum.*\)',
+    r'\(.*Counter-Earth.*\)',
+    r'\(.*Impostor.*\)',
+    r'\(.*A.I.vengers.*\)',
+    r'\(.*Cosmic Cube Construct.*\)',
+    r'\(.*Battleworld.*\)',
+    r'\(.*Zombie Facsimile.*\)',
+    r'\(.*Skrull.*\)',
+    r'\(.*Sentinel.*\)',
+    r'\(.*Duplicate.*\)'
+]
+tags_to_ignore = combined = "(" + ")|(".join(tags_to_ignore_arr) + ")"
 
 def get_db():
     cert_path = r".\.cert\firebase-cert.json"
@@ -35,7 +59,7 @@ def read_csv_to_dict(file_path):
     data = []
     with open(file_path, 'r', newline='', encoding='utf-8', errors='replace') as file:
         reader = csv.reader(file)
-        data = dict(reader)
+        data = {row[0]: row[1] for row in reader}
     return data
 
 def load_done_list(file_path):
@@ -83,8 +107,8 @@ def process_categories(collection_ref, categories_json, done_dict):
         itm_data.pop('collection')
         doc_id = make_doc(collection_ref, itm_data)
         # append to done csv
-        done_data = [itm_name, doc_id]
-        append_csv(DONE_PATH, done_data, 'cat')
+        done_data = [itm_name, doc_id, 'cat', '']
+        append_csv(DONE_PATH, done_data)
 
 
 def process_characters(collection_ref, characters_json, done_dict, db):
@@ -96,18 +120,20 @@ def process_characters(collection_ref, characters_json, done_dict, db):
         if itm_name in done_dict:
             #print(f'{itm_name} is in done list. Skipping.')
             continue
+        if re.search(tags_to_ignore, itm_name):
+            continue
         # get category doc references
         good_cats = []
         bad_cats = []
         cat_refs = []
         for cat in itm_data['cat_arr']:
-            cat_name = re.sub(r' \(Earth-616\).$', "", cat)
+            cat_name = re.sub(r' \(Earth-616\).*$', "", cat)
             cat_name = re.sub('/Creator', "", cat_name)
             if cat_name not in done_dict:
                 bad_cats.append(cat_name)
                 continue
             good_cats.append(cat_name)
-            doc_ref = db.collection('categories').document(done_dict[cat_name])
+            doc_ref = db.collection(CAT_COL_NAME).document(done_dict[cat_name])
             cat_refs.append(doc_ref)
         itm_data['cat_arr'] = cat_refs
         #print(f'Bad cats: {bad_cats}\nGood cats: {good_cats}\nCat refs: {cat_refs}\n')
@@ -139,8 +165,8 @@ def update_done_dict(done_dict, cats_json, char_json):
 
 def main():
     db = get_db()
-    cats_coll_ref = db.collection('categories')
-    char_coll_ref = db.collection('characters')
+    cats_coll_ref = db.collection(CAT_COL_NAME)
+    char_coll_ref = db.collection(CHAR_COL_NAME)
     
     cats_json = read_json(CATS_PATH)
     char_json = read_json(CHAR_PATH)

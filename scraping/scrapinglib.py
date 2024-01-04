@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 def add_doc(coll_name, fields, pool):
     fields['collection'] = coll_name
     pool[fields['name']] = fields
-    print(f'added doc {fields['name']} to {coll_name}')
+    print(f'added {fields['name']} to {coll_name}')
 
 
 def get_soup(url):

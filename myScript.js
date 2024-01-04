@@ -6,6 +6,7 @@ var body = document.body;
 var srch_bar = document.getElementById('srch_bar');
 
 const btns_html = document.getElementsByName('btn');
+const char_coll_name = 'characters_2';
 var btn_active_html;
 var btn_active_x, btn_active_y;
 var guesses = 9;
@@ -19,7 +20,7 @@ var catDict = {};
 
 
 // Get json list of characters
-fetch("./scraping/done-list-v2.json").then( function(u){ return u.json(); } ).
+fetch("./scraping/done-list-20240101.json").then( function(u){ return u.json(); } ).
     then( function(json){
         import_all_cats(json);
         import_all_chars(json); 
@@ -178,6 +179,7 @@ async function is_choice_good(char_data, cat_id_x, cat_id_y) {
     //console.log(catArrIds);
     var x_bool = catArrIds.includes(cat_id_x);
     var y_bool = catArrIds.includes(cat_id_y);
+    console.log(`cat_id_x: ${cat_id_x} - ${x_bool}\ncat_id_y: ${cat_id_y} - ${y_bool}`);
     return x_bool && y_bool;
 }
 
@@ -198,7 +200,7 @@ async function srch_btn(char_id) {
     //console.log(char_id);
     var cat_id_x = cat_ids[btn_active_x];
     var cat_id_y = cat_ids[btn_active_y+3];
-    var char_data = await get_data_by_id(char_id, 'characters');
+    var char_data = await get_data_by_id(char_id, char_coll_name);
     var b = await is_choice_good(char_data, cat_id_x, cat_id_y);
     //console.log(b);
     var grid_index = btn_active_x+3*btn_active_y;

@@ -21,11 +21,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const answersRef = collection(db, 'answers');
-const charactersRef = collection(db, 'characters');
-const categoriesRef = collection(db, 'categories');
+const charactersRef = collection(db, 'characters_2');
+const categoriesRef = collection(db, 'categories_0');
 
 
 export async function get_data_by_id(doc_id, coll_name) {
+    console.log(`getting id ${doc_id} from ${coll_name}`);
     const docRef = doc(db, coll_name, doc_id);
     const docSnap = await getDoc(docRef);
     return docSnap.data();
@@ -36,8 +37,8 @@ export function get_ref(doc_id, coll_name) {
 }
 
 export async function check_cat_combo(cat_id_1, cat_id_2) {
-    const cat_ref_1 = doc(db, 'categories', cat_id_1);
-    const cat_ref_2 = doc(db, 'categories', cat_id_2);
+    const cat_ref_1 = doc(db, 'categories_0', cat_id_1);
+    const cat_ref_2 = doc(db, 'categories_0', cat_id_2);
     const cat_q_1 = `cat_map.${cat_id_1}`;
     const cat_q_2 = `cat_map.${cat_id_2}`;
     const q = query(

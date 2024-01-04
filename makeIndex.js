@@ -2,30 +2,30 @@ import { get_data_by_id, check_cat_combo } from './firebase.js';
 import { filterFunction, grid_btn, give_up } from './myScript.js';
 
 var bank = [
-    'HxEWtCgTUviXeJb4a8Lh', //0 Alpha Flight
-    'cGohF3PEZQ37Kzo2Rlug', //1 Avengers
-    'IrJ1aCXbsxMZRMZYFhcj', //2 Brotherhood of Evil Mutants
-    'odgwYihG60Md7ESzDVr2', //3 Excalibur
-    's0rR6gF8nYHubhs2Cqay', //4 Fantastic Four
-    'gonCJ4Rj8J9URIYZ4ywd', //5 Great Lakes Avengers
-    'q4ZnZ4cim1Hwx3prKFoS', //6 Heralds of Galactus
-    'UPRtOdf18rKMRDhT2vaK', //7 Defenders
-    'qbhbH9IxPZ3lmjZYjWFp', //8 Howling Commandos
-    '7b8OjBbBuqIFolLiVnCM', //9 Illuminati
-    'l8aYNQt912q8X4ZVSmrD', //10 Masters of Evil
-    'rzgsgVj7yJPlkY0F6urC', //11 New Avengers
-    'ztmo0XqvSEmCJEJVKJhS', //12 New Mutants
-    'w07hXOOoR1xLTdFQkGN1', //13 Pet Avengers
-    'c5Vuok18dzH84GpfY2Ou', //14 Runaways
-    'fda34cCgApXg9kqRAkEi', //15 X-Factor
-    'M4Laqo7eT0kqhmkyKWXK', //16 X-Men
-    'JxnhFuO5JaWFjpkk1Bkv', //17 Young Avengers
-    'kM6xTp12Maw9pGuAN5AU', //18 Young X-Men
-    'nfw8Dj6gXwLJCYY7qcSH', //19 Canadians
-    'sTat9kHvNBC0VZ7RSI8E', //20 Claws
-    'Rh2X9fgULuC86Gm9FHLI', //21 GotG
-    'CGXOtVRFb8gdswbB0hPs', //22 Mjolnir
-    'RwxBlt4Uo6gtgBdJsqWe' //23 Flight
+    'iDHGJtOZNHuipFp2YKRX', //0 Alpha Flight
+    'DRZELgRKR51pqUaKIvWl', //1 Avengers
+    '0IJa3D28KqAPr9ol3Vzi', //2 Brotherhood of Evil Mutants
+    '1uGadGEN8MXgc78H0YAD', //3 Excalibur
+    'p4t2NEdrPMYVokGWjGnH', //4 Fantastic Four
+    'SB117gHbKMi2w4b5tFtW', //5 Great Lakes Avengers
+    'SytYLPdIYrGQC5pi6EXh', //6 Heralds of Galactus
+    'JteSkfTAsrCo3l8joUlH', //7 Defenders
+    '3zkEnWZvdPaHrxkkuM8l', //8 Howling Commandos
+    'HgieD3fS2Mrq9LFDv0hG', //9 Illuminati
+    'ZCxQazNHpoilh9dLUS0m', //10 Masters of Evil
+    '20juN8R5VZVZ0vuehnBB', //11 New Avengers
+    'YKWwf4BbbZLOQxk59r2T', //12 New Mutants
+    'jijjfzi4w0DaSj1elyaL', //13 Pet Avengers
+    'HW8yMxG241vruQ9Zr3Qe', //14 Runaways
+    '1dDDjIxwkBgCbfSOKOCd', //15 X-Factor
+    'YSrr6aZfJ7h7p5rKNDIV', //16 X-Men
+    '4m8Cfi1fsmJXhkfS3Njk', //17 Young Avengers
+    'vfhGxTKsesrDNv0ikOw5', //18 Young X-Men
+    '2Jh55d1l5pLyh8Udg0nM', //19 Canadians
+    'wlhSjijXbBkWcXsHxxOg', //20 Claws
+    'DYMDdvqRcZDrrJY0W1Or', //21 Guardians of the Galaxy
+    'DQVHaf2XonWNxSWYuVUl', //22 Worthy of Mjolnir
+    'hRZdThueHtwMYD7E4j5C' //23 Flight
 ];
 
 export var cat_ids = [
@@ -38,6 +38,7 @@ var cat_datas = [];
 
 // Get category image elements
 const cat_divs = document.getElementsByName('cat');
+const cat_coll_name = 'categories_0';
 
 var test_char = {
     "href": "/wiki/01100010_01110010_01110101_01110100_01100101_(Earth-616)",
@@ -68,7 +69,7 @@ async function main() {
     console.log(`Are categories good? ${areCategoriesGood()}`);
     // loop through ids and category headers
     for (let i=0; i<cat_ids.length; i++) {
-        cat_datas[i] = await get_data_by_id(cat_ids[i], 'categories');
+        cat_datas[i] = await get_data_by_id(cat_ids[i], cat_coll_name);
         make_cat_btn(cat_datas[i], i);
     }
     fill_ans_grids();
@@ -130,6 +131,7 @@ function fill_ans_grids() {
     grid = document.getElementById("percentage-grid");
     cells = grid.getElementsByClassName("ans-grid-cell");
     for (let i=0; i<cells.length; i++) {
+        cells[i].setAttribute("onclick", `window.open('https://marvel.fandom.com${test_char['href']}', '_blank').focus();`);
         cells[i].innerHTML = 
             '<img src="'+test_char['image']+'" class="grid-content char-cell-full">'+
             '<div class="grid-percent">100%</div><div class="grid-label">'+

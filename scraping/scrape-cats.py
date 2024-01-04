@@ -1,4 +1,4 @@
-import warnings, re, json, time, scrapinglib
+import warnings, re, json, time, scrapinglib, logging
 from datetime import datetime
 
 
@@ -7,7 +7,20 @@ message = "Detected filter using positional arguments."
 warnings.filterwarnings("ignore", category=UserWarning, message=message)
 
 todo_pool = {}
+time_str = time.strftime("%Y%m%d-%H%M%S")
+log_file_path = f'{time_str}_categories.log'
+logging.basicConfig(
+    filename=log_file_path, 
+    level=logging.INFO, 
+    format='%(asctime)s - %(message)s')
 
+# Redirect print statements to the log file
+def print_to_log(*args, **kwargs):
+    log_message = ' '.join(map(str, args))
+    logging.info(log_message)
+
+# Redirecting print to the log file
+print = print_to_log
 
 
 def check_seeAlso_num(value, min):
@@ -21,13 +34,14 @@ def check_seeAlso_num(value, min):
 
 
 def scrape_cat_name(soup):
-    c = 'pi-item pi-item-spacing pi-title pi-secondary-background'
-    name_tag = soup.find('h2', class_ = c)
+    name_tag = soup.find('h1', {'id': 'firstHeading'})
     if name_tag is None:
-        name_tag = soup.find('h1', {'id': 'firstHeading'})
+        c = 'pi-item pi-item-spacing pi-title pi-secondary-background'
+        name_tag = soup.find('h2', class_ = c)
         if name_tag is None:
             return ""
     name_str = re.sub('/Creator', "", name_tag.get_text())
+    name_str = re.sub(r' \(Earth-616\)', "", name_str)
     return name_str
 
 
@@ -46,7 +60,9 @@ def scrape_help_text(href, soup, name_str):
     expression = r'[\s\S]*'+re.escape(name_str)+'+,'
     help_str = re.sub(expression, "", help_str)
     first_sentence = re.search(r'^.*?(\w\w)\.', help_str)
-    first_sentence_2 = first_sentence = re.search(r'^.*?(\)\.)', first_sentence)
+    if not first_sentence:
+        return ""
+    first_sentence_2 = first_sentence = re.search(r'^.*?(\)\.)', first_sentence[0])
     if first_sentence_2:
         help_str = first_sentence_2[0]
     elif first_sentence:
@@ -65,22 +81,20 @@ def do_cat(href, min_members=5, min_appearances=5, category_type='misc'):
     appearances = scrapinglib.find_seeAlso_num(r'/Appearances$', soup)
     members = scrapinglib.find_seeAlso_num(r'/Members$', soup)
     if not check_seeAlso_num(appearances, min_appearances):
+        print(f"... has {appearances} appearances out of min {min_appearances}")
         return
     if not check_seeAlso_num(members, min_members):
+        print(f"... has {members} members out of min {min_members}")
         return
     if members is None:
         m_tag = soup.find('p', {'class': 'category-page__total-number'})
         if m_tag is None:
-            print(f"{j['name']} has no members tag")
+            print("... has no members tag")
             return
         members_str = m_tag.get_text()
         members = int(re.search(r'([0-9])+', members_str)[0])
         if members < min_members:
-            message=(
-                f'{j['name']} has {members}'+
-                f' out of min {min_members}. Skipping'
-                )
-            print(message)
+            print(f'... has {members} out of min {min_members}')
             return
     
     j['image'] = scrapinglib.scrape_image(soup)
@@ -144,30 +158,20 @@ def main():
             cat_type=cat.get('cat_type')
             )
     """
-    list_of_tasks = [
-        do_categories(
-            cat['href_short'],
-            filter=cat.get('filter'),
-            cat_type=cat.get('cat_type')
-            )
-            for cat in cats_todo
-        ]
-    await asyncio.gather(*list_of_tasks)
+    do_categories(
+        'Earth-616/Teams',
+        filter={
+            'class': 'category-page__member-link', 
+            'title': team_pattern
+            },
+        cat_type='team'
+    )
     """
     do_cat('/wiki/Category:Characters_Displaced_to_Earth-616')
     do_cat('/wiki/Category:Formerly_Deceased')
-    """
-    list_of_tasks = [
-        do_cat('Characters_Displaced_to_Earth-616'),
-        do_cat('Formerly_Deceased')
-    ]
-    await asyncio.gather(*list_of_tasks)
-    """
-    time_str = time.strftime("%Y%m%d-%H%M%S")
     scrapinglib.save_list(todo_pool, f'cats-scrape-{time_str}')
-    endTime = datetime.now()
-    duration = endTime - startTime
-    print(f'{endTime}\tDone in {duration}!')
+    print('Done!')
 
 if __name__ == '__main__':
     main()
+    logging.shutdown()

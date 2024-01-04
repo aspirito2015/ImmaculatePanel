@@ -474,6 +474,10 @@ li .sub {
     position: relative;
 }
 
+#percentage-grid > .ans-grid-cell {
+    cursor: pointer;
+}
+
 .ans-grid-content {
     position: relative;
     top: 50%;

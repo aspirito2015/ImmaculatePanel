@@ -86,17 +86,17 @@ function addToCharList(id, jsonData) {
 
 // Filter list while searching
 export function filterFunction() {
+    var input, ul, li;
+    input = document.getElementById("search");
+    if (input.value.length < 3) return;
     // clear old search list
     clearList();
-    var input, ul, li;
     //console.log("filterFunction() triggered");
-    input = document.getElementById("search");
     // Get HTML <ul> tag and make visible
     ul = document.getElementById("charlist");
     ul.style.display = "";
     // Get list of matching chars
     var filter_results = filterObjectsByNameAlias(charObjects, input.value);
-    //console.log(filter_results);
     // Create HTML <li> tags for each of the matching chars
     for (var i = 0; i < filter_results.length; i++) {
         var li = char_search_entries[filter_results[i].id];
@@ -209,7 +209,12 @@ async function srch_btn(char_id) {
         search_off();
         // filled cell with answer
         var sum_grid = document.getElementsByClassName("sum-grid-cell");
-        btn_active_html.innerHTML = '<img src="'+char_data.image+'" class="grid-content" style="width: 90%; height: 100%; object-fit: cover;"><div class="grid-percent">100%</div><div class="grid-label">'+char_data.name+'</div>';
+        var name_to_display = char_data.name;
+        let pattern = /\..*\.$/
+        if (pattern.test(char_data.alias)) {
+            name_to_display = char_data.alias;
+        }
+        btn_active_html.innerHTML = '<img src="'+char_data.image+'" class="grid-content" style="width: 90%; height: 100%; object-fit: cover;"><div class="grid-percent">100%</div><div class="grid-label">'+name_to_display+'</div>';
         sum_grid[grid_index].setAttribute("style", "background-color: #59d185;");
         sum_bools[grid_index] = true;
         // replace event listener on button to one that opens link to wiki

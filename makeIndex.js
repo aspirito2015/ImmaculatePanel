@@ -101,10 +101,19 @@ function areCategoriesGood() {
 }
 
 function make_cat_btn(data, i) {
-    var html_chunk = [
-        '<div class="tooltip"><img src="'+data['image']+'" class="grid-content cat-img"><span class="tooltiptext">'+data['help-text']+'</span></div>',
-        '<div class="tooltip ans-grid-content"><img src="'+data['image']+'" class="cat-img"><span class="tooltiptext">'+data['help-text']+'</span></div>'
-    ];
+    var html_chunk = [];
+    if (data['image'] != "") {
+        html_chunk = [
+            `<div class="tooltip"><img src="${data['image']}" class="grid-content cat-img"><span class="tooltiptext">${data['help-text']}</span></div>`,
+            `<div class="tooltip ans-grid-content"><img src="${data['image']}" class="cat-img"><span class="tooltiptext">${data['help-text']}</span></div>`
+        ];
+    }
+    else {
+        html_chunk = [
+            `<div class="tooltip"><span class="grid-content cat-text">${data['name']}</span><span class="tooltiptext">${data['help-text']}</span></div>`,
+            `<div class="tooltip ans-grid-content"><span class="grid-content cat-text">${data['name']}</span><span class="tooltiptext">${data['help-text']}</span></div>`
+        ];
+    }
     // make cat headers for main grid
     cat_divs[i].innerHTML = html_chunk[0];
     // make cat headers for summary grids

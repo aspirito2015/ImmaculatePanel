@@ -248,6 +248,7 @@ h3 {
 }
 
 .grid-percent {
+    color: white;
     position:absolute;
     top:0;
     right:0;
@@ -265,6 +266,7 @@ h3 {
     left:0;
     right:0;
     bottom: 0;
+    color: white;
     background-color: #374151;
     font-size: 0.75rem;
     line-height: 1rem;
@@ -277,13 +279,17 @@ h3 {
     object-fit: contain;
 }
 
+.cat-text {
+    font-size: larger;
+}
+
 .tooltip {
     z-index: 1;
 }
 
 .tooltip .tooltiptext {
     visibility: hidden;
-    width: 7rem;
+    width: 14rem;
     text-align: center;
     border-radius: 0.25rem;
     padding: 0.25rem 0.5rem;
@@ -291,7 +297,7 @@ h3 {
     z-index: 1;
     bottom: 85%;
     left: 50%;
-    margin-left: -3.5rem;
+    margin-left: -7rem;
     opacity: 0;
     transition: opacity 0.3s;
     font-size: 0.875rem;

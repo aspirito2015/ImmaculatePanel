@@ -214,7 +214,11 @@ async function srch_btn(char_id) {
         if (pattern.test(char_data.alias)) {
             name_to_display = char_data.alias;
         }
-        btn_active_html.innerHTML = '<img src="'+char_data.image+'" class="grid-content" style="width: 90%; height: 100%; object-fit: cover;"><div class="grid-percent">100%</div><div class="grid-label">'+name_to_display+'</div>';
+        var image_to_display = "https://upload.wikimedia.org/wikipedia/en/archive/b/b1/20210811082420%21Portrait_placeholder.png";
+        if (char_data.image) {
+            image_to_display = char_data.image;
+        }
+        btn_active_html.innerHTML = '<img src="'+image_to_display+'" class="grid-content" style="width: 90%; height: 100%; object-fit: cover;"><div class="grid-percent">100%</div><div class="grid-label">'+name_to_display+'</div>';
         sum_grid[grid_index].setAttribute("style", "background-color: #59d185;");
         sum_bools[grid_index] = true;
         // replace event listener on button to one that opens link to wiki

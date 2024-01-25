@@ -20,7 +20,7 @@ var catDict = {};
 
 
 // Get json list of characters
-fetch("./scraping/done-list-20240101.json").then( function(u){ return u.json(); } ).
+fetch("./scraping/results/done-list-20240101.json").then( function(u){ return u.json(); } ).
     then( function(json){
         import_all_cats(json);
         import_all_chars(json); 

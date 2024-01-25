@@ -70,3 +70,5 @@ node_modules/
 
 # firebase cert doc
 .cert
+
+.ignore

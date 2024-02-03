@@ -1,5 +1,6 @@
-import warnings, re, json, time, scrapinglib, logging
+import warnings, re, json, time, scrapinglib, logging, sys
 from datetime import datetime
+from pprint import pprint
 
 
 # Suppress the specific warning about positional arguments
@@ -8,18 +9,34 @@ warnings.filterwarnings("ignore", category=UserWarning, message=message)
 
 todo_pool = {}
 time_str = time.strftime("%Y%m%d-%H%M%S")
-log_file_path = f'{time_str}_categories.log'
+log_file_path = f'./logs/{time_str}_categories.log'
 logging.basicConfig(
     filename=log_file_path, 
     level=logging.INFO, 
     format='%(asctime)s - %(message)s')
 
+# Create a console handler and set the level to INFO
+console_handler = logging.StreamHandler(sys.stdout)
+console_handler.setLevel(logging.INFO)
+
+# Create a formatter and add it to the handler
+formatter = logging.Formatter('%(asctime)s - %(message)s')
+console_handler.setFormatter(formatter)
+
+# Add the console handler to the root logger
+logging.getLogger().addHandler(console_handler)
+
 # Redirect print statements to the log file
 def print_to_log(*args, **kwargs):
     log_message = ' '.join(map(str, args))
     logging.info(log_message)
+    # Print to the console using the original print function
+    original_print(*args, **kwargs)
 
-# Redirecting print to the log file
+# Save the original print function
+original_print = print
+
+# Redirecting print to the log file and the console
 print = print_to_log
 
 
@@ -57,6 +74,7 @@ def scrape_help_text(href, soup, name_str):
             help_str = re.sub(r' \(Earth-616\).$', "", help_tag.get_text())
         return help_str
     help_str = help_tag.get_text()
+    """
     expression = r'[\s\S]*'+re.escape(name_str)+'+,'
     help_str = re.sub(expression, "", help_str)
     first_sentence = re.search(r'^.*?(\w\w)\.', help_str)
@@ -67,6 +85,9 @@ def scrape_help_text(href, soup, name_str):
         help_str = first_sentence_2[0]
     elif first_sentence:
         help_str = first_sentence[0]
+    """
+    if help_tag is not None:
+        help_str = re.sub(r' \(Earth-616\).*$', "", help_tag.get_text())
     return help_str
 
 
@@ -113,63 +134,54 @@ def do_categories(href_short, filter=None, cat_type=None):
         do_cat(thing['href'], category_type=cat_type)
 
 
+def get_subcats(href):
+    url = f'https://marvel.fandom.com{href}'
+    filter = {'class': 'category-page__member-link', 'href': re.compile(r'/wiki/Category:')}
+    subcat_tags = scrapinglib.scrape_cat(url, filter)
+    subcat_names = []
+    done_cats = []
+    for tag in subcat_tags:
+        name = tag.get_text()
+        name = name.replace('Category:', '')
+        pprint(name)
+        pprint(done_cats)
+        if name in done_cats:
+            continue
+        subcat_names.append(name)
+        done_cats.append(name)
+        #subcat_names.extend(get_subcats(tag['href']))
+    return subcat_names
+
+
+def iterate_through_todo_list(json_data):
+    # for each category in the json...
+    for cat in json_data:
+        # ...create an object for the category
+        # we already have name, href, and image fields in cats_todo_YYYYMMDD.json
+        # so we only need to get help-text and our list of subcategories
+        if 'href' in cat:
+            done_cats = []
+            soup = scrapinglib.get_soup(f'https://marvel.fandom.com{cat["href"]}')
+            cat['help-text'] = scrape_help_text(cat["href"], soup, cat["name"])
+            # get any subcategories
+            cat['sub-cats'] = get_subcats(cat["href"])
+
+
 def main():
     startTime = datetime.now()
     print(f'{startTime}\tStarted!')
-    team_pattern = re.compile(r'Earth-616\)$', re.IGNORECASE)
-    cats_todo = [{
-            'href_short': 'Earth-616/Teams',
-            'filter': {
-                'class': 'category-page__member-link', 
-                'title': team_pattern
-                },
-            'cat_type':'team'
-        },{
-            'href_short': 'Characters_by_Power',
-            'cat_type':'power'
-        },{
-            'href_short': 'Characters_by_Nationality',
-            'cat_type':'nationality'
-        },{
-            'href_short': 'Subjects_by_Creator',
-            'cat_type':'creator'
-        },{
-            'href_short': 'Characters_by_Killer',
-            'filter': {
-                'class': 'category-page__member-link', 
-                'title': team_pattern
-                },
-            'cat_type':'killer'
-        },{
-            'href_short': 'Characters_by_Identity',
-            'cat_type':'identity'
-        },{
-            'href_short': 'Characters_by_Species,_Race_or_Type',
-            'cat_type':'type'
-        },{
-            'href_short': 'Characters_by_Physical_Features',
-            'cat_type':'feature'
-        }
-    ]
-    for cat in cats_todo:
-        do_categories(
-            cat['href_short'],
-            filter=cat.get('filter'),
-            cat_type=cat.get('cat_type')
-            )
-    """
-    do_categories(
-        'Earth-616/Teams',
-        filter={
-            'class': 'category-page__member-link', 
-            'title': team_pattern
-            },
-        cat_type='team'
-    )
-    """
-    do_cat('/wiki/Category:Characters_Displaced_to_Earth-616')
-    do_cat('/wiki/Category:Formerly_Deceased')
-    scrapinglib.save_list(todo_pool, f'cats-scrape-{time_str}')
+    file_path = 'scraping/todo/cats_todo_20240106.json'
+    # open todo_list.json scraping\todo\cats_todo_20240106.json
+    try:
+        with open(file_path, 'r', encoding='utf-8') as file:
+            data = json.load(file)
+            iterate_through_todo_list(data)
+    except FileNotFoundError:
+        print(f"File not found: {file_path}")
+    except json.JSONDecodeError:
+        print(f"Error decoding JSON in file: {file_path}")
+    
+    #scrapinglib.save_list(todo_pool, f'cats-scrape-{time_str}')
     print('Done!')
 
 if __name__ == '__main__':

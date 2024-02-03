@@ -1,0 +1,781 @@
+[
+  {
+    "name": "Asexual Characters",
+    "href": "/wiki/Category:Asexual_Characters",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Asexual_Pride_Flag.svg",
+    "help-text": "Characters who experience no sexual attraction to anyone, regardless of gender"
+  },
+  {
+    "name": "Bisexual Characters",
+    "href": "/wiki/Category:Bisexual_Characters",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Bisexual_Pride_Flag.svg",
+    "help-text": "Characters attracted to persons of the same gender as them and the opposite gender"
+  },
+  {
+    "name": "Genderfluid Characters",
+    "href": "/wiki/Category:Genderfluid_Characters",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Genderfluidity_Pride-Flag.svg",
+    "help-text": "Characters with a fluctuating gender identity or who identify as many/multiple genders<br><i>Shapeshifters do not automatically qualify</i>"
+  },
+  {
+    "name": "Homosexual Characters",
+    "href": "/wiki/Category:Homosexual_Characters",
+    "image": "",
+    "help-text": "Characters attracted to someone of the same gender"
+  },
+  {
+    "name": "Non-Binary Characters",
+    "href": "/wiki/Category:Non-Binary_Characters",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/7/75/Nonbinary_flag.svg",
+    "help-text": "Characters who identify as non-binary rather than exclusively male or female"
+  },
+  {
+    "name": "Pansexual Characters",
+    "href": "/wiki/Category:Pansexual_Characters",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Pansexuality_Pride_Flag.svg",
+    "help-text": "Characters who clearly identify as having no distinction between genders concerning their sexuality"
+  },
+  {
+    "name": "Transgender Characters",
+    "href": "/wiki/Category:Transgender_Characters",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Transgender_Pride_flag.svg",
+    "help-text": "Characters who identify as having transitioned to a different gender"
+  },
+  {
+    "name": "Hydra",
+    "href": "/wiki/Category:Hydra_(Earth-616)/Members",
+    "image": "https://static.wikia.nocookie.net/marveldatabase/images/3/36/Hail_Hydra_%282015%29_Secret_Wars_logo.png",
+    "help-text": "Members of the terrorist organization Hydra"
+  },
+  {
+    "name": "Acoustikinesis",
+    "href": "/wiki/Category:Acoustikinesis",
+    "help-text": "Characters with the ability to manipulate soundwaves"
+  },
+  {
+    "name": "Alpha Flight",
+    "href": "/wiki/Category:Alpha_Flight_(Earth-616)/Members",
+    "image": "https://static.wikia.nocookie.net/marveldatabase/images/2/26/Alpha_Flight_Vol_4_Logo.png",
+    "help-text": "Members of Canada's premier team of superheroes, Alpha Flight"
+  },
+  {
+    "name": "Annihilators",
+    "href": "/wiki/Category:Annihilators_(Earth-616)/Members",
+    "image": "https://static.wikia.nocookie.net/marveldatabase/images/0/06/Annihilators.png",
+    "help-text": "Members of the Annihilators"
+  },
+  {
+    "name": "Asgardians of the Galaxy",
+    "href": "/wiki/Category:Asgardians_of_the_Galaxy_(Earth-616)/Members",
+    "image": "https://static.wikia.nocookie.net/logocomics/images/5/5a/AOTGASGARDIANS-OF-THE-GALAXY-logo-600x257.png",
+    "help-text": "Members of the Asgardians of the Galaxy"
+  },
+  {
+    "name": "Avengers",
+    "href": "/wiki/Category:Avengers_(Earth-616)/Members",
+    "image": "https://static.wikia.nocookie.net/marveldatabase/images/f/f2/Avengers_Vol_8_Logo.png",
+    "help-text": "Members of Earth's Mightiest Heroes, the Avengers"
+  },
+  {
+    "name": "Avengers Academy",
+    "href": "/wiki/Category:Avengers_Academy_(Earth-616)/Members",
+    "image": "https://static.wikia.nocookie.net/marveldatabase/images/c/c2/Avengers_Academy_Vol_1_Logo.png",
+    "help-text": "Instructors and sutdents at Avengers Academy"
+  },
+  {
+    "name": "Avengers West Coast",
+    "href": "/wiki/Category:Avengers_West_Coast_(Earth-616)/Members",
+    "image": "https://static.wikia.nocookie.net/marveldatabase/images/0/03/Avengers_West_Coast_logo.png",
+    "help-text": "Members of the West Coast Avengers"
+  },
+  {
+    "name": "Big Hero Six",
+    "href": "/wiki/Category:Big_Hero_Six_(Earth-616)/Members",
+    "image": "https://static.wikia.nocookie.net/marveldatabase/images/4/46/Big_Hero_6_%282008%29_Logo.png",
+    "help-text": "Members of Japan's state-sanctioned superhero team, Big Hero Six"
+  },
+  {
+    "name": "Black Order",
+    "href": "/wiki/Category:Black_Order_(Earth-616)/Members",
+    "image": "https://static.wikia.nocookie.net/marveldatabase/images/0/0a/Black_Order_Vol_1_Logo.png",
+    "help-text": "Members of Thanos' elite henchmen, the Black Order"
+  },
+  {
+    "name": "Brotherhood of Evil Mutants",
+    "href": "/wiki/Category:Brotherhood_of_Evil_Mutants_(Earth-616)/Members",
+    "help-text": "Members of the occasionally terroristic mutant group, the Brotherhood of (Evil) Mutants"
+  },
+  {
+    "name": "Champions",
+    "href": "/wiki/Category:Champions_(Earth-616)/Members",
+    "image": "https://static.wikia.nocookie.net/marveldatabase/images/c/cb/Champions_Vol_3_Logo.png",
+    "help-text": "Members of the teenage superhero team, the Champions"
+  },
+  {
+    "name": "Council of Godheads",
+    "href": "/wiki/Category:Council_of_Godheads_(Earth-616)/Members",
+    "help-text": "Members of the committee of leaders of Earth's pantheons of gods"
+  },
+  {
+    "name": "Defenders",
+    "href": "/wiki/Category:Defenders_(Earth-616)/Members",
+    "image": "https://static.wikia.nocookie.net/marveldatabase/images/1/1d/Defenders_Vol_6_Logo.png",
+    "help-text": "Members of the extra-dimensional defence force, the Defenders<br><i>Not to be confused with the Manhattan vigilante group</i>"
+  },
+  {
+    "name": "Excalibur",
+    "href": "/wiki/Category:Excalibur_(Earth-616)/Members",
+    "image": "https://static.wikia.nocookie.net/logocomics/images/e/e2/Excalibur%282019%29.png",
+    "help-text": "Members of the UK's state-sponsored X-Men counterpart, Excalibur"
+  },
+  {
+    "name": "Fantastic Four",
+    "href": "/wiki/Category:Fantastic_Four_(Earth-616)/Members",
+    "image": "https://static.wikia.nocookie.net/logocomics/images/e/ef/Fantastic-Four%282018%E2%80%932022%29.png",
+    "help-text": "Members of the Fantastic Four"
+  },
+  {
+    "name": "Great Lakes Avengers",
+    "href": "/wiki/Category:Great_Lakes_Avengers_(Earth-616)/Members",
+    "image": "https://static.wikia.nocookie.net/marveldatabase/images/a/aa/Great_Lakes_Avengers_Vol_1.png",
+    "help-text": "Members of the Great Lakes <s>Avengers</s> <s>Lightning Rods</s> <s>S.W.O.R.D.</s> <s>X-Men</s> <s>Champions</s> Avengers"
+  },
+  {
+    "name": "Guardians of the Galaxy",
+    "href": "/wiki/Category:Guardians_of_the_Galaxy_(Earth-616)/Members",
+    "image": "https://static.wikia.nocookie.net/marveldatabase/images/a/af/Guardians_of_the_Galaxy_Vol_6_Logo.png",
+    "help-text": "Members of the Guardians of the Galaxy"
+  },
+  {
+    "name": "Heralds of Galactus",
+    "href": "/wiki/Category:Heralds_of_Galactus_(Earth-616)/Members",
+    "help-text": "Individuals who have served the Devourer of Worlds, Galactus"
+  },
+  {
+    "name": "Heroes for Hire",
+    "add_hrefs": [
+      "/wiki/Category:Heroes_for_Hire_(Knight_&_Wing)_(Earth-616)/Members",
+      "/wiki/Category:Heroes_for_Hire_(Oracle_Inc.)_(Earth-616)/Members",
+      "/wiki/Category:Heroes_for_Hire_(Power_Man_&_Iron_Fist)_(Earth-616)/Members"
+    ],
+    "help-text": "Members of any group called 'Heroes for Hire'"
+  },
+  {
+    "name": "Illuminati",
+    "href": "/wiki/Category:Illuminati_(Earth-616)/Members",
+    "image": "https://static.wikia.nocookie.net/logocomics/images/2/2d/Illuminati.png",
+    "help-text": "Members of the covert think-tank, the Illuminati"
+  },
+  {
+    "name": "Invaders",
+    "href": "/wiki/Category:Invaders_(Earth-616)/Members",
+    "image": "https://static.wikia.nocookie.net/marveldatabase/images/7/74/All-New_Invaders_%282014%29_logo.png",
+    "help-text": "Members of the Invaders and its successors"
+  },
+  {
+    "name": "Knights of the Round Table",
+    "href": "/wiki/Category:Knights_of_the_Round_Table_(Earth-616)/Members",
+    "help-text": "Members of the legendary Knights of the Round Table"
+  },
+  {
+    "name": "Marauders (Pryde)",
+    "href": "/wiki/Category:Marauders_(Pryde)_(Earth-616)/Members",
+    "image": "https://static.wikia.nocookie.net/marveldatabase/images/d/d3/Marauders_Vol_2_logo.png",
+    "help-text": "Members of the band of mutant raiders, the Marauders"
+  },
+  {
+    "name": "Midnight Sons",
+    "href": "/wiki/Category:Midnight_Sons_(Earth-616)/Members",
+    "help-text": "Members of the demon-fighting Midnight Sons"
+  },
+  {
+    "name": "New Fantastic Four",
+    "href": "/wiki/Category:New_Fantastic_Four_(Earth-616)/Members",
+    "image": "https://static.wikia.nocookie.net/marveldatabase/images/1/1f/New_Fantastic_Four_Vol_1_Logo.png",
+    "help-text": "Members of the New Fantastic Four"
+  },
+  {
+    "name": "New Mutants",
+    "href": "/wiki/Category:New_Mutants_(Earth-616)/Members",
+    "image": "https://static.wikia.nocookie.net/marveldatabase/images/a/a5/New_Mutants_Vol_4_logo.png",
+    "help-text": "Members of the New Mutants"
+  },
+  {
+    "name": "Order of the Web",
+    "href": "/wiki/Category:Order_of_the_Web_(Earth-616)/Members",
+    "help-text": "Members of the Order of the Web"
+  },
+  {
+    "name": "Pet Avengers",
+    "href": "/wiki/Category:Pet_Avengers_(Earth-616)/Members",
+    "help-text": "Members of the Pet Avengers"
+  },
+  {
+    "name": "Runaways",
+    "href": "/wiki/Category:Runaways_(Earth-616)/Members",
+    "image": "https://static.wikia.nocookie.net/marveldatabase/images/6/62/Runaways_Vol._5_Logo.png",
+    "help-text": "Members of the group of misfits and villains' children, the Runaways"
+  },
+  {
+    "name": "S.H.I.E.L.D.",
+    "href": "/wiki/Category:S.H.I.E.L.D._(Earth-616)/Members",
+    "image": "https://i.pinimg.com/originals/64/0c/18/640c18b91ec7092ef34b3e8b442ca48d.png",
+    "help-text": "Members of the Strategic Homeland Intervention, Enforcement, and Logistics Division"
+  },
+  {
+    "name": "Secret Avengers (Black Ops Unit)",
+    "href": "/wiki/Category:Secret_Avengers_(Black_Ops_Unit)_(Earth-616)/Members",
+    "help-text": "Members of the Secret Avengers (Black Ops Unit)"
+  },
+  {
+    "name": "Secret Avengers (Civil War)",
+    "href": "/wiki/Category:Secret_Avengers_(Civil_War)_(Earth-616)/Members",
+    "help-text": "Members of the Secret Avengers (Civil War)"
+  },
+  {
+    "name": "Secret Avengers (S.H.I.E.L.D.)",
+    "href": "/wiki/Category:Secret_Avengers_(S.H.I.E.L.D.)_(Earth-616)/Members",
+    "help-text": "Members of the Secret Avengers (S.H.I.E.L.D.)"
+  },
+  {
+    "name": "Secret Defenders",
+    "href": "/wiki/Category:Secret_Defenders_(Earth-616)/Members",
+    "help-text": "Members of the Defenders successor, the Secret Defenders"
+  },
+  {
+    "name": "Sinister Six",
+    "href": "/wiki/Category:Sinister_Six_(Earth-616)/Members",
+    "image": "https://static.wikia.nocookie.net/marveldatabase/images/8/87/Sinister_Six_logo_from_Toy_Biz_Sinister_Six_Box_Set_001.png",
+    "help-text": "Members of the several temporary villain team-ups called the Sinister Six"
+  },
+  {
+    "name": "Spirits of Vengeance",
+    "href": "/wiki/Category:Spirits_of_Vengeance_(Earth-616)/Members",
+    "image": "https://static.wikia.nocookie.net/marveldatabase/images/d/d9/Spirits_of_Vengeance_Vol_1_5_Logo.png",
+    "help-text": "Members of the Spirits of Vengeance"
+  },
+  {
+    "name": "Thor Corps",
+    "href": "/wiki/Category:Thor_Corps_(Earth-616)/Members",
+    "help-text": "Members of the Thor Corps"
+  },
+  {
+    "name": "Thunderbolts",
+    "href": "/wiki/Category:Thunderbolts_(Earth-616)/Members",
+    "image": "https://static.wikia.nocookie.net/marveldatabase/images/d/da/Thunderbolts_%282016%29_logo.png",
+    "help-text": "Members of "
+  },
+  {
+    "name": "Thunderbolts (Red Hulk)",
+    "href": "/wiki/Category:Thunderbolts_(Red_Hulk)_(Earth-616)/Members",
+    "image": "https://static.wikia.nocookie.net/marveldatabase/images/e/e5/Thunderbolts_Vol_2_Logo.jpg",
+    "help-text": "Members of anti-hero strike-team successor to Code Red, the Thunderbolts"
+  },
+  {
+    "name": "Thunderbolts (Revolution)",
+    "href": "/wiki/Category:Thunderbolts_(Revolution)_(Earth-616)/Members",
+    "help-text": "Members of the latest Thunderbolts team, first appearing in Dec 2023"
+  },
+  {
+    "name": "U.S.Avengers",
+    "href": "/wiki/Category:U.S.Avengers_(Earth-616)/Members",
+    "image": "https://static.wikia.nocookie.net/marveldatabase/images/f/f6/U.S.Avengers_Vol_1_11_Logo.png",
+    "help-text": "Members of the American patriotic-themed U.S.Avengers"
+  },
+  {
+    "name": "Ultimates",
+    "href": "/wiki/Category:Ultimates_(Earth-616)/Members",
+    "help-text": "Members of the 2015 Ultimates team<br><i>Not to be confused with the 2006 Earth-1610 team</i>"
+  },
+  {
+    "name": "X-Factor Investigations",
+    "href": "/wiki/Category:X-Factor_Investigations_(Earth-616)/Members",
+    "image": "https://static.wikia.nocookie.net/marveldatabase/images/c/cc/X-Factor_Vol_4_3_Logo.png",
+    "help-text": "Members of the mutant detective agency, X-Factor<br><i>Not to be confused with the 90's team of the same name</i>"
+  },
+  {
+    "name": "X-Force (Strike Team)",
+    "href": "/wiki/Category:X-Force_(Strike_Team)_(Earth-616)/Members",
+    "image": "https://static.wikia.nocookie.net/marveldatabase/images/5/51/X-Force_Vol_6_Logo.png",
+    "help-text": "Members of X-Force (Strike Team)"
+  },
+  {
+    "name": "X-Men",
+    "href": "/wiki/Category:X-Men_(Earth-616)/Members",
+    "image": "https://static.wikia.nocookie.net/logocomics/images/0/0e/X-Men(2021).png",
+    "help-text": "Members of the X-Men"
+  },
+  {
+    "name": "Young Avengers",
+    "href": "/wiki/Category:Young_Avengers_(Earth-616)/Members",
+    "image": "https://static.wikia.nocookie.net/marveldatabase/images/6/6d/Young_Avengers_(2013)_Logo.png",
+    "help-text": "Members of the Young Avengers"
+  },
+  {
+    "name": "Armor Users",
+    "href": "/wiki/Category:Armor_Users",
+    "help-text": "Characters who have utilized technical or magical armor"
+  },
+  {
+    "name": "Astral Projection",
+    "href": "/wiki/Category:Astral_Projection",
+    "help-text": "Characters who can leave their bodies behind while their mind/spirit goes to the Astral Plane"
+  },
+  {
+    "name": "Atmokinesis",
+    "href": "/wiki/Category:Atmokinesis",
+    "help-text": "Characters who can manipulate all the natural forces responsible for weather"
+  },
+  {
+    "name": "Bulletproof",
+    "href": "/wiki/Category:Bulletproof",
+    "help-text": "Characters whose skin is tough enough to repel bullets"
+  },
+  {
+    "name": "Captain Universe",
+    "href": "/wiki/Category:Captain_Universe",
+    "help-text": "Characters who have bonded with Captain Universe's Uni-Power"
+  },
+  {
+    "name": "Chi Manipulation",
+    "href": "/wiki/Category:Chi_Manipulation",
+    "help-text": "Characters who can manipulate the body's bio-electric energy known as Chi/Qi"
+  },
+  {
+    "name": "Concussive Blasts",
+    "href": "/wiki/Category:Concussive_Blasts",
+    "help-text": "Characters who can produce Concussive Blasts"
+  },
+  {
+    "name": "Cosmic Awareness",
+    "href": "/wiki/Category:Cosmic_Awareness",
+    "help-text": "Characters with enhanced consciousness or sensation of oneness with the universe"
+  },
+  {
+    "name": "Ebony Blade User",
+    "href": "/wiki/Category:Ebony_Blade_User",
+    "help-text": "Characters who have made use of the Ebony Blade"
+  },
+  {
+    "name": "Empaths",
+    "href": "/wiki/Category:Empaths",
+    "help-text": "Characters who can read or project emotions"
+  },
+  {
+    "name": "Energy Absorption",
+    "href": "/wiki/Category:Energy_Absorption",
+    "help-text": "Characters with the ability to absorb one or more types of energy"
+  },
+  {
+    "name": "Energy Form",
+    "href": "/wiki/Category:Energy_Form",
+    "help-text": "Characters who are, or can transform into, beings of pure energy"
+  },
+  {
+    "name": "Flaming Body",
+    "href": "/wiki/Category:Flaming_Body",
+    "help-text": "Characters who can ignite themselves or turn into a flaming substance"
+  },
+  {
+    "name": "Flight",
+    "href": "/wiki/Category:Flight",
+    "image": "https://cdn3.iconfinder.com/data/icons/human-behaviour-and-situations-part-1/400/Popular-19-512.png",
+    "help-text": "Characters who can fly, whether through an ability or technological enhancements"
+  },
+  {
+    "name": "Force Field",
+    "href": "/wiki/Category:Force_Field",
+    "help-text": "Characters who can create a force field around themselves or others"
+  },
+  {
+    "name": "Hypnosis",
+    "href": "/wiki/Category:Hypnosis",
+    "help-text": "Characters who can hypnotize others, whether through an ability or learned practice"
+  },
+  {
+    "name": "Intangibility",
+    "href": "/wiki/Category:Intangibility",
+    "help-text": "Characters who cannot be touched byor can pass through solid matter, AKA phasing"
+  },
+  {
+    "name": "Invisibility",
+    "href": "/wiki/Category:Invisibility",
+    "help-text": "Characters who can become invisible, not including through telepathy"
+  },
+  {
+    "name": "Invulnerability",
+    "href": "/wiki/Category:Invulnerability",
+    "help-text": "Characters with immunity to one or more forms of injury"
+  },
+  {
+    "name": "Leaping",
+    "href": "/wiki/Category:Leaping",
+    "help-text": "Characters who can leap, but not fly, to a superhuman degree"
+  },
+  {
+    "name": "Magicians",
+    "href": "/wiki/Category:Magicians",
+    "help-text": "Characters who, whether through ability or training, practice magic"
+  },
+  {
+    "name": "Medium Awareness",
+    "href": "/wiki/Category:Medium_Awareness",
+    "help-text": "Characters who have knowingly broken the fourth wall"
+  },
+  {
+    "name": "Mind Control",
+    "href": "/wiki/Category:Mind_Control",
+    "help-text": "Characters who can control a person's mind or alter their thoughts"
+  },
+  {
+    "name": "Night Vision",
+    "href": "/wiki/Category:Night_Vision",
+    "help-text": "Characters who can see in the dark"
+  },
+  {
+    "name": "Optic Blasts",
+    "href": "/wiki/Category:Optic_Blasts",
+    "help-text": "Characters who release various forms of energy from their eyes"
+  },
+  {
+    "name": "Pheromones",
+    "href": "/wiki/Category:Pheromones",
+    "help-text": "Characters who can influence others through the use of pheromones"
+  },
+  {
+    "name": "Phoenix Force",
+    "href": "/wiki/Category:Phoenix_Force",
+    "help-text": "Characters who were able to manipulate the Phoenix Force"
+  },
+  {
+    "name": "Plasma Generation",
+    "href": "/wiki/Category:Plasma_Generation",
+    "help-text": "Characters who can produce external plasmo, typically for pyrotechnic blasts"
+  },
+  {
+    "name": "Possession",
+    "href": "/wiki/Category:Possession",
+    "help-text": "Characters who can take mental control of others"
+  },
+  {
+    "name": "Power Cosmic",
+    "href": "/wiki/Category:Power_Cosmic",
+    "help-text": "Characters who can manipulate the Power Cosmic"
+  },
+  {
+    "name": "Shapeshifters",
+    "href": "/wiki/Category:Shapeshifters",
+    "help-text": "Characters who can change all or parts of their shape/form"
+  },
+  {
+    "name": "Size Alteration",
+    "href": "/wiki/Category:Size_Alteration",
+    "help-text": "Characters who can cause themselves or others to grow/shrink"
+  },
+  {
+    "name": "Superhuman Smelling",
+    "href": "/wiki/Category:Superhuman_Smelling",
+    "help-text": "Characters who can smell things beyond what is naturally possible"
+  },
+  {
+    "name": "Telekinesis",
+    "href": "/wiki/Category:Telekinesis",
+    "help-text": "Characters who can move objects/people through non-physical means"
+  },
+  {
+    "name": "Trackers",
+    "href": "/wiki/Category:Trackers",
+    "help-text": "Characters with advanced, innate tracking skills"
+  },
+  {
+    "name": "Wallcrawling",
+    "href": "/wiki/Category:Wallcrawling",
+    "help-text": "Characters who can cling to surfaces by a variety of means"
+  },
+  {
+    "name": "Web-Slinging",
+    "href": "/wiki/Category:Web-Slinging",
+    "help-text": "Characters who can use web-lines to swing from point to point"
+  },
+  {
+    "name": "Wind Breath",
+    "href": "/wiki/Category:Wind_Breath",
+    "help-text": "Characters who can blow wind from their mouths or nostrils"
+  },
+  {
+    "name": "Zoopathy",
+    "href": "/wiki/Category:Zoopathy",
+    "help-text": "Characters who can control animals, usually only a specific species"
+  },
+  {
+    "name": "Characters Displaced to Earth-616",
+    "href": "/wiki/Category:Characters_Displaced_to_Earth-616",
+    "help-text": "Characters from non-Earth-616 realities who have taken up residence in Earth-616"
+  },
+  {
+    "name": "Formerly Deceased",
+    "href": "/wiki/Category:Formerly_Deceased",
+    "help-text": "Living characters that have died and been restored to life"
+  },
+  {
+    "name": "Weapon X",
+    "href": "/wiki/Category:Weapon_X_(Earth-616)/Members",
+    "image": "https://static.wikia.nocookie.net/marveldatabase/images/9/9c/Weapon_X_Vol_3_Logo.png",
+    "help-text": "Staff and subjects involved in the U.S. Government's Weapon X project"
+  },
+  {
+    "name": "Worthy of Mjolnir",
+    "href": "/wiki/Category:Worthy_of_Mjolnir",
+    "image": "https://static.wikia.nocookie.net/marveldatabase/images/9/90/Mjolnir_from_Thor_Vol_6_1_001.jpg",
+    "help-text": "Characters who have proved themselves worthy of lifting Mjolnir"
+  },
+  {
+    "name": "Androids",
+    "href": "/wiki/Category:Androids",
+    "help-text": "Artificial beings designed to resemble humans as closely as possible"
+  },
+  {
+    "name": "Eternals (Homo immortalis)",
+    "href": "/wiki/Category:Eternals_(Homo_immortalis)",
+    "image": "https://static.wikia.nocookie.net/logocomics/images/8/8e/Eternals(2008-2009).png",
+    "help-text": "Members of the evolutionary offshoot of humanity created by the Celestials"
+  },
+  {
+    "name": "Gamma Ray Exposure",
+    "href": "/wiki/Category:Gamma_Ray_Exposure",
+    "help-text": "Characters who have been altered by exposure to Gamma Radiation"
+  },
+  {
+    "name": "Inhumans (Inhomo supremis)",
+    "href": "/wiki/Category:Inhumans_(Inhomo_supremis)",
+    "help-text": "Members of the genetic offshoot of humanity engineered by the Kree"
+  },
+  {
+    "name": "Kree",
+    "href": "/wiki/Category:Kree",
+    "help-text": "Members of the Kree race, including Human/Kree hybrids"
+  },
+  {
+    "name": "Olympians",
+    "href": "/wiki/Category:Olympians",
+    "help-text": "Members of the extradimensional humanoids hailing from Olympus"
+  },
+  {
+    "name": "Robots",
+    "href": "/wiki/Category:Robots_(Full_Listing)",
+    "help-text": "Any robot, regardless of classification (android, cyborg, etc.)"
+  },
+  {
+    "name": "Super-Soldiers",
+    "href": "/wiki/Category:Super-Soldiers",
+    "help-text": "Characters who have been enhanced by the Super-Soldier Serum, including reproductions"
+  },
+  {
+    "name": "Terrigenesis",
+    "href": "/wiki/Category:Terrigenesis",
+    "help-text": "Characters who have gotten powers through exposure to Terrigen Crystals/Mists"
+  },
+  {
+    "name": "Africans",
+    "href": "/wiki/Category:Africans",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Africa-outline.png/2048px-Africa-outline.png",
+    "help-text": "",
+    "sub-categories": [
+      "Aethiopians",
+      "Egypt Monarchs",
+      "Egypt 18th Dynasty",
+      "Egypt Second Dynasty",
+      "Egyptians",
+      "Algerians",
+      "Azanians",
+      "Canaanites",
+      "Ethiopians",
+      "Ghudazans",
+      "Halwanis",
+      "Imayans",
+      "Kenyans",
+      "Mbangawians",
+      "Meroë citizens",
+      "Moroccans",
+      "Narobians",
+      "Nigandans",
+      "Nigerians",
+      "Saharan Cat People",
+      "Somalians",
+      "South Africans",
+      "Tanzanians",
+      "Ugandans",
+      "Wakandans",
+      "Zambians",
+      "Zulu"
+    ]
+  },
+  {
+    "name": "Americans",
+    "href": "/wiki/Category:Americans",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Flag_of_the_United_States_%28DoS_ECA_Color_Standard%29.svg",
+    "help-text": ""
+  },
+  {
+    "name": "Latin Americans",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/6/63/Latin_America_%28orthographic_projection%29.svg",
+    "help-text": ""
+  },
+  {
+    "name": "Caribbeans",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Antillas_%28orthographic_projection%29.svg",
+    "help-text": ""
+  },
+  {
+    "name": "Central Americans",
+    "href": "/wiki/Category:Central_Americans",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/0/00/Central_America_%28configurable_orthographic_projection%29.svg",
+    "help-text": ""
+  },
+  {
+    "name": "Asians",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Asia_%28orthographic_projection%29_without_New_Guinea.svg",
+    "help-text": ""
+  },
+  {
+    "name": "East Asians",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/a/ab/East_Asia_%28orthographic_projection%29.svg",
+    "help-text": ""
+  },
+  {
+    "name": "Southeast Asians",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Southeast_Asia_%28orthographic_projection%29.svg",
+    "help-text": ""
+  },
+  {
+    "name": "South Asians",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/e/e3/South_Asia_%28orthographic_projection%29_without_national_boundaries.svg",
+    "help-text": ""
+  },
+  {
+    "name": "West Asians",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/3/37/Western_Asia_%28orthographic_projection%29.svg",
+    "help-text": ""
+  },
+  {
+    "name": "Central Asians",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/8/88/Central_Asia_%28orthographic_projection%29.svg",
+    "help-text": ""
+  },
+  {
+    "name": "British Isles",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/5/58/British_Isles_%28orthographic_projection%29.svg",
+    "help-text": ""
+  },
+  {
+    "name": "Asgardians",
+    "href": "/wiki/Category:Asgardians",
+    "image": "https://static.wikia.nocookie.net/marveldatabase/images/b/bd/Asgard_%28Realm%29_from_Journey_Into_Mystery_Vol_1_622_001.jpg",
+    "help-text": ""
+  },
+  {
+    "name": "British",
+    "href": "/wiki/Category:British",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg",
+    "help-text": ""
+  },
+  {
+    "name": "Canadians",
+    "href": "/wiki/Category:Canadians",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Flag_of_Canada_%28Pantone%29.svg/1920px-Flag_of_Canada_%28Pantone%29.svg.png",
+    "help-text": ""
+  },
+  {
+    "name": "Europeans",
+    "href": "/wiki/Category:Europeans",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/6/66/Blank_map_of_Europe_cropped.svg",
+    "help-text": ""
+  },
+  {
+    "name": "Germans",
+    "href": "/wiki/Category:Germans",
+    "image": "https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg",
+    "help-text": ""
+  },
+  {
+    "name": "Japanese",
+    "href": "/wiki/Category:Japanese",
+    "image": "https://upload.wikimedia.org/wikipedia/en/9/9e/Flag_of_Japan.svg",
+    "help-text": ""
+  },
+  {
+    "name": "Krakoans",
+    "href": "/wiki/Category:Krakoans",
+    "help-text": ""
+  },
+  {
+    "name": "Kree Imperials",
+    "href": "/wiki/Category:Kree_Imperials",
+    "help-text": ""
+  },
+  {
+    "name": "North Americans",
+    "href": "/wiki/Category:North_Americans",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Location_North_America.svg/800px-Location_North_America.svg.png",
+    "help-text": ""
+  },
+  {
+    "name": "Olympus citizens",
+    "href": "/wiki/Category:Olympus_citizens",
+    "help-text": ""
+  },
+  {
+    "name": "Romani",
+    "href": "/wiki/Category:Romani",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/1/10/Flag_of_the_Romani_people.svg",
+    "help-text": ""
+  },
+  {
+    "name": "Russians",
+    "href": "/wiki/Category:Russians",
+    "image": "https://upload.wikimedia.org/wikipedia/en/f/f3/Flag_of_Russia.svg",
+    "help-text": ""
+  },
+  {
+    "name": "Skrull Imperials",
+    "href": "/wiki/Category:Skrull_Imperials",
+    "help-text": ""
+  },
+  {
+    "name": "South Americans",
+    "href": "/wiki/Category:South_Americans",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/0/0f/South_America_%28orthographic_projection%29.svg",
+    "help-text": ""
+  },
+  {
+    "name": "Wakandans",
+    "href": "/wiki/Category:Wakandans",
+    "image": "https://static.wikia.nocookie.net/marveldatabase/images/4/44/Flag_of_Wakanda_from_Black_Panther_Vol_6_4_0001.jpg",
+    "help-text": ""
+  },
+  {
+    "name": "Chris Claremont",
+    "href": "/wiki/Category:Chris_Claremont/Creator",
+    "help-text": "Created by Chris Claremont"
+  },
+  {
+    "name": "Jack Kirby",
+    "href": "/wiki/Category:Jack_Kirby/Creator",
+    "help-text": "Created by Jack Kirby"
+  },
+  {
+    "name": "Jim Starlin",
+    "href": "/wiki/Category:Jim_Starlin/Creator",
+    "help-text": "Created by Jim Starlin"
+  },
+  {
+    "name": "Stan Lee",
+    "href": "/wiki/Category:Stan_Lee/Creator",
+    "help-text": "Created by Stan Lee"
+  },
+  {
+    "name": "Steve Ditko",
+    "href": "/wiki/Category:Steve_Ditko/Creator",
+    "help-text": "Created by Steve Ditko"
+  }
+]

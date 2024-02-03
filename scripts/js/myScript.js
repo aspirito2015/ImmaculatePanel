@@ -1,5 +1,6 @@
-import {get_data_by_id} from './firebase.js';
-import {cat_ids} from './makeIndex.js';
+import { get_data_by_id } from './firebase.js';
+import { cat_ids } from './makeIndex.js';
+import { getCat, getCha, getEdg } from './getData.js';
 //import {charObjects} from './makeIndex.js';
 //import {char_search_entries} from './makeIndex.js';
 var body = document.body;
@@ -47,7 +48,7 @@ function import_all_cats(jsonData) {
     for (const cat of catObjects) {
         catDict[cat.id] = cat.name;
     }
-    console.log(catDict);
+    // console.log(catDict);
 }
 
 function import_all_chars(jsonData) {

@@ -1,7 +1,8 @@
 import { get_data_by_id, check_cat_combo } from './firebase.js';
 import { filterFunction, grid_btn, give_up } from './myScript.js';
+import { getCat, getCha, getEdg } from './getData.js';
 
-var bank = [
+var bank_ = [
     'iDHGJtOZNHuipFp2YKRX', //0 Alpha Flight
     'DRZELgRKR51pqUaKIvWl', //1 Avengers
     '0IJa3D28KqAPr9ol3Vzi', //2 Brotherhood of Evil Mutants
@@ -28,11 +29,33 @@ var bank = [
     'hRZdThueHtwMYD7E4j5C' //23 Flight
 ];
 
+var bank = [
+    9,  // Alpha Flight
+    12, // Avengers
+    17, // Brotherhood of Evil Mutants
+    21, // Excalibur
+    22, // Fantastic Four
+    23, // Great Lakes Avengers
+    25, // Heralds of Galactus
+    20, // Defenders
+    26, // Illuminati
+    32, // New Mutants
+    34, // Pet Avengers
+    35, // Runaways
+    49, // X-Factor
+    51, // X-Men
+    52, // Young Avengers
+    119, // Canadians
+    24, // Guardians of the Galaxy
+    95, // Worthy of Mjolnir
+    66, // Flight
+];
+
 export var cat_ids = [
-            bank[19], bank[23], bank[21],
-    bank[22],
-    bank[16],
-    bank[1]
+        119, 66, 24,
+    95,
+    51,
+    12
 ];
 var cat_datas = [];
 
@@ -64,12 +87,15 @@ main();
 
 async function main() {
     // get six random ids from bank
-    //cat_ids = shuffle(bank).slice(0, 6);
+    // cat_ids = shuffle(bank).slice(0, 6);
     // check if categories have enough valid answers
-    console.log(`Are categories good? ${areCategoriesGood()}`);
+    // console.log(`Are categories good? ${areCategoriesGood()}`);
+
     // loop through ids and category headers
     for (let i=0; i<cat_ids.length; i++) {
-        cat_datas[i] = await get_data_by_id(cat_ids[i], cat_coll_name);
+        console.log(getCat(cat_ids[i]));
+        console.log("S");
+        cat_datas[i] = catJSON[getCat(cat_ids[i])];
         make_cat_btn(cat_datas[i], i);
     }
     fill_ans_grids();

@@ -501,7 +501,7 @@ li .sub {
     line-height: 1rem;
 }
 
-button.x-btn {
+#x-btn {
     background-color: var(--nightowl);
     width: 2rem;
     height: 2rem;
@@ -512,7 +512,7 @@ button.x-btn {
     right: 0.375rem;
 }
 
-button.x-btn:hover {
+#x-btn:hover {
     background-color: rgb(55 64 80);
 }
 

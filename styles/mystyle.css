@@ -465,6 +465,10 @@ li .sub {
     box-sizing: border-box;
 }
 
+.ans-grid-header .ans-grid-content {
+    height: 80px;
+}
+
 .ans-grid-cell {
     background-color: rgb(55 65 81);
     width: 7rem;

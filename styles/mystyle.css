@@ -423,7 +423,7 @@ input::placeholder {
     color: white;
 }
 
-ul {
+#charlist {
     margin: 0;
     padding: 0.5rem 0;
     overflow: auto;

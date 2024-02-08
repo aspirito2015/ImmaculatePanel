@@ -1,12 +1,13 @@
-var url_root = 'https://docs.google.com/spreadsheets/d/';
+const url_root = 'https://docs.google.com/spreadsheets/d/';
+const ssid = "1FbVRkJ1NM3ZxvR2Ms2rincVCsGE3MYoehnIc8Vxf4NY";
 var q1 = '/gviz/tq?';
 var q2 = 'tqx=out:json';
 
-export async function importSheet(ssid, sheetName, query) {
+export async function importSheet(_ssid, sheetName, query) {
     console.log(`started importing ${sheetName} - ${query}`);
     var q3 = `sheet=${sheetName}`;
     var q4 = encodeURIComponent(query);
-    var url = `${url_root}${ssid}${q1}&${q2}&${q3}&tq=${q4}`;
+    var url = `${url_root}${_ssid}${q1}&${q2}&${q3}&tq=${q4}`;
     var response = await fetch(url);
     var data = await response.text();
     var temp = data.substr(47).slice(0, -2);
@@ -52,9 +53,43 @@ export function cleanJSON(jsonData) {
 }
 
 export async function getCharacterData(characterID) {
-    let ssid = "1FbVRkJ1NM3ZxvR2Ms2rincVCsGE3MYoehnIc8Vxf4NY";
     let query = `select A,B,C,D,E where A='${characterID}'`;
     let results = await importSheet(ssid, "characters_export", query);
     let data = cleanJSON(results)[characterID];
     return data;
+}
+
+export async function getIntersectionCount(categoryID_1, categoryID_2) {
+    let query = `select C where (A='${categoryID_1}' and B='${categoryID_2}') or (A='${categoryID_2}' and B='${categoryID_1}')`;
+    let results = await importSheet(ssid, "intersections", query);
+    let intersections = results.table.rows[0].c[0].v;
+    return intersections;
+}
+
+export async function getIntersection(categoryID_1, categoryID_2) {
+    let results_1 = await getCategoryMembers(categoryID_1);
+    let results_2 = await getCategoryMembers(categoryID_2);
+    let intersection = results_1.filter(value => results_2.includes(value));
+    return intersection;
+}
+
+export async function getCategoryData(categoryID) {
+    let query = `select A,B,D where A='${categoryID}'`;
+    let results = await importSheet(ssid, "categories_export", query);
+    console.log(results);
+    // let name = results.table.rows[0].c[0].v;
+    let data = cleanJSON(results)[categoryID];
+    console.log(data);
+    return data;
+}
+
+async function getCategoryMembers(categoryID) {
+    let query = `select C where B='${categoryID}'`;
+    let results = await importSheet(ssid, "edgelist_export", query);
+    let rows = results.table.rows;
+    let members = [];
+    for (let i = 0; i < rows.length; i++) {
+        members[i] = rows[i].c[0].v;
+    }
+    return members;
 }

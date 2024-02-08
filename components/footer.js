@@ -4,12 +4,12 @@ class Footer extends HTMLElement {
     }
 
     connectedCallback() {
-        this.innerHTML = `
-        <div class="footer" id="footer">
-            <h2>Footer</h2>
-            <p>Lorem ipsum and all that jazz.</p>
-        </div>
-        `;
+        // this.innerHTML = `
+        // <div class="footer" id="footer">
+        //     <h2>Footer</h2>
+        //     <p>Lorem ipsum and all that jazz.</p>
+        // </div>
+        // `;
     }
 }
 

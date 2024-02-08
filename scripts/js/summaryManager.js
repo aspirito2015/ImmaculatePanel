@@ -1,4 +1,5 @@
-import { getSummaryBools } from "./gameManager.js";
+import { getCategoryIDs, getSummaryBools } from "./gameManager.js";
+import { getIntersectionCount } from "./sheetsImporter.js";
 
 main();
 
@@ -11,7 +12,8 @@ function main() {
     });
     document.getElementById("copy-sum").addEventListener("click", function () {
         copy_sum();
-    })
+    });
+    fillSummaryPanel();
 }
 
 export function summary_on() {
@@ -24,6 +26,28 @@ export function summary_off() {
     document.getElementById("overlay").style.display = "none";
     document.getElementById("sum").style.display = "none";
     document.body.classList.remove('noscroll');
+}
+
+async function fillSummaryPanel() {
+    let answerGrid = document.getElementById("answer-grid");
+    let intersection_tags = answerGrid.getElementsByClassName("ans-num");
+    let hyperlink_tags = answerGrid.getElementsByTagName("a");
+    // console.log(hyperlink_tags);
+    let category_ids = getCategoryIDs();
+    // console.log(category_ids);
+    for (let y = 0; y < 3; y++) {
+        for (let x = 0; x < 3; x++) {
+            let cat_1 = category_ids[x];
+            let cat_2 = category_ids[y+3];
+            let n = await getIntersectionCount(cat_1, cat_2);
+            let index = x + 3 * y;
+            // console.log(`${index}, (${x}, ${y+3}): ${cat_1} ∩ ${cat_2} = ${n}`);
+            let url = `answers.html?category1=${cat_1}&category2=${cat_2}`;
+            hyperlink_tags[index].href = url;
+            intersection_tags[index].innerHTML = n;
+        }
+    }
+    console.log("finished filling summary panel");
 }
 
 function copy_sum() {

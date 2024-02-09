@@ -169,7 +169,7 @@ function filterClear() {
 
 async function tryGuess(characterID) {
     console.log(`${characterID} button pressed`);
-    var active_index = getActiveCellIndex();
+    // var active_index = getActiveCellIndex();
     if (await isCharacterValid(characterID) == false) {
         // add characterID to list of bad guesses for this cell
         addBadGuess(characterID);

@@ -1,18 +1,14 @@
 import { getCategoryIDs, setActiveCell } from './gameManager.js';
 import { search_on } from './searchManager.js';
-import { importSheet, cleanJSON } from './sheetsImporter.js';
+import { sqliteQuery } from './sqliteQuerier.js';
 
 var cat_ids = getCategoryIDs();
 
 main();
 
 async function main() {
-    // https://docs.google.com/spreadsheets/d/1FbVRkJ1NM3ZxvR2Ms2rincVCsGE3MYoehnIc8Vxf4NY/edit#gid=0
-    var ssid = '1FbVRkJ1NM3ZxvR2Ms2rincVCsGE3MYoehnIc8Vxf4NY';
     var query = buildQuery(cat_ids);
-    var json = await importSheet(ssid, "categories_export", query);
-    // console.log(json);
-    json = cleanJSON(json);
+    var json = await sqliteQuery(query);
     buildCategories(json);
     buildGridButtons();
     console.log("gridManager.js main() done");
@@ -21,29 +17,30 @@ async function main() {
 function buildQuery(category_ids) {
     var cat_qs = [];
     category_ids.forEach((id) => {
-        cat_qs.push(`A='${id}'`);
+        cat_qs.push(`catID='${id}'`);
     })
     var cat_q = cat_qs.join(' or ');
-    var query = `select A,B,F,G where ${cat_q}`;
+    var query = `SELECT catID, name, image, helptext FROM categories WHERE ${cat_q}`;
     return query;
 }
 
 // Set up all category headers (main grid and all locations in summary panel)
 function buildCategories(data) {
+    console.log(data);
     var cat_divs = document.getElementsByName('cat');
     for (let i = 0; i < cat_ids.length; i++) {
         var html_chunk = [];
         var cat_json = data[cat_ids[i]];
-        if (cat_json['image'] != "") {
+        if (cat_json['image'] != null) {
             html_chunk = [
-                `<div class="tooltip"><img src="${cat_json['image']}" class="grid-content cat-img"><span class="tooltiptext">${cat_json['help-text']}</span></div>`,
-                `<div class="tooltip ans-grid-content"><img src="${cat_json['image']}" class="cat-img"><span class="tooltiptext">${cat_json['help-text']}</span></div>`
+                `<div class="tooltip"><img src="${cat_json['image']}" class="grid-content cat-img"><span class="tooltiptext">${cat_json['helptext']}</span></div>`,
+                `<div class="tooltip ans-grid-content"><img src="${cat_json['image']}" class="cat-img"><span class="tooltiptext">${cat_json['helptext']}</span></div>`
             ];
         }
         else {
             html_chunk = [
-                `<div class="tooltip"><span class="grid-content cat-text">${cat_json['name']}</span><span class="tooltiptext">${cat_json['help-text']}</span></div>`,
-                `<div class="tooltip ans-grid-content"><span class="grid-content cat-text">${cat_json['name']}</span><span class="tooltiptext">${cat_json['help-text']}</span></div>`
+                `<div class="tooltip"><span class="grid-content cat-text">${cat_json['name']}</span><span class="tooltiptext">${cat_json['helptext']}</span></div>`,
+                `<div class="tooltip ans-grid-content"><span class="grid-content cat-text">${cat_json['name']}</span><span class="tooltiptext">${cat_json['helptext']}</span></div>`
             ];
         }
         // make cat headers for main grid

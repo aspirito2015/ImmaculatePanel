@@ -1,4 +1,4 @@
-import { importSheet, cleanJSON, getCharacterData } from "./sheetsImporter.js";
+import { sqliteQuery } from "./sqliteQuerier.js";
 
 var btn_tags = document.getElementsByName("btn");
 var btn_active_tag;
@@ -8,10 +8,8 @@ var guessesLeft = 9;
 var bad_guess_grid = [[], [], [], [], [], [], [], [], []];
 var used_chars = [];
 var summary_bools = Array(9).fill(false);
-var guesses_tag = document.getElementById("guesses");
-var char_search_entries = {};
 var characters = {};
-var cat_ids = ['0119', '0066', '0024', '0095', '0051', '0012'];
+var cat_ids = [119, 66, 24, 95, 51, 12];
 // cat_ids = ['0143', '0136', '0023', '0135', '0144', '0143'];
 // cat_ids = ['0085', '0060', '0104', '0051', '0076', '0140'];
 // cat_ids = ['0067', '0038', '0030', '0135', '0138', '0065'];
@@ -55,7 +53,10 @@ export async function fillActiveCell(characterID) {
     used_chars.push(characterID);
     // update the html component(s)
     btn_active_tag.setAttribute("style", "background-color: #59d185;");
-    let characterData = await getCharacterData(characterID);
+    let result = await sqliteQuery(`SELECT charID, name, href, image, alias FROM characters WHERE charID=${characterID}`);
+    let characterData = result[characterID];
+    // console.log(characterData[characterID]);
+    // console.log(characterData);
     let name_to_display = characterData.name;
     let pattern = /\..*\.$/;
     if (pattern.test(characterData.alias)) {
@@ -114,10 +115,7 @@ export function getUsedCharTags() { return used_chars; }
 
 export async function getCharacters() {
     if (characters.length === undefined || characters.length < 1) {
-        var ssid = '1FbVRkJ1NM3ZxvR2Ms2rincVCsGE3MYoehnIc8Vxf4NY';
-        var query = `select A,B,E`;
-        characters = await importSheet(ssid, "characters_export", query);
-        characters = cleanJSON(characters);
+        characters = await sqliteQuery("SELECT charID, name, alias FROM characters");
     }
     return characters;
 }
@@ -125,11 +123,11 @@ export async function getCharacters() {
 export async function isCharacterValid(characterID) {
     var cat_id_x = cat_ids[btn_active_x];
     var cat_id_y = cat_ids[3 + btn_active_y];
-    var ssid = '1FbVRkJ1NM3ZxvR2Ms2rincVCsGE3MYoehnIc8Vxf4NY';
-    var query = `select B where C='${characterID}'`;
-    query += ` and (B='${cat_id_x}' or B='${cat_id_y}')`;
-    var results = await importSheet(ssid, "edgelist_export", query);
-    var valid = results.table.rows.length >= 2;
+    var query = `SELECT edgeID, catID FROM edges WHERE charID=${characterID}`;
+    query += ` AND (catID='${cat_id_x}' OR catID='${cat_id_y}')`;
+    var results = await sqliteQuery(query);
+    let length = Object.keys(results).length;
+    var valid = length >= 2;
     console.log(`${characterID} valid? ${valid}`);
     return valid;
 }

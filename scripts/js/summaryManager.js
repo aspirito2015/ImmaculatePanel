@@ -1,5 +1,5 @@
 import { getCategoryIDs, getSummaryBools } from "./gameManager.js";
-import { getIntersectionCount } from "./sheetsImporter.js";
+import { sqliteQuery } from "./sqliteQuerier.js";
 
 main();
 
@@ -32,16 +32,17 @@ async function fillSummaryPanel() {
     let answerGrid = document.getElementById("answer-grid");
     let intersection_tags = answerGrid.getElementsByClassName("ans-num");
     let hyperlink_tags = answerGrid.getElementsByTagName("a");
-    // console.log(hyperlink_tags);
     let category_ids = getCategoryIDs();
-    // console.log(category_ids);
     for (let y = 0; y < 3; y++) {
         for (let x = 0; x < 3; x++) {
             let cat_1 = category_ids[x];
-            let cat_2 = category_ids[y+3];
-            let n = await getIntersectionCount(cat_1, cat_2);
+            let cat_2 = category_ids[y + 3];
+            let q = `SELECT catID_1, intersection FROM intersections WHERE `;
+            q += `(catID_1=${cat_1} AND catID_2=${cat_2}) `;
+            q += `OR (catID_1=${cat_2} AND catID_2=${cat_1})`;
+            let result = await sqliteQuery(q);
+            let n = result[cat_1].intersection;
             let index = x + 3 * y;
-            // console.log(`${index}, (${x}, ${y+3}): ${cat_1} ∩ ${cat_2} = ${n}`);
             let url = `answers.html?category1=${cat_1}&category2=${cat_2}`;
             hyperlink_tags[index].href = url;
             intersection_tags[index].innerHTML = n;

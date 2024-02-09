@@ -1,8 +1,4 @@
-import {
-    getCharacterData,
-    getIntersection,
-    getCategoryData
-} from "./sheetsImporter.js";
+import { sqliteQuery } from "./sqliteQuerier.js";
 
 await main();
 
@@ -13,13 +9,18 @@ async function main() {
     const categoryID_1 = urlParams.get('category1');
     const categoryID_2 = urlParams.get('category2');
     createHeading(categoryID_1, categoryID_2);
-    let intersection = await getIntersection(categoryID_1, categoryID_2);
-    await arrayToList(intersection, spitDiv);
+    let q = `SELECT charID FROM edges WHERE catID=${categoryID_1} `;
+    q += `INTERSECT SELECT charID from edges WHERE catID=${categoryID_2}`;
+    let intersection = await sqliteQuery(q);
+    console.log(intersection);
+    await objToList(intersection, spitDiv);
 }
 
 async function createHeading(categoryID_1, categoryID_2) {
-    let catData_1 = await getCategoryData(categoryID_1);
-    let catData_2 = await getCategoryData(categoryID_2);
+    let query = `SELECT catID, name, href FROM categories WHERE catID=${categoryID_1} or catID=${categoryID_2}`;
+    let result = await sqliteQuery(query);
+    let catData_1 = result[categoryID_1];
+    let catData_2 = result[categoryID_2];
     let s = `Characters who belong to both the<br>`;
     s += `<a href="https://marvel.fandom.com${catData_1.href}" target="_blank" rel="noopener noreferrer">${catData_1.name}</a> and `;
     s += `<a href="https://marvel.fandom.com${catData_2.href}" target="_blank" rel="noopener noreferrer">${catData_2.name}</a> categories:`;
@@ -27,17 +28,20 @@ async function createHeading(categoryID_1, categoryID_2) {
     heading_tag.innerHTML = s;
 }
 
-async function arrayToList(arr, parent) {
+async function objToList(obj, parent) {
     let container = document.createElement("div");
     container.setAttribute('class', "character-grid");
     parent.appendChild(container);
-    for(let i = 0; i < arr.length; i++) {
-        await createCharacterCell(arr[i], container);
-    }
+    Object.keys(obj).forEach(function(k){
+        console.log(obj[k].charID);
+        createCharacterCell(obj[k].charID, container);
+    });
 }
 
 async function createCharacterCell(characterID, parent) {
-    let data = await getCharacterData(characterID);
+    let result = await sqliteQuery(`SELECT charID, name, href, image, alias FROM characters WHERE charID=${characterID}`);
+    let data = result[characterID];
+    console.log(data);
     let html_obj = document.createElement("div");
     html_obj.setAttribute('onclick', `window.open('https://marvel.fandom.com${data.href}','_blank').focus();`);
     html_obj.setAttribute('style', 'cursor:pointer;');

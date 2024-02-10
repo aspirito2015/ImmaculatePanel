@@ -21,9 +21,11 @@ async function createHeading(categoryID_1, categoryID_2) {
     let result = await sqliteQuery(query);
     let catData_1 = result[categoryID_1];
     let catData_2 = result[categoryID_2];
-    let s = `Characters who belong to both the<br>`;
-    s += `<a href="https://marvel.fandom.com${catData_1.href}" target="_blank" rel="noopener noreferrer">${catData_1.name}</a> and `;
-    s += `<a href="https://marvel.fandom.com${catData_2.href}" target="_blank" rel="noopener noreferrer">${catData_2.name}</a> categories:`;
+    let s = `Characters who belong to both the<br>
+        <a href="https://marvel.fandom.com${catData_1.href}" target="_blank" 
+        rel="noopener noreferrer">${catData_1.name}</a> and 
+        <a href="https://marvel.fandom.com${catData_2.href}" target="_blank" 
+        rel="noopener noreferrer">${catData_2.name}</a> categories:`;
     let heading_tag = document.getElementsByTagName("h1")[1];
     heading_tag.innerHTML = s;
 }
@@ -39,9 +41,12 @@ async function objToList(obj, parent) {
 }
 
 async function createCharacterCell(characterID, parent) {
-    let result = await sqliteQuery(`SELECT charID, name, href, image, alias FROM characters WHERE charID=${characterID}`);
+    let q = `SELECT charID, name, href, image, alias 
+        FROM characters 
+        WHERE charID=${characterID}`;
+    let result = await sqliteQuery(q);
     let data = result[characterID];
-    console.log(data);
+    // console.log(data);
     let html_obj = document.createElement("div");
     html_obj.setAttribute('onclick', `window.open('https://marvel.fandom.com${data.href}','_blank').focus();`);
     html_obj.setAttribute('style', 'cursor:pointer;');

@@ -315,6 +315,8 @@ h3 {
 .cat-text {
     font-size: larger;
     width: 80%;
+    display: flex;
+    justify-content: center;
 }
 
 .tooltip {

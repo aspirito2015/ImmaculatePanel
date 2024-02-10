@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="/styles/mystyle.css">
+  <link rel="shortcut icon" href="#">
+  <script src="/components/header.js" type="text/javascript" defer></script>
+  <script src="/components/footer.js" type="text/javascript" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+</head>
+
+<body>
+  <div id="page-container">
+    <div id="content-wrap">
+      <header-component></header-component>
+      This is a template page!
+      <div id="WOW"></div>
+    </div>
+    <footer-component></footer-component>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/sql-wasm.js"></script>
+  <!-- <script type="module" src="/scripts/js/sqliteQuerier.js" defer></script> -->
+  <script type="module" defer>
+    import { sqliteQuery } from "/scripts/js/sqliteQuerier.js";
+    
+    var t = document.getElementById("WOW");
+    var r = await sqliteQuery("SELECT * FROM categories");
+    console.log(r);
+    t.innerHTML = r.columns;
+    t.innerHTML += r.values;
+  </script>
+</body>
+
+</html>

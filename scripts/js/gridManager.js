@@ -38,10 +38,17 @@ function buildCategories(data) {
             ];
         }
         else {
-            html_chunk = [
-                `<div class="tooltip"><span class="grid-content cat-text">${cat_json['name']}</span><span class="tooltiptext">${cat_json['helptext']}</span></div>`,
-                `<div class="tooltip ans-grid-content"><span class="grid-content cat-text">${cat_json['name']}</span><span class="tooltiptext">${cat_json['helptext']}</span></div>`
-            ];
+            if (cat_json['name'].length > 25) {
+                html_chunk = [
+                    `<div class="tooltip"><span class="grid-content cat-text">${cat_json['name']}</span><span class="tooltiptext">${cat_json['helptext']}</span></div>`,
+                    `<div class="tooltip ans-grid-content"><span class="grid-content cat-text" style="font-size:medium;">${cat_json['name']}</span><span class="tooltiptext">${cat_json['helptext']}</span></div>`
+                ];
+            } else {
+                html_chunk = [
+                    `<div class="tooltip"><span class="grid-content cat-text">${cat_json['name']}</span><span class="tooltiptext">${cat_json['helptext']}</span></div>`,
+                    `<div class="tooltip ans-grid-content"><span class="grid-content cat-text">${cat_json['name']}</span><span class="tooltiptext">${cat_json['helptext']}</span></div>`
+                ];
+            }
         }
         // make cat headers for main grid
         cat_divs[i].innerHTML = html_chunk[0];

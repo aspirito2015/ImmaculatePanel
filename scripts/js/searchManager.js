@@ -95,7 +95,7 @@ async function createCharacterTags() {
         let id = c;
         let name = characters[c].name;
         let alias = characters[c].alias;
-        if (alias === undefined || alias === null) { alias = name; }
+        if (alias === undefined || alias === null || alias === "") { alias = name; }
         // create an html object using the data grabbed from the json
         var html_object = document.createElement('li');
         html_object.setAttribute('name', id);

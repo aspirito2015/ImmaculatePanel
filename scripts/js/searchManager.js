@@ -99,9 +99,9 @@ async function createCharacterTags() {
         // create an html object using the data grabbed from the json
         var html_object = document.createElement('li');
         html_object.setAttribute('name', id);
-        let temp = `<div>${alias}<div class='sub'>${name}</div></div>`;
-        temp += `<button>Select</button><div class='sub used' style='display: `;
-        temp += `none;'>Already Used</div>`;
+        let temp = `<div>${alias}<div class='sub'>${name}</div></div>
+            <button>Select</button><div class='sub used' style='display: 
+            none;'>Already Used</div>`;
         html_object.innerHTML = temp;
         // store the html object in an array for future creation/destruction
         character_tags[c] = html_object;

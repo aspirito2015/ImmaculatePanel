@@ -9,8 +9,8 @@ async function main() {
     const categoryID_1 = urlParams.get('category1');
     const categoryID_2 = urlParams.get('category2');
     createHeading(categoryID_1, categoryID_2);
-    let q = `SELECT charID FROM edges WHERE catID=${categoryID_1} `;
-    q += `INTERSECT SELECT charID from edges WHERE catID=${categoryID_2}`;
+    let q = `SELECT charID FROM edges WHERE catID=${categoryID_1} 
+        INTERSECT SELECT charID from edges WHERE catID=${categoryID_2}`;
     let intersection = await sqliteQuery(q);
     console.log(intersection);
     await objToList(intersection, spitDiv);

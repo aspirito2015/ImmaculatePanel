@@ -37,9 +37,9 @@ async function fillSummaryPanel() {
         for (let x = 0; x < 3; x++) {
             let cat_1 = category_ids[x];
             let cat_2 = category_ids[y + 3];
-            let q = `SELECT catID_1, intersection FROM intersections WHERE `;
-            q += `(catID_1=${cat_1} AND catID_2=${cat_2}) `;
-            q += `OR (catID_1=${cat_2} AND catID_2=${cat_1})`;
+            let q = `SELECT catID_1, intersection FROM intersections WHERE 
+                (catID_1=${cat_1} AND catID_2=${cat_2}) 
+                OR (catID_1=${cat_2} AND catID_2=${cat_1})`;
             let result = await sqliteQuery(q);
             let n = result[cat_1].intersection;
             let index = x + 3 * y;

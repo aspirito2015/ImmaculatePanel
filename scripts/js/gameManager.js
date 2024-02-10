@@ -10,9 +10,9 @@ var used_chars = [];
 var summary_bools = Array(9).fill(false);
 var characters = {};
 var cat_ids = [119, 66, 24, 95, 51, 12];
-// cat_ids = ['0143', '0136', '0023', '0135', '0144', '0143'];
-// cat_ids = ['0085', '0060', '0104', '0051', '0076', '0140'];
-// cat_ids = ['0067', '0038', '0030', '0135', '0138', '0065'];
+// cat_ids = [143, 136, 23, 135, 144, 143];
+// cat_ids = [85, 60, 104, 51, 76, 140];
+cat_ids = [67, 38, 30, 135, 138, 65];
 
 main();
 
@@ -123,8 +123,8 @@ export async function getCharacters() {
 export async function isCharacterValid(characterID) {
     var cat_id_x = cat_ids[btn_active_x];
     var cat_id_y = cat_ids[3 + btn_active_y];
-    var query = `SELECT edgeID, catID FROM edges WHERE charID=${characterID}`;
-    query += ` AND (catID='${cat_id_x}' OR catID='${cat_id_y}')`;
+    var query = `SELECT edgeID, catID FROM edges WHERE charID=${characterID} 
+        AND catID IN (${cat_id_x}, ${cat_id_y})`;
     var results = await sqliteQuery(query);
     let length = Object.keys(results).length;
     var valid = length >= 2;
@@ -159,8 +159,6 @@ function animate_guesses(obj, start, end, duration) {
 }
 
 function lose() {
-    // search_off();
-    // summary_on();
     let giveup_button = document.getElementById("giveup");
     giveup_button.innerHTML = "Show Summary";
     giveup_button.click();

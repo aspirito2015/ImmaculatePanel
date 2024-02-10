@@ -45,6 +45,7 @@ async function fillSummaryPanel() {
             let index = x + 3 * y;
             let url = `answers.html?category1=${cat_1}&category2=${cat_2}`;
             hyperlink_tags[index].href = url;
+            hyperlink_tags[index].target = "_blank";
             intersection_tags[index].innerHTML = n;
         }
     }

@@ -12,7 +12,10 @@ var characters = {};
 var cat_ids = [119, 66, 24, 95, 51, 12];
 // cat_ids = [143, 136, 23, 135, 144, 143];
 // cat_ids = [85, 60, 104, 51, 76, 140];
-cat_ids = [67, 38, 30, 135, 138, 65];
+// cat_ids = [67, 38, 30, 135, 138, 65];
+// cat_ids = [92, 37, 39, 17, 38, 28]; // longest names
+// cat_ids = [97, 99, 46, 11, 24, 45]; // 2nd longest names
+// cat_ids = [49, 140, 2, 6, 3, 4]; // 3rd longest names
 
 main();
 

@@ -6,7 +6,8 @@ const workerUrl = new URL(
 );
 const wasmUrl = new URL("sql.js-httpvfs/dist/sql-wasm.wasm", import.meta.url);
 
-async function load() {
+async function query(q: string) {
+    console.log(window.location.pathname);
     const worker = await createDbWorker(
         [
             {
@@ -22,11 +23,9 @@ async function load() {
         wasmUrl.toString()
     );
 
-    const result = await worker.db.query(
-        `select * from characters where appearances>500`
-        );
+    const result = await worker.db.query(q);
 
     document.body.textContent = JSON.stringify(result);
 }
 
-load();
+query(`select * from characters where appearances>1000`);

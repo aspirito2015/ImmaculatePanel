@@ -1,4 +1,4 @@
-import { sqliteQuery } from "./sqliteQuerier.js";
+import { sqliteQueryOLD } from "./sqliteQuerier.js";
 
 var btn_tags = document.getElementsByName("btn");
 var btn_active_tag;
@@ -56,7 +56,7 @@ export async function fillActiveCell(characterID) {
     used_chars.push(characterID);
     // update the html component(s)
     btn_active_tag.setAttribute("style", "background-color: #59d185;");
-    let result = await sqliteQuery(`SELECT charID, name, href, image, alias FROM characters WHERE charID=${characterID}`);
+    let result = await sqliteQueryOLD(`SELECT charID, name, href, image, alias FROM characters WHERE charID=${characterID}`);
     let characterData = result[characterID];
     // console.log(characterData[characterID]);
     // console.log(characterData);
@@ -118,7 +118,7 @@ export function getUsedCharTags() { return used_chars; }
 
 export async function getCharacters() {
     if (characters.length === undefined || characters.length < 1) {
-        characters = await sqliteQuery("SELECT charID, name, alias FROM characters");
+        characters = await sqliteQueryOLD("SELECT charID, name, alias FROM characters");
     }
     return characters;
 }
@@ -128,7 +128,7 @@ export async function isCharacterValid(characterID) {
     var cat_id_y = cat_ids[3 + btn_active_y];
     var query = `SELECT edgeID, catID FROM edges WHERE charID=${characterID} 
         AND catID IN (${cat_id_x}, ${cat_id_y})`;
-    var results = await sqliteQuery(query);
+    var results = await sqliteQueryOLD(query);
     let length = Object.keys(results).length;
     var valid = length >= 2;
     console.log(`${characterID} valid? ${valid}`);

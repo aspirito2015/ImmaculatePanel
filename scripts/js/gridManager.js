@@ -1,6 +1,6 @@
 import { getCategoryIDs, setActiveCell } from './gameManager.js';
 import { search_on } from './searchManager.js';
-import { sqliteQuery } from './sqliteQuerier.js';
+import { sqliteQueryOLD } from './sqliteQuerier.js';
 
 var cat_ids = getCategoryIDs();
 
@@ -8,7 +8,7 @@ main();
 
 async function main() {
     var query = buildQuery(cat_ids);
-    var json = await sqliteQuery(query);
+    var json = await sqliteQueryOLD(query);
     buildCategories(json);
     buildGridButtons();
     console.log("gridManager.js main() done");

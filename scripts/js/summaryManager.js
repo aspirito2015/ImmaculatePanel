@@ -1,5 +1,5 @@
 import { getCategoryIDs, getSummaryBools } from "./gameManager.js";
-import { sqliteQuery } from "./sqliteQuerier.js";
+import { sqliteQueryOLD } from "./sqliteQuerier.js";
 
 main();
 
@@ -40,7 +40,7 @@ async function fillSummaryPanel() {
             let q = `SELECT catID_1, intersection FROM intersections WHERE 
                 (catID_1=${cat_1} AND catID_2=${cat_2}) 
                 OR (catID_1=${cat_2} AND catID_2=${cat_1})`;
-            let result = await sqliteQuery(q);
+            let result = await sqliteQueryOLD(q);
             let n = result[cat_1].intersection;
             let index = x + 3 * y;
             let url = `answers.html?category1=${cat_1}&category2=${cat_2}`;

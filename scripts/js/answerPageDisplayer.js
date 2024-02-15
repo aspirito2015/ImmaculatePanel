@@ -1,4 +1,4 @@
-import { sqliteQuery } from "./sqliteQuerier.js";
+import { sqliteQueryOLD } from "./sqliteQuerier.js";
 
 await main();
 
@@ -11,14 +11,14 @@ async function main() {
     createHeading(categoryID_1, categoryID_2);
     let q = `SELECT charID FROM edges WHERE catID=${categoryID_1} 
         INTERSECT SELECT charID from edges WHERE catID=${categoryID_2}`;
-    let intersection = await sqliteQuery(q);
+    let intersection = await sqliteQueryOLD(q);
     console.log(intersection);
     await objToList(intersection, spitDiv);
 }
 
 async function createHeading(categoryID_1, categoryID_2) {
     let query = `SELECT catID, name, href FROM categories WHERE catID=${categoryID_1} or catID=${categoryID_2}`;
-    let result = await sqliteQuery(query);
+    let result = await sqliteQueryOLD(query);
     let catData_1 = result[categoryID_1];
     let catData_2 = result[categoryID_2];
     let s = `Characters who belong to both the<br>
@@ -44,7 +44,7 @@ async function createCharacterCell(characterID, parent) {
     let q = `SELECT charID, name, href, image, alias 
         FROM characters 
         WHERE charID=${characterID}`;
-    let result = await sqliteQuery(q);
+    let result = await sqliteQueryOLD(q);
     let data = result[characterID];
     // console.log(data);
     let html_obj = document.createElement("div");

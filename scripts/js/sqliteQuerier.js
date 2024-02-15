@@ -1,4 +1,4 @@
-export async function sqliteQuery(queryString) {
+export async function sqliteQueryOLD(queryString) {
     // Fetch your SQLite database file (replace 'your_database_file.db' with the path to your SQLite database file)
     var response = await fetch('/data/ip.db');
     var buffer = await response.arrayBuffer();

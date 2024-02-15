@@ -49,7 +49,7 @@ eval("module.exports = __webpack_require__.p + \"8a2a3c8efae774018112.wasm\";\n\
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-eval("module.exports = __webpack_require__.p + \"9181ee78cd72b9be8ba3.js\";\n\n//# sourceURL=webpack://sqliter/./node_modules/sql.js-httpvfs/dist/sqlite.worker.js?");
+eval("module.exports = __webpack_require__.p + \"40be1669ff17129b3ea7.js\";\n\n//# sourceURL=webpack://sqliter/./node_modules/sql.js-httpvfs/dist/sqlite.worker.js?");
 
 /***/ })
 

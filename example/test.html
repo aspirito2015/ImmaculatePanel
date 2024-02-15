@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 
 <title>Minimal sql.js-httpvfs demo</title>
-<script type="module" src="./src/test.ts"></script>
+<script src="./dist/bundle.js"></script>
+<script type="module" defer>
+  sqliter.query_sqlite(`select * from characters where appearances>1000`);
+</script>
 <div>Hello World!</div>

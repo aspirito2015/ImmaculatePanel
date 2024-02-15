@@ -1,8 +1,4 @@
-To test site locally, run the following 
-line in cmd with the project folder as your cwd:
+To test site locally, I just use the Live Server extension for VSCode
 
-python -m http.server
-
-and go to the following url:
-
-https://localhost:8000/
+To bundle the httpvfs library, run the following command in \example\
+`./node_modules/.bin/webpack --mode=development`

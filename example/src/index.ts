@@ -6,7 +6,7 @@ const workerUrl = new URL(
 );
 const wasmUrl = new URL("sql.js-httpvfs/dist/sql-wasm.wasm", import.meta.url);
 
-async function query(q: string) {
+export async function query_sqlite(q: string) {
     let url = window.location.href;
     let s = "";
     if (url.includes("aspirito2015.github.io")) { s = "/MarvelGrid_HTML"; }
@@ -16,7 +16,7 @@ async function query(q: string) {
                 from: "inline",
                 config: {
                     serverMode: "full",
-                    url: `${s}/example/ip.db`,
+                    url: `${s}/data/ip.db`,
                     requestChunkSize: 4096,
                 },
             },
@@ -29,5 +29,3 @@ async function query(q: string) {
 
     document.body.textContent = JSON.stringify(result);
 }
-
-query(`select * from characters where appearances>1000`);

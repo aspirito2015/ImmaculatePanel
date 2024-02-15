@@ -14,6 +14,10 @@ module.exports = {
     },
     output: {
         filename: "bundle.js",
+        library: {
+            name: 'sqliter',
+            type: 'var',
+        },
     },
     devServer: {
         publicPath: "/dist",

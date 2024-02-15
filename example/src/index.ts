@@ -7,14 +7,16 @@ const workerUrl = new URL(
 const wasmUrl = new URL("sql.js-httpvfs/dist/sql-wasm.wasm", import.meta.url);
 
 async function query(q: string) {
-    console.log(window.location.pathname);
+    let url = window.location.href;
+    let s = "";
+    if (url.includes("aspirito2015.github.io")) { s = "/MarvelGrid_HTML"; }
     const worker = await createDbWorker(
         [
             {
                 from: "inline",
                 config: {
                     serverMode: "full",
-                    url: "/example/ip.db",
+                    url: `${s}/example/ip.db`,
                     requestChunkSize: 4096,
                 },
             },

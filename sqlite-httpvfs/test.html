@@ -3,6 +3,10 @@
 <title>Minimal sql.js-httpvfs demo</title>
 <script src="./dist/bundle.js"></script>
 <script type="module" defer>
-  sqliter.query_sqlite(`select * from characters where appearances>1000`);
+  let r = await sqliter.query_sqlite(`select * from characters where appearances>1000 and appearances<2000`);
+  console.log(r);
+  console.log(r.filter(obj => {
+    return obj.charID === 19
+  })[0]);
 </script>
 <div>Hello World!</div>

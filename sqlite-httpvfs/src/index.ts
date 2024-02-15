@@ -27,5 +27,5 @@ export async function query_sqlite(q: string) {
 
     const result = await worker.db.query(q);
 
-    document.body.textContent = JSON.stringify(result);
+    return result;
 }

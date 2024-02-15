@@ -1,14 +1,23 @@
 import { getCategoryIDs, setActiveCell } from './gameManager.js';
 import { search_on } from './searchManager.js';
 
-var cat_ids = getCategoryIDs();
 
 main();
 
 async function main() {
+    var cat_ids = getCategoryIDs();
     var query = buildQuery(cat_ids);
     var results = await sqliter.query_sqlite(query);
-    buildCategories(results);
+    var r = [];
+    for (let i = 0; i < cat_ids.length; i++) {
+        for (let j = 0; j < results.length; j++) {
+            if (cat_ids[i] == results[j].catID) {
+                r.push(results[j]);
+                continue;
+            }
+        }
+    }
+    buildCategories(r);
     buildGridButtons();
     console.log("gridManager.js main() done");
 }

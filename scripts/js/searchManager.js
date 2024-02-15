@@ -91,10 +91,10 @@ function setButtonState(characterID, i) {
 async function createCharacterTags() {
     // get json list of characters from gameManager.js and loop through
     characters = await getCharacters();
-    for (const c in characters) {
-        let id = c;
-        let name = characters[c].name;
-        let alias = characters[c].alias;
+    for (let i = 0; i < characters.length; i++) {
+        let id = characters[i].charID;
+        let name = characters[i].name;
+        let alias = characters[i].alias;
         if (alias === undefined || alias === null || alias === "") { alias = name; }
         // create an html object using the data grabbed from the json
         var html_object = document.createElement('li');
@@ -104,28 +104,34 @@ async function createCharacterTags() {
             none;'>Already Used</div>`;
         html_object.innerHTML = temp;
         // store the html object in an array for future creation/destruction
-        character_tags[c] = html_object;
+        character_tags[id] = html_object;
         // set up the Select button inside the html object
         var button = html_object.querySelector('button');
         button.addEventListener('click', function () {
-            tryGuess(c);
+            tryGuess(id);
         })
     }
     console.log('created character tags');
 }
 
 function setUpSearchFilter() {
-    search_tag.addEventListener("keyup", function () {
+    search_tag.addEventListener("input", function () {
         filterFunction();
     });
     console.log("set up search filter");
 }
 
-function filterFunction() {
-    if (search_tag.value < 1) return;
-    var ul, li;
+const delay = ms => new Promise(res => setTimeout(res, ms));
+
+async function filterFunction() {
+    let old_search_value = search_tag.value;
+    // wait t time and only perform filter if input hasn't changed.
+    await delay(100);
+    if (old_search_value != search_tag.value) { return; }
     // clear old search list
     clearList();
+    if (search_tag.value < 1) { return; }
+    var ul, li;
     // Get HTML <ul> tag and make visible
     ul = document.getElementById("charlist");
     ul.style.display = "";
@@ -150,11 +156,11 @@ function filterObjectsByNameAlias(data, nameAlias) {
     let results = {};
     // '\\b' = word boundary, 'i' = case-insensitive
     const pattern = new RegExp('\\b' + nameAlias, 'i');
-    for (const o in data) {
-        let name = characters[o].name;
-        let alias = characters[o].alias;
+    for (let i = 0; i < Object.keys(data).length; i++) {
+        let name = characters[i].name;
+        let alias = characters[i].alias;
         if (pattern.test(name) || pattern.test(alias)) {
-            results[o] = data[o];
+            results[characters[i].charID] = data[i];
         }
     }
     return results;

@@ -1,6 +1,5 @@
 import { getCategoryIDs, setActiveCell } from './gameManager.js';
 import { search_on } from './searchManager.js';
-import { sqliteQueryOLD } from './sqliteQuerier.js';
 
 var cat_ids = getCategoryIDs();
 
@@ -8,8 +7,8 @@ main();
 
 async function main() {
     var query = buildQuery(cat_ids);
-    var json = await sqliteQueryOLD(query);
-    buildCategories(json);
+    var results = await sqliter.query_sqlite(query);
+    buildCategories(results);
     buildGridButtons();
     console.log("gridManager.js main() done");
 }
@@ -25,12 +24,11 @@ function buildQuery(category_ids) {
 }
 
 // Set up all category headers (main grid and all locations in summary panel)
-function buildCategories(data) {
-    console.log(data);
+function buildCategories(arr) {
     var cat_divs = document.getElementsByName('cat');
-    for (let i = 0; i < cat_ids.length; i++) {
+    for (let i = 0; i < arr.length; i++) {
         var html_chunk = [];
-        var cat_json = data[cat_ids[i]];
+        var cat_json = arr[i];
         if (cat_json['image'] != null) {
             html_chunk = [
                 `<div class="tooltip"><img src="${cat_json['image']}" class="grid-content cat-img"><span class="tooltiptext">${cat_json['helptext']}</span></div>`,

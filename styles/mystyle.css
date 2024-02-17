@@ -162,6 +162,21 @@ button.no-radius {
 }
 
 
+.caption {
+    text-transform: uppercase;
+    background-color: #fffac2;
+    border-style: solid;
+    border-color: black;
+    font-style: italic;
+    color: black;
+    border-radius: 0px;
+}
+
+.drop-box {
+    box-shadow: 2px 2px 0px -1px #ef1b21, 2px 2px black;
+}
+
+
 body {
     font-family: "Comic Sans MS", "Comic Sans", cursive;
     margin: 0;

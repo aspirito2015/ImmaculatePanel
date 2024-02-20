@@ -24,7 +24,7 @@ button {
 @media (prefers-color-scheme: dark) {
     body {
         color: white;
-        background-color: var(--nightowl);
+        background-image: url(../images/splash-dark.png);
     }
 
     h1,
@@ -36,10 +36,10 @@ button {
         color: rgb(209 213 219);
     }
 
-    .tooltip .tooltiptext {
+    /* .tooltip .tooltiptext {
         color: var(--midnight);
         background-color: var(--offwhite);
-    }
+    } */
 
     .navbar a {
         color: var(--bluette);
@@ -72,19 +72,27 @@ button {
     }
 
     input {
-        background-color: var(--midnight);
+        background-color: #283444;
         color: white;
     }
 
     ul {
         background-color: var(--midnight);
     }
+
+    .sum-contents {
+        background-color: var(--nightowl);
+    }
+
+    .ans-grid-cell {
+        background-color: #1f2937;
+    }
 }
 
 @media (prefers-color-scheme: light) {
     body {
         color: var(--midnight);
-        background-color: var(--offwhite);
+        background-image: url(../images/splash-light.png);
     }
 
     h1,
@@ -96,10 +104,10 @@ button {
         color: rgb(156 163 175);
     }
 
-    .tooltip .tooltiptext {
+    /* .tooltip .tooltiptext {
         color: white;
         background-color: var(--nightowl);
-    }
+    } */
 
     .navbar a {
         color: var(--ocean);
@@ -137,6 +145,10 @@ button {
         background-color: white;
         color: var(--midnight);
     }
+    
+    .sum-contents {
+        background-color: var(--offeggs);
+    }
 }
 
 a:visited {
@@ -166,6 +178,8 @@ button.no-radius {
 body {
     font-family: "Comic Sans MS", "Comic Sans", cursive;
     margin: 0;
+    background-size: cover;
+    background-position: center;
 }
 
 .header {
@@ -485,7 +499,6 @@ li .sub {
 
 /* -- SUMMARY PANEL ------------------------------------------------------- */
 .sum-contents {
-    background-color: var(--nightowl);
     padding: 1rem 1.5rem;
     border-radius: 0.75rem;
     max-width: 36rem;
@@ -539,7 +552,6 @@ li .sub {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    background-color: #1f2937;
     color: white;
     position: relative;
 }

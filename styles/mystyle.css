@@ -595,6 +595,7 @@ li .sub {
 }
 
 .character-grid {
+    color:black;
     width: 80%;
     margin-left: auto;
     margin-right: auto;
@@ -611,6 +612,7 @@ li .sub {
     height: 150px;
     overflow: clip;
     position:relative;
+    border: 1px solid black;
 }
 
 .character-grid>div>img {
@@ -628,4 +630,6 @@ li .sub {
     font-size: small;
     width:100%;
     text-align: center;
+    border: 1px black;
+    border-style: solid none none;
 }

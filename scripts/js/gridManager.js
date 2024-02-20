@@ -62,7 +62,7 @@ function buildCategories(arr) {
         // make cat headers for summary grids
         cat_divs[i + 6].innerHTML = html_chunk[1];
         cat_divs[i + 6 + 6].innerHTML = html_chunk[1];
-        cat_divs[i + 6 + 6 + 6].innerHTML = html_chunk[1];
+        // cat_divs[i + 6 + 6 + 6].innerHTML = html_chunk[1];
     }
     console.log('made category headers');
 }

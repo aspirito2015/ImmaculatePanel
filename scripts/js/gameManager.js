@@ -19,7 +19,9 @@ var cat_ids = [119, 66, 24, 95, 51, 12];
 // cat_ids = [133,142,63,24,60,70];
 // cat_ids = [135, 20, 51, 142, 106, 93];
 // cat_ids = [18, 12, 84, 83, 139, 50];
-cat_ids = [49, 63, 59, 76, 32, 94];
+// cat_ids = [49, 63, 59, 76, 32, 94];
+// cat_ids = [106, 26, 37, 95, 135, 140]; // GOOD ['easy', 'easiest', 'easy', 'easiest', 'medium', 'easy', 'medium', 'easy', 'hardest']
+// cat_ids = [73, 136, 59, 63, 135, 133]; // ['easiest', 'easy', 'easy', 'medium', 'hardest', 'easiest', 'easiest', 'medium', 'easiest']
 
 main();
 

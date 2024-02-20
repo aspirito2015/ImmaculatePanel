@@ -24,47 +24,44 @@
         </div>
       </div>
       <div class="a">
-        <div class="b">
-          <div>
-            <div class="c">
-              <div style="display: inline-block;">MARVEL GRID #616</div>
-              <span>&#8901;</span>
-              <button class="caption drop-box" onclick="">Previous Grids</button>
+        <div class="c">
+          <div style="display: inline-block;">MARVEL GRID #616</div>
+          <span>&#8901;</span>
+          <button class="caption drop-box" onclick="">Previous Grids</button>
+        </div>
+        <div class="grid-container" style="grid-template-rows: 96px;padding: 0 10px 0;margin-top: 10px;">
+          <div class="grid-item"></div>
+          <div class="grid-item" name="cat"></div>
+          <div class="grid-item" name="cat"></div>
+          <div class="grid-item" name="cat"></div>
+        </div>
+        <div style="display:flex; align-items:center;">
+          <div class="grid-container" id="main-grid">
+            <div class="grid-item" name="cat"></div>
+            <button class="grid-item no-radius" name="btn"></button>
+            <button class="grid-item no-radius" name="btn"></button>
+            <button class="grid-item no-radius" name="btn"></button>
+            <div class="grid-item" name="cat"></div>
+            <button class="grid-item no-radius" name="btn"></button>
+            <button class="grid-item no-radius" name="btn"></button>
+            <button class="grid-item no-radius" name="btn"></button>
+            <div class="grid-item" name="cat"></div>
+            <button class="grid-item no-radius" name="btn"></button>
+            <button class="grid-item no-radius" name="btn"></button>
+            <button class="grid-item no-radius" name="btn"></button>
+          </div>
+          <div class="grid-item">
+            <div class="" style="width: 100%; font-size: small; color: lightgrey;">
+              <div id="guesses-left">GUESSES LEFT</div>
+              <div id="guesses" style="font-size: xx-large; font-weight: bold;">~</div>
+              <button class="caption drop-box" id="giveup">Give Up</button>
             </div>
-            <div class="grid-container" id="main-grid">
-              <div class="grid-item"></div>
-              <div class="grid-item" name="cat"></div>
-              <div class="grid-item" name="cat"></div>
-              <div class="grid-item" name="cat"></div>
-              <div class="grid-item"></div>
-              <div class="grid-item" name="cat"></div>
-              <button class="grid-item top-left" name="btn"></button>
-              <button class="grid-item no-radius" name="btn"></button>
-              <button class="grid-item top-right" name="btn"></button>
-              <div class="grid-item"></div>
-              <div class="grid-item" name="cat"></div>
-              <button class="grid-item no-radius" name="btn"></button>
-              <button class="grid-item no-radius" name="btn"></button>
-              <button class="grid-item no-radius" name="btn"></button>
-              <div class="grid-item">
-                <div class="grid-content" style="width: 100%; font-size: small; color: lightgrey;">
-                  <div id="guesses-left">GUESSES LEFT</div>
-                  <div id="guesses" style="font-size: xx-large; font-weight: bold;">~</div>
-                  <button id="giveup">Give Up</button>
-                </div>
-              </div>
-              <div class="grid-item" name="cat"></div>
-              <button class="grid-item bottom-left" name="btn"></button>
-              <button class="grid-item no-radius" name="btn"></button>
-              <button class="grid-item bottom-right" name="btn"></button>
-              <div class="grid-item"></div>
-            </div>
-            <div style="text-align: center;">Tap on a logo or category for help.</div>
-            <!-- <button onclick="randomize_grid()" style="background-color: yellow; color:black;">Randomize</button>
-              <button onclick="" style="background-color: red;">CMS</button>
-              <button onclick="" style="background-color: purple">Clear answer history</button> -->
           </div>
         </div>
+        <div style="text-align: center;">Tap on a logo or category for help.</div>
+        <!-- <button onclick="randomize_grid()" style="background-color: yellow; color:black;">Randomize</button>
+          <button onclick="" style="background-color: red;">CMS</button>
+          <button onclick="" style="background-color: purple">Clear answer history</button> -->
       </div>
     </div>
     <footer-component></footer-component>
@@ -193,9 +190,9 @@
                 </div>
               </div>
               <div style="margin-top: 3rem;">
-                <div>MOST POPULAR</div>
+                <div>MOST PROLIFIC</div>
                 <div>
-                  <div>Percentage of correct answers. Tap a player to see their Baseball Reference page.</div>
+                  <div>Answers with the most appearances (i.e. lowest rarity score). Tap a player to see their <a href="https://marvel.fandom.com/" target="_blank">Marvel Fandom Wiki</a> page.</div>
                   <div class="ans-grid" id="percentage-grid">
                     <div class="ans-grid-header"></div>
                     <div class="ans-grid-header" name="cat"></div>
@@ -216,7 +213,7 @@
                   </div>
                 </div>
               </div>
-              <div style="margin-top: 3rem;">
+              <!-- <div style="margin-top: 3rem;">
                 <div>ACCURACY</div>
                 <div>
                   <div class="ans-grid" id="accuracy-grid">
@@ -274,14 +271,14 @@
                     </div>
                   </div>
                 </div>
-              </div>
-              <div style="margin-top: 3rem;">
+              </div> -->
+              <!-- <div style="margin-top: 3rem;">
                 <div>PLAYER SCORES</div>
                 <div class="flex-container">
                   <canvas id="playerScores" style="width:100%;max-width:700px;height:20rem;"></canvas>
                   <button onclick="window.location.href='./subscribe.html'">Remind Me To Play Tomorrow</button>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>

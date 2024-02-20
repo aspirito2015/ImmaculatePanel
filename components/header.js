@@ -7,7 +7,10 @@ class Header extends HTMLElement {
         this.innerHTML = `
         <div class="header">
             <div class="left">
-                <a href="./index.html"><img src="images/icon_large_transparent.png" height="60px"></a>
+                <a href="./index.html">
+                    <picture>
+                        <source srcset="images/icon_large_transparent.png" media="(prefers-color-scheme: dark)">
+                        <img src="images/icon_large_transparent_alt.png" height="60px"></picture></a>
                 <h2>powered by</h2>
                 <h3>THE JANKIEST OF CODE</h3>
             </div>

@@ -7,6 +7,7 @@ var bad_guess_grid = [[], [], [], [], [], [], [], [], []];
 var used_chars = [];
 var summary_bools = Array(9).fill(false);
 var characters = {};
+var gameScore = 0;
 var cat_ids = [119, 66, 24, 95, 51, 12];
 // cat_ids = [143, 136, 23, 135, 144, 143];
 // cat_ids = [85, 60, 104, 51, 76, 140];
@@ -58,6 +59,9 @@ export function clearActiveCell() {
 }
 
 export async function fillActiveCell(characterID) {
+    // increase score
+    let charScore = Math.round(await getAnswerScore(characterID));
+    gameScore += charScore;
     // add characterID to list of used characters
     used_chars.push(characterID);
     // update the html component(s)
@@ -74,7 +78,7 @@ export async function fillActiveCell(characterID) {
     if (characterData.image) { image_to_display = characterData.image; }
     btn_active_tag.innerHTML = `<img src="${image_to_display}" 
         class="grid-content" style="width: 90%; height: 100%; 
-        object-fit: cover;"><div class="grid-percent">100%</div>
+        object-fit: cover;"><div class="grid-percent">${charScore} pts</div>
         <div class="grid-label">${name_to_display}</div>`;
     // update summary
     let index = getActiveCellIndex();
@@ -141,6 +145,50 @@ export async function isCharacterValid(characterID) {
     return valid;
 }
 
+export async function getAnswerScore(characterID) {
+    var catID_x = cat_ids[btn_active_x];
+    var catID_y = cat_ids[3 + btn_active_y];
+    var query = `SELECT charID, appearances FROM characters
+        WHERE  charid IN (SELECT charid
+            FROM   edges
+            WHERE  catid = ${catID_x}
+            INTERSECT
+            SELECT charid
+            FROM   edges
+            WHERE  catid = ${catID_y})
+        ORDER BY appearances DESC;`;
+    let response = await sqliter.query_sqlite(query);
+    let maxA = response[0].appearances;
+    let minA = response[response.length - 1].appearances;
+    console.log(response);
+    let charAppearances = -1;
+    for (let i = 0; i < response.length; i++) {
+        if (response[i].charID == characterID) {
+            charAppearances = response[i].appearances;
+        }
+    }
+    if (charAppearances < 0) {
+        console.log("Something went wrong. Could not find selected character's appearances.");
+        return maxA;
+    }
+    let maxP = 50;
+    let minP = 10;
+    // let pointsMod = ;
+    let power = 2;
+    // let points = (maxP - minP) * (1 - Math.pow((Math.log(charAppearances)-Math.log(minA))/(Math.log(maxA)-Math.log(minA)), power)) + minP;
+    let points = minP + (-minP + maxP) * Math.pow((Math.log(maxA/charAppearances)/Math.log(maxA/minA)), power);
+    if (isNaN(points)) points = maxP;
+    console.log(`
+        max appearances: ${maxA}
+        min points: ${minP}
+        max points: ${maxP}
+        appearances: ${charAppearances}
+        power: ${power}
+        points: ${points}
+    `);
+    // console.log(points);
+    return points;
+}
 
 
 export function decrementGuesses() {

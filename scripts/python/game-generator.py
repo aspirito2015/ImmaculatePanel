@@ -8,11 +8,11 @@ cursor_obj = connection_obj.cursor()
 
 # 0. generate 9 weighted random difficulties (one per cell)
 difficulty_weights = {
-    'easiest': 1,
-    'easy': 2,
-    'medium': 2,
+    'easiest': 4,
+    'easy': 3,
+    'medium': 3,
     'hard':2,
-    'hardest':2
+    'hardest':1
     }
 difficulty_lists = {}
 difficulty_arr = random.choices(
@@ -71,6 +71,7 @@ def generateGrid():
         if intersection[2] not in used_catIDs:
             used_catIDs.append(intersection[2])
     print(used_catIDs)
+    print(difficulty_arr)
 
 
 generateGrid()

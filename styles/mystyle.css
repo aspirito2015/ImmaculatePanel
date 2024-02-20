@@ -352,7 +352,10 @@ h3 {
     visibility: hidden;
     width: 14rem;
     text-align: center;
-    border-radius: 0.25rem;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    border-radius: 999rem;
     padding: 0.25rem 0.5rem;
     position: absolute;
     z-index: 1;

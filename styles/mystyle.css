@@ -51,10 +51,8 @@ button {
 
     button.grid-item,
     button.grid-item-no-hover {
-        border: black;
-        background-color: var(--midnight);
+        background-color: #283444;
         color: white;
-        border-radius: 0;
     }
 
     button.grid-item:hover {
@@ -113,7 +111,6 @@ button {
 
     button.grid-item,
     button.grid-item-no-hover {
-        border: #e5e7eb;
         background-color: white;
         color: black;
     }
@@ -142,20 +139,8 @@ button {
     }
 }
 
-button.top-left {
-    border-radius: 0.75rem 0 0 0;
-}
-
-button.top-right {
-    border-radius: 0 0.75rem 0 0;
-}
-
-button.bottom-left {
-    border-radius: 0 0 0 0.75rem;
-}
-
-button.bottom-right {
-    border-radius: 0 0 0.75rem 0;
+a:visited {
+    text-decoration: none;
 }
 
 button.no-radius {
@@ -286,16 +271,19 @@ h3 {
 .grid-container {
     display: grid;
     width: fit-content;
-    grid-template-columns: 144px 144px 144px 144px 144px;
-    grid-template-rows: 96px 144px 144px 144px;
+    grid-template-columns: 144px 144px 144px 144px;
+    grid-template-rows: 144px 144px 144px;
     padding: 10px;
+    gap: 2px;
 }
 
 .grid-item,
 .grid-item-no-hover {
+    border: black;
     position: relative;
     text-align: center;
     vertical-align: middle;
+    border-radius: 0px;
 }
 
 .grid-content {
@@ -306,29 +294,35 @@ h3 {
 }
 
 .grid-percent {
-    color: white;
+    color: black;
     position: absolute;
     top: 0;
     right: 0;
     font-size: 0.75rem;
     line-height: 1rem;
-    padding: 0 0.375rem;
+    padding: 1px 2px;
     opacity: 0.95;
-    background-color: var(--nightowl);
-    border-bottom-left-radius: 0.5rem;
-    border: 0 solid #e5e7eb;
+    background-color: var(--caption);
+    /* border-bottom-left-radius: 0.5rem; */
+    border: 1px black;
+    border-style: none none solid solid;
+    font-style: italic;
 }
 
 .grid-label {
+    text-align: left;
+    font-style: italic;
     position: absolute;
     left: 0;
-    right: 0;
+    /* right: 0; */
     bottom: 0;
     color: black;
     background-color: var(--caption);
     font-size: 0.75rem;
     line-height: 1rem;
-    padding: 1px;
+    padding: 1px 2px;
+    border: 1px black;
+    border-style: solid solid none none;
 }
 
 .cat-img {

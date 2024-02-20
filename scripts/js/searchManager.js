@@ -100,7 +100,7 @@ async function createCharacterTags() {
         var html_object = document.createElement('li');
         html_object.setAttribute('name', id);
         let temp = `<div>${alias}<div class='sub'>${name}</div></div>
-            <button>Select</button><div class='sub used' style='display: 
+            <button class="caption" style="background-color:rgb(22 163 74); color:white;">Select</button><div class='sub used' style='display: 
             none;'>Already Used</div>`;
         html_object.innerHTML = temp;
         // store the html object in an array for future creation/destruction

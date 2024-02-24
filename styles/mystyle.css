@@ -240,7 +240,7 @@ h3 {
     font-size: 1.125rem;
     line-height: 1.75rem;
     font-weight: 400;
-    padding: 1rem;
+    margin: 1rem;
     align-items: center;
     overflow: hidden;
 }
@@ -249,7 +249,7 @@ h3 {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    margin-left: 1rem;
+    margin: 0rem 0.5rem;
 }
 
 .navbar a.active {
@@ -685,6 +685,10 @@ li .sub {
     .cat-img {
         width: 16vw;
         height: 16vw;
+    }
+
+    .navbar {
+        margin: 0px;
     }
 }
 

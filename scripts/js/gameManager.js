@@ -41,6 +41,8 @@ export function getActiveCellCoords() { return [btn_active_x, btn_active_y]; }
 
 export function getActiveCellIndex() { return btn_active_x + 3 * btn_active_y; }
 
+export function getGameScore() { return gameScore; }
+
 export function setActiveCell(x, y) {
     console.log(`active cell set to ${x}, ${y}`);
     btn_active_x = x;
@@ -59,13 +61,19 @@ export function clearActiveCell() {
 }
 
 export async function fillActiveCell(characterID) {
+    // update summary
+    let index = getActiveCellIndex();
+    let summaryCells = document.getElementsByClassName("sum-grid-cell");
+    summaryCells[index].setAttribute("style", "background-color: #59d185;");
+    summary_bools[index] = true;
     // increase score
     let charScore = Math.round(await getAnswerScore(characterID));
     gameScore += charScore;
+    if (summary_bools.every(Boolean)) gameScore += 100;
     // add characterID to list of used characters
     used_chars.push(characterID);
     // update the html component(s)
-    btn_active_tag.setAttribute("style", "background-color: #59d185;");
+    btn_active_tag.setAttribute("style", "background-color: #283444;");
     let q = `SELECT charID, name, href, image, alias FROM characters WHERE charID=${characterID}`;
     let result = await sqliter.query_sqlite(q);
     let characterData = result[0];
@@ -77,14 +85,9 @@ export async function fillActiveCell(characterID) {
     let image_to_display = "https://upload.wikimedia.org/wikipedia/en/archive/b/b1/20210811082420%21Portrait_placeholder.png";
     if (characterData.image) { image_to_display = characterData.image; }
     btn_active_tag.innerHTML = `<img src="${image_to_display}" 
-        class="grid-content" style="width: 90%; height: 100%; 
-        object-fit: cover;"><div class="grid-percent">${charScore} pts</div>
+        class="grid-content grid-character">
+        <div class="grid-percent">${charScore} pts</div>
         <div class="grid-label">${name_to_display}</div>`;
-    // update summary
-    let index = getActiveCellIndex();
-    let summaryCells = document.getElementsByClassName("sum-grid-cell");
-    summaryCells[index].setAttribute("style", "background-color: #59d185;");
-    summary_bools[index] = true;
     // replace event listener on grid button with one that opens link to wiki
     let new_btn_active = removeAllEventListeners(btn_active_tag);
     new_btn_active.addEventListener('click', function () {
@@ -160,7 +163,6 @@ export async function getAnswerScore(characterID) {
     let response = await sqliter.query_sqlite(query);
     let maxA = response[0].appearances;
     let minA = response[response.length - 1].appearances;
-    console.log(response);
     let charAppearances = -1;
     for (let i = 0; i < response.length; i++) {
         if (response[i].charID == characterID) {
@@ -171,35 +173,24 @@ export async function getAnswerScore(characterID) {
         console.log("Something went wrong. Could not find selected character's appearances.");
         return maxA;
     }
-    let maxP = 50;
-    let minP = 10;
-    // let pointsMod = ;
+    let maxP = 100;
+    let minP = 20;
     let power = 2;
-    // let points = (maxP - minP) * (1 - Math.pow((Math.log(charAppearances)-Math.log(minA))/(Math.log(maxA)-Math.log(minA)), power)) + minP;
-    let points = minP + (-minP + maxP) * Math.pow((Math.log(maxA/charAppearances)/Math.log(maxA/minA)), power);
+    let points = minP + (-minP + maxP) * Math.pow((Math.log(maxA / charAppearances) / Math.log(maxA / minA)), power);
     if (isNaN(points)) points = maxP;
-    console.log(`
-        max appearances: ${maxA}
-        min points: ${minP}
-        max points: ${maxP}
-        appearances: ${charAppearances}
-        power: ${power}
-        points: ${points}
-    `);
-    // console.log(points);
     return points;
 }
 
 
 export function decrementGuesses() {
-    updateGuesses(guesses - 1);
+    updateGuesses(guessesLeft - 1);
 }
 
 function updateGuesses(i) {
-    guesses = i;
+    guessesLeft = i;
     let guessdiv = document.getElementById("guesses");
-    animate_guesses(guessdiv, 0, guesses, 300);
-    if (guesses <= 0) lose();
+    animate_guesses(guessdiv, 0, guessesLeft, 300);
+    if (guessesLeft <= 0) lose();
 }
 
 function animate_guesses(obj, start, end, duration) {

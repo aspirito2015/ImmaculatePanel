@@ -157,6 +157,7 @@ function filterObjectsByNameAlias(data, nameAlias) {
     // '\\b' = word boundary, 'i' = case-insensitive
     const pattern = new RegExp('\\b' + nameAlias, 'i');
     for (let i = 0; i < Object.keys(data).length; i++) {
+        if (Object.keys(results).length > 25) break;
         let name = characters[i].name;
         let alias = characters[i].alias;
         if (pattern.test(name) || pattern.test(alias)) {

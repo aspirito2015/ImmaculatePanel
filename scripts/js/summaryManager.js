@@ -39,7 +39,7 @@ async function fillSummaryPanel() {
         for (let x = 0; x < 3; x++) {
             let cat_1 = category_ids[x];
             let cat_2 = category_ids[y + 3];
-            let q = `SELECT catID_1, intersection FROM intersections WHERE 
+            let q = `SELECT catID_1, intersectionSize FROM intersections WHERE 
             (catID_1=${cat_1} AND catID_2=${cat_2})`;
             let t = Date.now();
             let result = await sqliter.query_sqlite(q);

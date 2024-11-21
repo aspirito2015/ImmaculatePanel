@@ -79,9 +79,9 @@ function copy_sum() {
         }
         emoji_grid += "\n";
     }
-    // txt = "Immaculate Inning 999 " + count + "/9:\nRarity: "+getGameScore()+"\n" + txt + "Play at https://aspirito2015.github.io/MarvelGrid_HTML/";
+    // txt = "Immaculate Inning 999 " + count + "/9:\nRarity: "+getGameScore()+"\n" + txt + "Play at https://aspirito2015.github.io/ImmaculatePanel/";
     let gameScore = getGameScore();
-    let txt = `Immaculate Panel #___ ${count}/9:\nRarity: ${gameScore}\n${emoji_grid}Play at https://aspirito2015.github.io/MarvelGrid_HTML/`;
+    let txt = `Immaculate Panel #___ ${count}/9:\nRarity: ${gameScore}\n${emoji_grid}Play at https://aspirito2015.github.io/ImmaculatePanel/`;
     let copy_tmp = document.getElementById("copy-tmp");
     copy_tmp.innerHTML = txt;
     navigator.clipboard.writeText(copy_tmp.innerHTML);

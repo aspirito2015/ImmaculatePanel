@@ -9,7 +9,7 @@ const wasmUrl = new URL("sql.js-httpvfs/dist/sql-wasm.wasm", import.meta.url);
 export async function query_sqlite(q: string) {
     let url = window.location.href;
     let s = "";
-    if (url.includes("aspirito2015.github.io")) { s = "/MarvelGrid_HTML"; }
+    if (url.includes("aspirito2015.github.io")) { s = "/ImmaculatePanel"; }
     const worker = await createDbWorker(
         [
             {

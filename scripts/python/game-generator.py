@@ -2,7 +2,7 @@ import sqlite3
 import random
 
 # SETUP CONNECTION
-db_path = 'C:/Users/aspir/PythonScripts/MarvelGrid_HTML/data/ip.db'
+db_path = 'C:/Users/aspir/PythonScripts/ImmaculatePanel/data/ip.db'
 connection_obj = sqlite3.connect(db_path)
 cursor_obj = connection_obj.cursor()
 

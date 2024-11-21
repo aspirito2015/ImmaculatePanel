@@ -73,8 +73,8 @@ export async function fillActiveCell(characterID) {
     // add characterID to list of used characters
     used_chars.push(characterID);
     // update the html component(s)
+    let q = `SELECT charID, name, href, image, alias, offset FROM characters WHERE charID=${characterID}`;
     btn_active_tag.setAttribute("style", "background-color: #283444;");
-    let q = `SELECT charID, name, href, image, alias FROM characters WHERE charID=${characterID}`;
     let result = await sqliter.query_sqlite(q);
     let characterData = result[0];
     let name_to_display = characterData.name;
@@ -84,8 +84,14 @@ export async function fillActiveCell(characterID) {
     }
     let image_to_display = "https://upload.wikimedia.org/wikipedia/en/archive/b/b1/20210811082420%21Portrait_placeholder.png";
     if (characterData.image) { image_to_display = characterData.image; }
+    let offset = 0;
+    if (characterData.offset) {
+        offset = characterData.offset;
+    }
+    offset = (1 - offset) * 50;
     btn_active_tag.innerHTML = `<img src="${image_to_display}" 
-        class="grid-content grid-character">
+        class="grid-content grid-character"
+        style="object-position: 0 ${offset}%;">
         <div class="grid-percent">${charScore} pts</div>
         <div class="grid-label">${name_to_display}</div>`;
     // replace event listener on grid button with one that opens link to wiki

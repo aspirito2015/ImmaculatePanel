@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="/styles/mystyle.css">
+  <link rel="shortcut icon" href="#">
+  <link rel="icon" type="image/x-icon" href="./favicon.ico">
+  <title>Pic Test</title>
+  <script src="/components/header.js" type="text/javascript" defer></script>
+  <script src="/components/footer.js" type="text/javascript" defer></script>
+</head>
+
+<body>
+  <div id="page-container">
+    <div id="content-wrap">
+      <header-component></header-component>
+      <div style="text-align: center;" id="top-row">
+        <button id="save">Save</button>
+      </div>
+      <div id="spit-js-here" style="display: grid;grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">This is a template page!</div>
+      <div class="grid-container" id="main-grid"></div>
+    </div>
+    <footer-component></footer-component>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/sql-wasm.js"></script>
+  <script src="sqlite-httpvfs/dist/bundle.js"></script>
+  <script type="module" src="scripts/js/picTest.js" defer></script>
+</body>
+
+</html>

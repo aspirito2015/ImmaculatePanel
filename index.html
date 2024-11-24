@@ -67,6 +67,7 @@
     </div>
     <footer-component></footer-component>
   </div>
+
   <div id="overlay">
     <div style="padding:1.5rem;">
       <div id="srch_bar" class="pup" style="display: none; overflow: hidden;">
@@ -286,6 +287,19 @@
       </div>
     </div>
   </div>
+
+  <template id="template-search">
+    <li>
+      <div>
+        <span name="alias">${alias}</span>
+        <div class='sub' name="name">${name}</div>
+      </div>
+      <button class="caption" style="background-color:rgb(22 163 74); color:white;">
+        Select</button>
+        <div class='sub used' style='display: none;'>Already Used</div>
+    </li>
+  </template>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/sql-wasm.js"></script>
   <script src="sqlite-httpvfs/dist/bundle.js"></script>
   <script type="module" src="scripts/js/gameManager.js" defer></script>

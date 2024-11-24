@@ -15,7 +15,7 @@ var searchBar_tag = document.getElementById("srch_bar");
 var search_tag = document.getElementById("search");
 var body_tag = document.body;
 var character_tags = {};
-var characters;
+const characters = [];
 const startTime = new Date();
 
 main();
@@ -90,30 +90,34 @@ function setButtonState(characterID, i) {
 
 
 async function createCharacterTags() {
+    let now = new Date();
     // get json list of characters from gameManager.js and loop through
     characters = await getCharacters();
     for (let i = 0; i < characters.length; i++) {
         let id = characters[i].charID;
         let name = characters[i].name;
         let alias = characters[i].alias;
-        // if there's no alias, replace w/ name
-        if (alias === undefined || alias === null || alias === "") { alias = name; }
-        // create an html object using the character data
-        var html_object = document.createElement('li');
-        html_object.setAttribute('name', id);
-        let temp = `<div>${alias}<div class='sub'>${name}</div></div>
-            <button class="caption" style="background-color:rgb(22 163 74); color:white;">Select</button><div class='sub used' style='display: 
-            none;'>Already Used</div>`;
-        html_object.innerHTML = temp;
-        // store the html object in an array for future creation/destruction
-        character_tags[id] = html_object;
-        // set up the Select button inside the html object
-        var button = html_object.querySelector('button');
-        button.addEventListener('click', function () {
-            tryGuess(id);
-        })
+        now = new Date();
+        console.log(`${now.toLocaleTimeString()} | got char page ${page}, took ${now - startTime} ms`);
+        // find html template to use for search entries
+        let template = document.getElementById("template-search");
+        let item = template.content.querySelector("li");
+            // if there's no alias, replace w/ name
+            if (alias === undefined || alias === null || alias === "") { alias = name; }
+            // create new node from template
+            var html_object = document.importNode(item, true);
+            html_object.setAttribute('name', id);
+            html_object.querySelector('[name="name"]').innerHTML = name;
+            html_object.querySelector('[name="alias"]').innerHTML = alias;
+            // store the html object in an array for future creation/destruction
+            character_tags[id] = html_object;
+            // set up the Select button inside the html object
+            var button = html_object.querySelector('button');
+            button.addEventListener('click', function () {
+                tryGuess(id);
+            })
     }
-    let now = new Date();
+    now = new Date();
     console.log(`${now.toLocaleTimeString()} | created character tags, took ${now - startTime} ms`);
 }
 

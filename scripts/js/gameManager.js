@@ -73,7 +73,7 @@ export async function fillActiveCell(characterID) {
     // add characterID to list of used characters
     used_chars.push(characterID);
     // update the html component(s)
-    let q = `SELECT charID, name, href, image, alias, offset FROM characters WHERE charID=${characterID}`;
+    let q = `SELECT charID, name, href, image, alias, offset FROM characters WHERE charID=${characterID} LIMIT 1`;
     btn_active_tag.setAttribute("style", "background-color: #283444;");
     let result = await sqliter.query_sqlite(q);
     let characterData = result[0];
@@ -174,15 +174,18 @@ export async function isCharacterValid(characterID) {
 export async function getAnswerScore(characterID) {
     var catID_x = cat_ids[btn_active_x];
     var catID_y = cat_ids[3 + btn_active_y];
-    var query = `SELECT charID, appearances FROM characters
-        WHERE  charid IN (SELECT charid
-            FROM   edges
-            WHERE  catid = ${catID_x}
-            INTERSECT
-            SELECT charid
-            FROM   edges
-            WHERE  catid = ${catID_y})
-        ORDER BY appearances DESC;`;
+    var query = `
+        SELECT c.charID, c.appearances
+        FROM characters c
+        WHERE c.charID IN (
+            SELECT e1.charID
+            FROM edges e1
+            INNER JOIN edges e2
+            ON e1.charID = e2.charID
+            WHERE e1.catID = ${catID_x} AND e2.catID = ${catID_y}
+        )
+        ORDER BY c.appearances DESC;`;
+
     let response = await sqliter.query_sqlite(query);
     let maxA = response[0].appearances;
     let minA = response[response.length - 1].appearances;

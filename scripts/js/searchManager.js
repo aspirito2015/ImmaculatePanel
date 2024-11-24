@@ -2,7 +2,8 @@ import {
     getBadGuesses,
     getUsedCharTags,
     clearActiveCell,
-    getCharacters,
+    getCharactersAll,
+    getCharactersPage,
     isCharacterValid,
     fillActiveCell,
     getActiveCellIndex,
@@ -92,16 +93,20 @@ function setButtonState(characterID, i) {
 async function createCharacterTags() {
     let now = new Date();
     // get json list of characters from gameManager.js and loop through
-    characters = await getCharacters();
-    for (let i = 0; i < characters.length; i++) {
-        let id = characters[i].charID;
-        let name = characters[i].name;
-        let alias = characters[i].alias;
+    let page = 1;
+    let pageSize = 1000;
+    while (true) {
+        let newCharacters = await getCharactersPage(page, pageSize);
+        if (newCharacters.length < 1) break;
         now = new Date();
         console.log(`${now.toLocaleTimeString()} | got char page ${page}, took ${now - startTime} ms`);
         // find html template to use for search entries
         let template = document.getElementById("template-search");
         let item = template.content.querySelector("li");
+        for (let i = 0; i < newCharacters.length; i++) {
+            let id = newCharacters[i].charID;
+            let name = newCharacters[i].name;
+            let alias = newCharacters[i].alias;
             // if there's no alias, replace w/ name
             if (alias === undefined || alias === null || alias === "") { alias = name; }
             // create new node from template
@@ -116,6 +121,11 @@ async function createCharacterTags() {
             button.addEventListener('click', function () {
                 tryGuess(id);
             })
+        }
+        characters.push(...newCharacters);
+        if (newCharacters.length < pageSize) break;
+        pageSize = 7000;
+        page++;
     }
     now = new Date();
     console.log(`${now.toLocaleTimeString()} | created character tags, took ${now - startTime} ms`);

@@ -134,11 +134,28 @@ export function addBadGuess(characterID, x, y) {
 
 export function getUsedCharTags() { return used_chars; }
 
-export async function getCharacters() {
+export async function getCharactersAll() {
+    let start = new Date();
+    console.log(`${start.toLocaleTimeString()} | character query started`);
     if (characters.length === undefined || characters.length < 1) {
         let q = `SELECT charID, name, alias FROM characters`;
         characters = await sqliter.query_sqlite(q);
     }
+    let now = new Date();
+    console.log(`${now.toLocaleTimeString()} | character query took ${now - start} ms`);
+    return characters;
+}
+
+export async function getCharactersPage(page = 1, pageSize = 10) {
+    // Calculate the offset based on page and pageSize
+    const offset = (page - 1) * pageSize;
+    const query = `
+        SELECT charID, name, alias
+        FROM characters
+        LIMIT ${pageSize} OFFSET ${offset}
+    `;
+    const characters = await sqliter.query_sqlite(query);
+    // console.log(characters);
     return characters;
 }
 

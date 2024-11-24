@@ -16,6 +16,7 @@ var search_tag = document.getElementById("search");
 var body_tag = document.body;
 var character_tags = {};
 var characters;
+const startTime = new Date();
 
 main();
 
@@ -95,8 +96,9 @@ async function createCharacterTags() {
         let id = characters[i].charID;
         let name = characters[i].name;
         let alias = characters[i].alias;
+        // if there's no alias, replace w/ name
         if (alias === undefined || alias === null || alias === "") { alias = name; }
-        // create an html object using the data grabbed from the json
+        // create an html object using the character data
         var html_object = document.createElement('li');
         html_object.setAttribute('name', id);
         let temp = `<div>${alias}<div class='sub'>${name}</div></div>
@@ -111,7 +113,8 @@ async function createCharacterTags() {
             tryGuess(id);
         })
     }
-    console.log('created character tags');
+    let now = new Date();
+    console.log(`${now.toLocaleTimeString()} | created character tags, took ${now - startTime} ms`);
 }
 
 function setUpSearchFilter() {

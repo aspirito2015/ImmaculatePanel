@@ -43,7 +43,8 @@ async function fillSummaryPanel() {
             (catID_1=${cat_1} AND catID_2=${cat_2})`;
             let t = Date.now();
             let result = await sqliter.query_sqlite(q);
-            console.log(Date.now()-t);
+            let now = new Date();
+            console.log(`${now.toLocaleTimeString()} | summary ${x}, ${y} took ${now-t} ms`);
             let n = result[0].intersectionSize;
             let index = x + 3 * y;
             let url = `answers.html?category1=${cat_1}&category2=${cat_2}`;

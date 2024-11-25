@@ -48,7 +48,7 @@ export function search_on() {
             setButtonState(used_chars[i], 1);
         }
     }
-    console.log("search toggled on");
+    console.log("searchManager | search toggled on");
 }
 
 export function search_off() {
@@ -64,7 +64,7 @@ export function search_off() {
     body_tag.classList.remove('noscroll');
     clearActiveCell();
     filterClear(); // TODO
-    console.log("search toggled off");
+    // console.log("searchManager | search toggled off");
 }
 
 function setButtonState(characterID, i) {
@@ -91,15 +91,12 @@ function setButtonState(characterID, i) {
 
 
 async function createCharacterTags() {
-    let now = new Date();
     // get json list of characters from gameManager.js and loop through
     let page = 1;
     let pageSize = 1000;
     while (true) {
         let newCharacters = await getCharactersPage(page, pageSize);
         if (newCharacters.length < 1) break;
-        now = new Date();
-        console.log(`${now.toLocaleTimeString()} | got char page ${page}, took ${now - startTime} ms`);
         // find html template to use for search entries
         let template = document.getElementById("template-search");
         let item = template.content.querySelector("li");
@@ -127,15 +124,13 @@ async function createCharacterTags() {
         pageSize = 7000;
         page++;
     }
-    now = new Date();
-    console.log(`${now.toLocaleTimeString()} | created character tags, took ${now - startTime} ms`);
 }
 
 function setUpSearchFilter() {
     search_tag.addEventListener("input", function () {
         filterFunction();
     });
-    console.log("set up search filter");
+    // console.log("searchManager | set up search filter");
 }
 
 const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -192,8 +187,6 @@ function filterClear() {
 }
 
 async function tryGuess(characterID) {
-    console.log(`${characterID} button pressed`);
-    // var active_index = getActiveCellIndex();
     if (await isCharacterValid(characterID) == false) {
         // add characterID to list of bad guesses for this cell
         addBadGuess(characterID);

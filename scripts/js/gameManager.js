@@ -44,7 +44,7 @@ export function getActiveCellIndex() { return btn_active_x + 3 * btn_active_y; }
 export function getGameScore() { return gameScore; }
 
 export function setActiveCell(x, y) {
-    console.log(`active cell set to ${x}, ${y}`);
+    // console.log(`gameManager | active cell set to ${x}, ${y}`);
     btn_active_x = x;
     btn_active_y = y;
     btn_active_tag = btn_tags[x + 3 * y];
@@ -52,7 +52,7 @@ export function setActiveCell(x, y) {
 }
 
 export function clearActiveCell() {
-    console.log('active cell cleared');
+    // console.log('gameManager | active cell cleared');
     btn_active_x = null;
     btn_active_y = null;
     if (btn_active_tag == null) return;
@@ -61,6 +61,7 @@ export function clearActiveCell() {
 }
 
 export async function fillActiveCell(characterID) {
+    console.log(`gameManager.fillActiveCell | started`);
     // update summary
     let index = getActiveCellIndex();
     let summaryCells = document.getElementsByClassName("sum-grid-cell");
@@ -136,13 +137,13 @@ export function getUsedCharTags() { return used_chars; }
 
 export async function getCharactersAll() {
     let start = new Date();
-    console.log(`${start.toLocaleTimeString()} | character query started`);
+    console.log(`gameManager | character query started`);
     if (characters.length === undefined || characters.length < 1) {
         let q = `SELECT charID, name, alias FROM characters`;
         characters = await sqliter.query_sqlite(q);
     }
     let now = new Date();
-    console.log(`${now.toLocaleTimeString()} | character query took ${now - start} ms`);
+    console.log(`gameManager | character query took ${now - start} ms`);
     return characters;
 }
 
@@ -167,7 +168,7 @@ export async function isCharacterValid(characterID) {
     let response = await sqliter.query_sqlite(query);
     let length = response.length;
     var valid = length >= 2;
-    console.log(`${characterID} valid? ${valid}`);
+    console.log(`gameManager | ${characterID} ${valid ? "valid" : "invalid"}`);
     return valid;
 }
 
@@ -196,7 +197,7 @@ export async function getAnswerScore(characterID) {
         }
     }
     if (charAppearances < 0) {
-        console.log("Something went wrong. Could not find selected character's appearances.");
+        console.log("gameManager | Something went wrong. Could not find selected character's appearances.");
         return maxA;
     }
     let maxP = 100;

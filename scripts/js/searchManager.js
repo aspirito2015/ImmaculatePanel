@@ -10,6 +10,7 @@ import {
     addBadGuess,
     decrementGuesses
 } from "./gameManager.js";
+import { setLoading } from "./overlayManager.js";
 
 var overlay_tag = document.getElementById("overlay");
 var searchBar_tag = document.getElementById("srch_bar");
@@ -31,9 +32,9 @@ async function main() {
 }
 
 export function search_on() {
-    overlay_tag.style.display = "block";
+    document.getElementById("overlay").style.display = "block";
     searchBar_tag.style.display = "";
-    search_tag.focus();
+    document.getElementById("search").focus();
     body_tag.classList.add('noscroll');
     // set all bad btns
     var bad_ids = getBadGuesses();
@@ -187,14 +188,17 @@ function filterClear() {
 }
 
 async function tryGuess(characterID) {
+    setLoading(true);
     if (await isCharacterValid(characterID) == false) {
         // add characterID to list of bad guesses for this cell
         addBadGuess(characterID);
         setButtonState(characterID, 2);
         decrementGuesses();
+        setLoading(false);
         return;
     }
     await fillActiveCell(characterID);
     search_off();
     decrementGuesses();
+    setLoading(false);
 }

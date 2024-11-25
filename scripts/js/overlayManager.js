@@ -38,3 +38,5 @@ export function setLoading (b) {
                 summary_off();
             }
         });
+    }
+}

@@ -1,5 +1,6 @@
 import { getCategoryIDs, setActiveCell } from './gameManager.js';
 import { search_on } from './searchManager.js';
+import { isLoading } from "./overlayManager.js";
 
 
 main();
@@ -81,6 +82,7 @@ function buildGridButtons() {
 }
 
 function grid_btn(x, y) {
+    if (isLoading()) return;
     if (guesses <= 0) return;
     setActiveCell(x, y);
     search_on();

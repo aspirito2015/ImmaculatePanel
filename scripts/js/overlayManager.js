@@ -21,6 +21,10 @@ function main() {
     console.log("overlayManager.js main() done");
 }
 
+export function isLoading () {
+    return loading;
+}
+
 export function setLoading (b) {
     if (b) {
         loading = true;

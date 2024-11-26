@@ -10,7 +10,7 @@ import {
     addBadGuess,
     decrementGuesses
 } from "./gameManager.js";
-import { setLoading } from "./overlayManager.js";
+import { setLoading, isLoading } from "./overlayManager.js";
 
 var overlay_tag = document.getElementById("overlay");
 var searchBar_tag = document.getElementById("srch_bar");
@@ -18,7 +18,6 @@ var search_tag = document.getElementById("search");
 var body_tag = document.body;
 var character_tags = {};
 const characters = [];
-const startTime = new Date();
 
 main();
 
@@ -188,6 +187,7 @@ function filterClear() {
 }
 
 async function tryGuess(characterID) {
+    if (isLoading()) return;
     setLoading(true);
     if (await isCharacterValid(characterID) == false) {
         // add characterID to list of bad guesses for this cell

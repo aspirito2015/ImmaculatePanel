@@ -1,8 +1,8 @@
 import sqlite3
 import random
 
-# SETUP CONNECTION
-db_path = 'C:/Users/aspir/PythonScripts/ImmaculatePanel/data/ip.db'
+# SET UP CONNECTION
+db_path = 'C:/Users/aspir/PythonScripts/MarvelGrid_HTML/data/ip.db'
 connection_obj = sqlite3.connect(db_path)
 cursor_obj = connection_obj.cursor()
 
@@ -52,6 +52,7 @@ def generateGrid():
             statement += f" AND catID_1 = {intersection_arr[i-1][1]}"
         if i >= 3:
             statement += f" AND catID_2 = {intersection_arr[i-3][2]}"
+        # print(statement)
         cursor_obj.execute(statement)
         output = cursor_obj.fetchall()
         if len(output) < 1:
@@ -70,7 +71,9 @@ def generateGrid():
             used_catIDs.append(intersection[1])
         if intersection[2] not in used_catIDs:
             used_catIDs.append(intersection[2])
-    print(used_catIDs)
+    # categories get generated in the wrong order, so this corrects it
+    fixed_cats = [used_catIDs[1], used_catIDs[2], used_catIDs[3], used_catIDs[0], used_catIDs[4], used_catIDs[5]]
+    print(fixed_cats)
     print(difficulty_arr)
 
 

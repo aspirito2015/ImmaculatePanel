@@ -59,8 +59,8 @@ export function search_off() {
             setButtonState(bad_ids[i], 0);
         }
     }
-    overlay_tag.style.display = "none";
-    searchBar_tag.style.display = "none";
+    document.getElementById("overlay").style.display = "none";
+    document.getElementById("srch_bar").style.display = "none";
     body_tag.classList.remove('noscroll');
     clearActiveCell();
     filterClear(); // TODO

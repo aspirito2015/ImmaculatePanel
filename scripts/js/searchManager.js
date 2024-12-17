@@ -24,10 +24,6 @@ main();
 async function main() {
     setUpSearchFilter();
     createCharacterTags();
-    // set up giveup button
-    document.getElementById("giveup").addEventListener("click", function () {
-        search_off();
-    });
 }
 
 export function search_on() {
@@ -52,6 +48,9 @@ export function search_on() {
 }
 
 export function search_off() {
+    if (document.getElementById("srch_bar").style.display == "none") {
+        return;
+    }
     // set all bad btns to good
     var bad_ids = getBadGuesses();
     if (bad_ids != null) {

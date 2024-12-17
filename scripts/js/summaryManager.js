@@ -1,4 +1,5 @@
 import { getCategoryIDs, getSummaryBools, getGameScore } from "./gameManager.js";
+import { search_off } from "./searchManager.js";
 
 main();
 
@@ -16,6 +17,7 @@ function main() {
 }
 
 export function summary_on() {
+    search_off();
     document.getElementById("overlay").style.display = "block";
     document.getElementById("sum").style.display = "";
     document.body.classList.add('noscroll');

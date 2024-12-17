@@ -32,6 +32,8 @@ export function getActiveCellIndex() { return btn_active_x + 3 * btn_active_y; }
 
 export function getGameScore() { return gameScore; }
 
+export function getGuessesLeft() { return guessesLeft; }
+
 export function setActiveCell(x, y) {
     // console.log(`gameManager | active cell set to ${x}, ${y}`);
     btn_active_x = x;

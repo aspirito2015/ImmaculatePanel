@@ -9,20 +9,9 @@ var summary_bools = Array(9).fill(false);
 var characters = {};
 var gameScore = 0;
 var cat_ids = [119, 66, 24, 95, 51, 12];
-// cat_ids = [143, 136, 23, 135, 144, 143];
-// cat_ids = [85, 60, 104, 51, 76, 140];
-// cat_ids = [67, 38, 30, 135, 138, 65];
 // cat_ids = [92, 37, 39, 17, 38, 28]; // longest names
 // cat_ids = [97, 99, 46, 11, 24, 45]; // 2nd longest names
 // cat_ids = [49, 140, 2, 6, 3, 4]; // 3rd longest names
-// cat_ids = [83,137,66,91,86,51];
-// cat_ids = [19,57,78,135,93,66];
-// cat_ids = [133,142,63,24,60,70];
-// cat_ids = [135, 20, 51, 142, 106, 93];
-// cat_ids = [18, 12, 84, 83, 139, 50];
-// cat_ids = [49, 63, 59, 76, 32, 94];
-// cat_ids = [106, 26, 37, 95, 135, 140]; // GOOD ['easy', 'easiest', 'easy', 'easiest', 'medium', 'easy', 'medium', 'easy', 'hardest']
-// cat_ids = [73, 136, 59, 63, 135, 133]; // ['easiest', 'easy', 'easy', 'medium', 'hardest', 'easiest', 'easiest', 'medium', 'easiest']
 
 main();
 

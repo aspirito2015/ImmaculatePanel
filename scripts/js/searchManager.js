@@ -182,18 +182,18 @@ function filterClear() {
 }
 
 async function tryGuess(characterID) {
-    if (isLoading()) return;
-    setLoading(true);
+    // if (isLoading()) return;
+    // setLoading(true);
     if (await isCharacterValid(characterID) == false) {
         // add characterID to list of bad guesses for this cell
         addBadGuess(characterID);
         setButtonState(characterID, 2);
         decrementGuesses();
-        setLoading(false);
+        // setLoading(false);
         return;
     }
     await fillActiveCell(characterID);
     search_off();
     decrementGuesses();
-    setLoading(false);
+    // setLoading(false);
 }

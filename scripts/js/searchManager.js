@@ -2,17 +2,13 @@ import {
     getBadGuesses,
     getUsedCharTags,
     clearActiveCell,
-    getCharactersAll,
     getCharactersPage,
     isCharacterValid,
     fillActiveCell,
-    getActiveCellIndex,
     addBadGuess,
     decrementGuesses
 } from "./gameManager.js";
-import { setLoading, isLoading } from "./overlayManager.js";
 
-var overlay_tag = document.getElementById("overlay");
 var searchBar_tag = document.getElementById("srch_bar");
 var search_tag = document.getElementById("search");
 var body_tag = document.body;
@@ -62,7 +58,7 @@ export function search_off() {
     document.getElementById("srch_bar").style.display = "none";
     body_tag.classList.remove('noscroll');
     clearActiveCell();
-    filterClear(); // TODO
+    filterClear();
     // console.log("searchManager | search toggled off");
 }
 

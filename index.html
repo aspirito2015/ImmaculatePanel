@@ -68,9 +68,9 @@
     <footer-component></footer-component>
   </div>
 
-  <div id="overlay">
+  <div id="overlay" class="stop-propagation">
     <div style="padding:1.5rem;">
-      <div id="srch_bar" class="pup" style="display: none; overflow: hidden;">
+      <div id="srch_bar" class="pup stop-propagation" style="display: none; overflow: hidden;">
         <div style="position: relative;">
           <div width="20px" height="20px"
             style="position: absolute; top: 50%; left: 1rem; transform: translate(0, -50%);">&#128269;</div>
@@ -78,7 +78,7 @@
         </div>
         <ul id="charlist" style="display: none;"></ul>
       </div>
-      <div id="sum" class="pup" style="display: none;">
+      <div id="sum" class="pup stop-propagation" style="display: none;">
         <div style="position: relative;">
           <div class="sum-contents">
             <button id="x-btn">X</button>

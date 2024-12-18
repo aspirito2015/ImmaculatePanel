@@ -1,6 +1,6 @@
 import { getCategoryIDs, setActiveCell, getGuessesLeft } from './gameManager.js';
 import { search_on } from './searchManager.js';
-import { isLoading } from "./overlayManager.js";
+import { isLoading, setLoading } from "./overlayManager.js";
 
 
 main();
@@ -8,6 +8,7 @@ main();
 async function main() {
     var cat_ids = getCategoryIDs();
     var query = buildQuery(cat_ids);
+    setLoading(true);
     var results = await sqliter.query_sqlite(query);
     var r = [];
     for (let i = 0; i < cat_ids.length; i++) {
@@ -20,6 +21,7 @@ async function main() {
     }
     buildCategories(r);
     buildGridButtons();
+    setLoading(false);
     console.log("gridManager.js main() done");
 }
 
@@ -82,7 +84,6 @@ function buildGridButtons() {
 }
 
 function grid_btn(x, y) {
-    if (isLoading()) return;
     if (getGuessesLeft() <= 0) return;
     setActiveCell(x, y);
     search_on();

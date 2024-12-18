@@ -20,15 +20,6 @@ function main() {
         search_off();
         summary_off();
     });
-    // FROM BAD COMMIT
-    // document.getElementById('scrim').addEventListener("click", function () {
-    //     if (!loading) {
-    //         console.log(`is not loading! (loading is ${loading})`);
-    //         search_off();
-    //         summary_off();
-    //         console.log("SCRIM PRESSED");
-    //     }
-    // });
     console.log("overlayManager.js main() done");
 }
 

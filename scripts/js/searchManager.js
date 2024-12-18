@@ -67,6 +67,7 @@ function setButtonState(characterID, i) {
     if (!li) { return; }
     switch (i) {
         case 0: // set unused
+            li.removeAttribute('style');
             li.getElementsByTagName('button')[0].style.display = "";
             li.getElementsByClassName('used')[0].style.display = "none";
             break;

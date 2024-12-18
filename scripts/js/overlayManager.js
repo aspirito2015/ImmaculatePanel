@@ -2,6 +2,7 @@ import { search_off } from "./searchManager.js";
 import { summary_off } from "./summaryManager.js";
 
 let loading = false;
+let loadingNum = 0;
 
 main();
 
@@ -36,21 +37,16 @@ export function isLoading () {
 }
 
 export function setLoading (b) {
-    if (b) {
+    loadingNum += (b ? 1 : -1);
+    if (loadingNum > 0) {
+        if (loading) return;
         loading = true;
-        document.getElementById("overlay").style.display = "block";
-        // document.getElementById('loading').style.display = "";
+        document.getElementById("scrim").style.display = "block";
         document.body.classList.add('noscroll');
     } else {
+        if (!loading) return;
         loading = false;
-        document.getElementById("overlay").style.display = "none";
-        // document.getElementById('loading').style.display = "none";
-        document.getElementById('overlay').addEventListener("click", function () {
-            if (!loading) {
-                console.log(`is not loading! (loading is ${loading})`);
-                search_off();
-                summary_off();
-            }
-        });
+        document.getElementById("scrim").style.display = "none";
+        document.body.classList.remove('noscroll');
     }
 }

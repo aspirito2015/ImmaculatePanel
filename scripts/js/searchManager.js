@@ -65,7 +65,6 @@ export function search_off() {
 function setButtonState(characterID, i) {
     var li = document.getElementsByName(characterID)[0];
     if (!li) { return; }
-    li.setAttribute('style', 'color: white;');
     switch (i) {
         case 0: // set unused
             li.getElementsByTagName('button')[0].style.display = "";
